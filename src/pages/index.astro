@@ -35,12 +35,22 @@ const wordLists = {
 
   // Miséricorde and presumption of innocence
   misericorde: [
-    "rappelons que la miséricorde divine s'étend à tous sans exception, y compris à ceux qui se trouvent aujourd'hui sous les projecteurs médiatiques, et que le principe fondamental de présomption d'innocence doit guider notre discernement",
-    "gardons à l'esprit que la compassion évangélique concerne chaque membre de notre communauté, notamment ceux qui font l'objet d'accusations, et que la présomption d'innocence constitue un pilier de notre justice",
-    "souvenons-nous que la miséricorde du Christ embrasse tous les enfants de Dieu, particulièrement ceux qui sont actuellement dans l'épreuve médiatique, et que la présomption d'innocence demeure un principe incontournable",
-    "n'oublions pas que la grâce divine rayonne sur chacun, y compris sur ceux qui traversent actuellement des moments difficiles, et que la présomption d'innocence reste un fondement de notre approche pastorale",
-    "retenons que la bonté divine s'étend à tous nos frères, spécialement à ceux qui sont aujourd'hui exposés publiquement, et que la présomption d'innocence constitue un préalable à tout jugement équitable",
-    "méditons sur le fait que la tendresse du Seigneur concerne chaque personne, notamment celles qui sont actuellement sous le feu des critiques, et que la présomption d'innocence guide notre démarche de vérité"
+    "Rappelons que la miséricorde divine s'étend à tous sans exception, y compris à ceux qui se trouvent aujourd'hui sous les projecteurs médiatiques, et que le principe fondamental de présomption d'innocence doit guider notre discernement",
+    "Gardons à l'esprit que la compassion évangélique concerne chaque membre de notre communauté, notamment ceux qui font l'objet d'accusations, et que la présomption d'innocence constitue un pilier de notre justice",
+    "Souvenons-nous que la miséricorde du Christ embrasse tous les enfants de Dieu, particulièrement ceux qui sont actuellement dans l'épreuve médiatique, et que la présomption d'innocence demeure un principe incontournable",
+    "N'oublions pas que la grâce divine rayonne sur chacun, y compris sur ceux qui traversent actuellement des moments difficiles, et que la présomption d'innocence reste un fondement de notre approche pastorale",
+    "Retenons que la bonté divine s'étend à tous nos frères, spécialement à ceux qui sont aujourd'hui exposés publiquement, et que la présomption d'innocence constitue un préalable à tout jugement équitable",
+    "Méditons sur le fait que la tendresse du Seigneur concerne chaque personne, notamment celles qui sont actuellement sous le feu des critiques, et que la présomption d'innocence guide notre démarche de vérité"
+  ],
+
+  // "Dans la tourmente" transitions
+  tourmentes: [
+    "Dans la tourmente",
+    "Au cœur de la tempête",
+    "En ces temps d'épreuve",
+    "Malgré les turbulences",
+    "Dans cette période difficile",
+    "Au sein de ces bouleversements"
   ],
   
   // Good fruits deflection (longer)
@@ -322,12 +332,20 @@ const wordLists = {
         "nous témoignons de notre sollicitude particulière envers ceux qui ont été touchés et les accompagnons dans leur cheminement vers la sérénité"
       ],
       misericorde: [
-        "rappelons que la miséricorde divine s'étend à tous sans exception, y compris à ceux qui se trouvent aujourd'hui sous les projecteurs médiatiques, et que le principe fondamental de présomption d'innocence doit guider notre discernement",
-        "gardons à l'esprit que la compassion évangélique concerne chaque membre de notre communauté, notamment ceux qui font l'objet d'accusations, et que la présomption d'innocence constitue un pilier de notre justice",
-        "souvenons-nous que la miséricorde du Christ embrasse tous les enfants de Dieu, particulièrement ceux qui sont actuellement dans l'épreuve médiatique, et que la présomption d'innocence demeure un principe incontournable",
-        "n'oublions pas que la grâce divine rayonne sur chacun, y compris sur ceux qui traversent actuellement des moments difficiles, et que la présomption d'innocence reste un fondement de notre approche pastorale",
-        "retenons que la bonté divine s'étend à tous nos frères, spécialement à ceux qui sont aujourd'hui exposés publiquement, et que la présomption d'innocence constitue un préalable à tout jugement équitable",
-        "méditons sur le fait que la tendresse du Seigneur concerne chaque personne, notamment celles qui sont actuellement sous le feu des critiques, et que la présomption d'innocence guide notre démarche de vérité"
+        "Rappelons que la miséricorde divine s'étend à tous sans exception, y compris à ceux qui se trouvent aujourd'hui sous les projecteurs médiatiques, et que le principe fondamental de présomption d'innocence doit guider notre discernement",
+        "Gardons à l'esprit que la compassion évangélique concerne chaque membre de notre communauté, notamment ceux qui font l'objet d'accusations, et que la présomption d'innocence constitue un pilier de notre justice",
+        "Souvenons-nous que la miséricorde du Christ embrasse tous les enfants de Dieu, particulièrement ceux qui sont actuellement dans l'épreuve médiatique, et que la présomption d'innocence demeure un principe incontournable",
+        "N'oublions pas que la grâce divine rayonne sur chacun, y compris sur ceux qui traversent actuellement des moments difficiles, et que la présomption d'innocence reste un fondement de notre approche pastorale",
+        "Retenons que la bonté divine s'étend à tous nos frères, spécialement à ceux qui sont aujourd'hui exposés publiquement, et que la présomption d'innocence constitue un préalable à tout jugement équitable",
+        "Méditons sur le fait que la tendresse du Seigneur concerne chaque personne, notamment celles qui sont actuellement sous le feu des critiques, et que la présomption d'innocence guide notre démarche de vérité"
+      ],
+      tourmentes: [
+        "Dans la tourmente",
+        "Au cœur de la tempête",
+        "En ces temps d'épreuve",
+        "Malgré les turbulences",
+        "Dans cette période difficile",
+        "Au sein de ces bouleversements"
       ],
       goodFruits: [
         "il convient néanmoins de ne pas occulter les nombreux fruits de grâce extraordinaires qui jaillissent quotidiennement dans nos paroisses et témoignent de la vitalité de notre foi",
@@ -396,6 +414,7 @@ const wordLists = {
       const acknowledgment = getRandomItem(wordLists.acknowledgments);
       const apology = getRandomItem(wordLists.apologies);
       const misericorde = getRandomItem(wordLists.misericorde);
+      const tourmente = getRandomItem(wordLists.tourmentes);
       const goodFruit = getRandomItem(wordLists.goodFruits);
       const originDeflection = getRandomItem(wordLists.originDeflection);
       const scapegoat = getRandomItem(wordLists.scapegoats);
@@ -404,11 +423,11 @@ const wordLists = {
       const spiritualEnding = getRandomItem(wordLists.spiritualEndings);
       const closing = getRandomItem(wordLists.closings);
 
-      const communique = `${incident}, ${acknowledgment}. 
+      const communique = `${incident}, ${acknowledgment}.
 
 Par ailleurs, ${apology}. ${misericorde}.
 
-Cependant, ${goodFruit}. Il importe également, ${originDeflection}, de ne pas céder aux manœuvres de ${scapegoat}.
+${tourmente}, ${goodFruit}. Il importe également, ${originDeflection}, de ne pas céder aux manœuvres de ${scapegoat}.
 
 C'est pourquoi, ${response}, ${action} ${spiritualEnding}.
 
@@ -460,7 +479,7 @@ ${closing}.`;
         if (selectedValues.acknowledgments) communique += `, ${selectedValues.acknowledgments}.`;
         if (selectedValues.apologies) communique += `\n\nPar ailleurs, ${selectedValues.apologies}.`;
         if (selectedValues.misericorde) communique += ` ${selectedValues.misericorde}.`;
-        if (selectedValues.goodFruits) communique += `\n\nCependant, ${selectedValues.goodFruits}.`;
+        if (selectedValues.goodFruits) communique += `\n\nDans la tourmente, ${selectedValues.goodFruits}.`;
         if (selectedValues.originDeflection || selectedValues.scapegoats) {
           communique += " Il importe également, ";
           if (selectedValues.originDeflection) communique += selectedValues.originDeflection + ", ";

@@ -91,84 +91,129 @@ const wordLists = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Adaptation du célèbre Pipotron</title>
+    <title>Pipotron Épiscopal</title>
   </head>
-  <body class="bg-orange-200 min-h-screen p-8">
-    <div class="max-w-6xl mx-auto">
-      <h1 class="text-3xl font-bold text-center mb-8">Adaptation du célèbre Pipotron</h1>
+  <body class="bg-gray-50 min-h-screen">
+    <div class="max-w-6xl mx-auto px-6 py-8">
+      <!-- Title -->
+      <h1 class="text-4xl font-bold text-center text-gray-800 mb-12">Pipotron Épiscopal</h1>
       
-      <!-- Instructions -->
-      <div class="bg-blue-100 p-4 rounded mb-6">
-        <p class="text-sm">
-          Cliquez sur le bouton pour une composition automatique,<br>
-          ou composez manuellement votre pipo<br>
-          en choisissant dans les listes ci-dessous.
-        </p>
+      <!-- Result Area - Big and Centered -->
+      <div class="mb-12">
+        <div id="result" class="bg-white rounded-lg shadow-lg p-8 border-l-4 border-blue-500 min-h-32 flex items-center justify-center">
+          <p class="text-gray-500 text-lg text-center">Cliquez sur "Générer un nouveau" pour créer une phrase automatiquement</p>
+        </div>
       </div>
 
       <!-- Generate Button -->
-      <button 
-        id="generateBtn" 
-        class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded mb-6 border border-gray-600"
-      >
-        Génération automatique, au hasard
-      </button>
+      <div class="text-center mb-12">
+        <button 
+          id="generateBtn" 
+          class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors duration-200"
+        >
+          Générer un nouveau
+        </button>
+      </div>
+
+      <!-- Instructions -->
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
+        <p class="text-blue-800 text-center">
+          Ou composez manuellement votre phrase en sélectionnant dans les listes ci-dessous
+        </p>
+      </div>
 
       <!-- Word Lists Grid -->
-      <div class="grid grid-cols-3 gap-4 mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Column 1 -->
-        <div class="space-y-4">
-          <select id="starters" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
-            {wordLists.starters.map(word => <option value={word}>{word}</option>)}
-          </select>
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Début</label>
+            <select id="starters" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
+              <option value="">-- Choisir --</option>
+              {wordLists.starters.map(word => <option value={word}>{word}</option>)}
+            </select>
+          </div>
           
-          <select id="actions" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
-            {wordLists.actions.map(word => <option value={word}>{word}</option>)}
-          </select>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Action</label>
+            <select id="actions" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
+              <option value="">-- Choisir --</option>
+              {wordLists.actions.map(word => <option value={word}>{word}</option>)}
+            </select>
+          </div>
           
-          <select id="solutions" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
-            {wordLists.solutions.map(word => <option value={word}>{word}</option>)}
-          </select>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Solutions</label>
+            <select id="solutions" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
+              <option value="">-- Choisir --</option>
+              {wordLists.solutions.map(word => <option value={word}>{word}</option>)}
+            </select>
+          </div>
         </div>
 
         <!-- Column 2 -->
-        <div class="space-y-4">
-          <select id="situations" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
-            {wordLists.situations.map(word => <option value={word}>{word}</option>)}
-          </select>
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Situation</label>
+            <select id="situations" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
+              <option value="">-- Choisir --</option>
+              {wordLists.situations.map(word => <option value={word}>{word}</option>)}
+            </select>
+          </div>
           
-          <select id="verbs" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
-            {wordLists.verbs.map(word => <option value={word}>{word}</option>)}
-          </select>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Verbe</label>
+            <select id="verbs" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
+              <option value="">-- Choisir --</option>
+              {wordLists.verbs.map(word => <option value={word}>{word}</option>)}
+            </select>
+          </div>
           
-          <select id="outcomes" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
-            {wordLists.outcomes.map(word => <option value={word}>{word}</option>)}
-          </select>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Résultat</label>
+            <select id="outcomes" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
+              <option value="">-- Choisir --</option>
+              {wordLists.outcomes.map(word => <option value={word}>{word}</option>)}
+            </select>
+          </div>
         </div>
 
         <!-- Column 3 -->
-        <div class="space-y-4">
-          <select id="qualifiers" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
-            {wordLists.qualifiers.map(word => <option value={word}>{word}</option>)}
-          </select>
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Qualificatif</label>
+            <select id="qualifiers" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
+              <option value="">-- Choisir --</option>
+              {wordLists.qualifiers.map(word => <option value={word}>{word}</option>)}
+            </select>
+          </div>
           
-          <select id="quantities" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
-            {wordLists.quantities.map(word => <option value={word}>{word}</option>)}
-          </select>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Quantité</label>
+            <select id="quantities" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
+              <option value="">-- Choisir --</option>
+              {wordLists.quantities.map(word => <option value={word}>{word}</option>)}
+            </select>
+          </div>
           
-          <select id="timeframes" class="w-full p-2 border border-gray-400 bg-gray-200" size="10">
-            {wordLists.timeframes.map(word => <option value={word}>{word}</option>)}
-          </select>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Temporalité</label>
+            <select id="timeframes" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="8">
+              <option value="">-- Choisir --</option>
+              {wordLists.timeframes.map(word => <option value={word}>{word}</option>)}
+            </select>
+          </div>
         </div>
       </div>
 
-      <!-- Result Area -->
-      <div id="result" class="bg-white p-4 rounded border border-gray-400 min-h-24 mb-6"></div>
-
-      <!-- Quote -->
-      <div class="text-center italic text-sm space-y-2">
-        <p>"Lorsque l'on découvre le pipotron pour la première fois, on réalise que d'autres l'ont découvert avant nous."</p>
-        <p>Il y en a même certains (vous les avez peut-être déjà rencontrés) qui ont un pipotron intérieur et qui peuvent se passer de toute assistance de l'informatique pour synthétiser brillamment une situation d'apparence complexe.</p>
+      <!-- Reset Button -->
+      <div class="text-center mt-8">
+        <button 
+          id="resetBtn" 
+          class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition-colors duration-200"
+        >
+          Réinitialiser
+        </button>
       </div>
     </div>
 
@@ -211,7 +256,16 @@ const wordLists = {
 
       document.getElementById('generateBtn').addEventListener('click', function() {
         const sentence = generateSentence();
-        document.getElementById('result').innerHTML = `<p class="text-lg">${sentence}</p>`;
+        document.getElementById('result').innerHTML = `<p class="text-2xl text-gray-800 text-center leading-relaxed">${sentence}</p>`;
+      });
+
+      // Reset button functionality
+      document.getElementById('resetBtn').addEventListener('click', function() {
+        const selects = document.querySelectorAll('select');
+        selects.forEach(select => {
+          select.selectedIndex = 0;
+        });
+        document.getElementById('result').innerHTML = `<p class="text-gray-500 text-lg text-center">Cliquez sur "Générer un nouveau" pour créer une phrase automatiquement</p>`;
       });
 
       // Manual selection functionality
@@ -247,7 +301,7 @@ const wordLists = {
           });
 
           if (sentence.trim()) {
-            document.getElementById('result').innerHTML = `<p class="text-lg">${sentence.trim()}.</p>`;
+            document.getElementById('result').innerHTML = `<p class="text-2xl text-gray-800 text-center leading-relaxed">${sentence.trim()}.</p>`;
           }
         }
       }

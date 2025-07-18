@@ -49,6 +49,16 @@ const wordLists = {
     "montrons notre compassion aux victimes et les accompagnons vers l'avenir dans la miséricorde"
   ],
 
+  // Actions (doublé) - maintenant dans le premier paragraphe
+  actions: [
+    "nous nous engageons à approfondir notre réflexion dans un esprit de synodalité",
+    "nous mettons en place un processus d'évaluation de nos pratiques pastorales",
+    "nous renforçons nos dispositifs d'accompagnement spirituel du clergé",
+    "nous nous attachons à développer une démarche de discernement communautaire",
+    "nous instaurons des mécanismes de dialogue et de concertation renforcés",
+    "nous consolidons nos structures de formation et d'accompagnement pastoral"
+  ],
+
   // Miséricorde (phrases plus courtes, pardon/miséricorde pour les coupables)
   misericorde: [
     "Rappelons que la miséricorde divine s'étend à tous, et doit guider notre discernement",
@@ -131,16 +141,6 @@ const wordLists = {
     "dans un souci de fraternité et de pardon",
     "en favorisant l'accompagnement personnalisé et la miséricorde",
     "dans l'esprit de communion qui caractérise notre foi chrétienne"
-  ],
-
-  // Actions (doublé)
-  actions: [
-    "nous nous engageons à approfondir notre réflexion dans un esprit de synodalité",
-    "nous mettons en place un processus d'évaluation de nos pratiques pastorales",
-    "nous renforçons nos dispositifs d'accompagnement spirituel du clergé",
-    "nous nous attachons à développer une démarche de discernement communautaire",
-    "nous instaurons des mécanismes de dialogue et de concertation renforcés",
-    "nous consolidons nos structures de formation et d'accompagnement pastoral"
   ],
 
   // Spiritual endings (doublé)
@@ -234,7 +234,7 @@ const wordLists = {
       <!-- Column 1 -->
       <div class="space-y-3">
         <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">📰 Incident</label>
+          <label class="block text-white font-medium mb-2 text-sm">📰 Incident (flou)</label>
           <select 
             id="incidents" 
             class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
@@ -246,7 +246,7 @@ const wordLists = {
         </div>
         
         <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">🍇 Bons fruits</label>
+          <label class="block text-white font-medium mb-2 text-sm">🍇 Bons fruits (obligatoires)</label>
           <select 
             id="goodFruits" 
             class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
@@ -261,7 +261,7 @@ const wordLists = {
       <!-- Column 2 -->
       <div class="space-y-3">
         <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">😔 Reconnaissance</label>
+          <label class="block text-white font-medium mb-2 text-sm">😔 Reconnaissance (partielle)</label>
           <select 
             id="acknowledgments" 
             class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
@@ -273,7 +273,7 @@ const wordLists = {
         </div>
         
         <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">🔍 Origine</label>
+          <label class="block text-white font-medium mb-2 text-sm">🔍 Origine (détournée)</label>
           <select 
             id="originDeflection" 
             class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
@@ -288,7 +288,7 @@ const wordLists = {
       <!-- Column 3 -->
       <div class="space-y-3">
         <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">💔 Excuses</label>
+          <label class="block text-white font-medium mb-2 text-sm">💔 Excuses (rapides)</label>
           <select 
             id="apologies" 
             class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
@@ -300,7 +300,7 @@ const wordLists = {
         </div>
         
         <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">🎯 Boucs émissaires</label>
+          <label class="block text-white font-medium mb-2 text-sm">🎯 Boucs émissaires (pratiques)</label>
           <select 
             id="scapegoats" 
             class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
@@ -315,7 +315,7 @@ const wordLists = {
       <!-- Column 4 -->
       <div class="space-y-3">
         <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">🙏 Miséricorde</label>
+          <label class="block text-white font-medium mb-2 text-sm">🙏 Miséricorde (sélective)</label>
           <select 
             id="misericorde" 
             class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
@@ -327,16 +327,55 @@ const wordLists = {
         </div>
         
         <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">🌸 Conclusion</label>
+          <label class="block text-white font-medium mb-2 text-sm">⚡ Actions (vagues)</label>
           <select 
-            id="closings" 
+            id="actions" 
             class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
             size="4"
           >
             <option value="">-- Choisir --</option>
-            {wordLists.closings.map(word => <option value={word}>{word}</option>)}
+            {wordLists.actions.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
+      </div>
+    </div>
+
+    <!-- New row for remaining items -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-3">
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">💬 Réponses (langue de bois)</label>
+        <select 
+          id="responses" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.responses.map(word => <option value={word}>{word}</option>)}
+        </select>
+      </div>
+      
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">✨ Fins spirituelles (creuses)</label>
+        <select 
+          id="spiritualEndings" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.spiritualEndings.map(word => <option value={word}>{word}</option>)}
+        </select>
+      </div>
+      
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">🌸 Conclusion (détournement)</label>
+        <select 
+          id="closings" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.closings.map(word => <option value={word}>{word}</option>)}
+        </select>
       </div>
     </div>
 
@@ -394,6 +433,14 @@ const wordLists = {
         "témoignons notre sollicitude aux âmes blessées et les encourageons à tourner la page dans le pardon",
         "exprimons notre proximité aux personnes affectées et les soutenons pour passer à autre chose par la réconciliation",
         "montrons notre compassion aux victimes et les accompagnons vers l'avenir dans la miséricorde"
+      ],
+      actions: [
+        "nous nous engageons à approfondir notre réflexion dans un esprit de synodalité",
+        "nous mettons en place un processus d'évaluation de nos pratiques pastorales",
+        "nous renforçons nos dispositifs d'accompagnement spirituel du clergé",
+        "nous nous attachons à développer une démarche de discernement communautaire",
+        "nous instaurons des mécanismes de dialogue et de concertation renforcés",
+        "nous consolidons nos structures de formation et d'accompagnement pastoral"
       ],
       misericorde: [
         "Rappelons que la miséricorde divine s'étend à tous, et doit guider notre discernement",
@@ -467,14 +514,6 @@ const wordLists = {
         "en favorisant l'accompagnement personnalisé et la miséricorde",
         "dans l'esprit de communion qui caractérise notre foi chrétienne"
       ],
-      actions: [
-        "nous nous engageons à approfondir notre réflexion dans un esprit de synodalité",
-        "nous mettons en place un processus d'évaluation de nos pratiques pastorales",
-        "nous renforçons nos dispositifs d'accompagnement spirituel du clergé",
-        "nous nous attachons à développer une démarche de discernement communautaire",
-        "nous instaurons des mécanismes de dialogue et de concertation renforcés",
-        "nous consolidons nos structures de formation et d'accompagnement pastoral"
-      ],
       spiritualEndings: [
         "afin d'ouvrir des fenêtres d'espérance sur l'éternité",
         "pour que jaillissent des sources de grâce dans nos cœurs",
@@ -513,23 +552,19 @@ const wordLists = {
       const incident = getRandomItem(wordLists.incidents);
       const acknowledgment = getRandomItem(wordLists.acknowledgments);
       const apology = getRandomItem(wordLists.apologies);
+      const action = getRandomItem(wordLists.actions);
       const misericorde = getRandomItem(wordLists.misericorde);
       const tourmente = getRandomItem(wordLists.tourmentes);
       const goodFruit = getRandomItem(wordLists.goodFruits);
       const originDeflection = getRandomItem(wordLists.originDeflection);
       const scapegoat = getRandomItem(wordLists.scapegoats);
       const response = getRandomItem(wordLists.responses);
-      const action = getRandomItem(wordLists.actions);
       const spiritualEnding = getRandomItem(wordLists.spiritualEndings);
       const closing = getRandomItem(wordLists.closings);
 
-      const communique = `${incident}, ${acknowledgment}.
+      const communique = `${incident}, ${acknowledgment}. En ces temps troublés, ${apology}. ${misericorde}. C'est pourquoi, ${response}, ${action} ${spiritualEnding}.
 
-Dans ce contexte, ${apology}. ${misericorde}.
-
-${tourmente}, ${goodFruit}. Il importe également, ${originDeflection}, de ne pas céder aux manœuvres ${scapegoat}.
-
-C'est pourquoi, ${response}, ${action} ${spiritualEnding}.
+${tourmente}, ${goodFruit}. Il importe également, ${originDeflection}, de ne pas céder aux manœuvres de ${scapegoat}.
 
 ${closing}.`;
       
@@ -575,20 +610,27 @@ ${closing}.`;
       if (Object.keys(selectedValues).length > 0) {
         let communique = "";
         
+        // Premier paragraphe : incident + acknowledgment + apology + action + misericorde
         if (selectedValues.incidents) communique += selectedValues.incidents;
         if (selectedValues.acknowledgments) communique += `, ${selectedValues.acknowledgments}.`;
-        if (selectedValues.apologies) communique += `\n\nPar ailleurs, ${selectedValues.apologies}.`;
+        if (selectedValues.apologies) communique += ` En ces temps troublés, ${selectedValues.apologies}.`;
         if (selectedValues.misericorde) communique += ` ${selectedValues.misericorde}.`;
+        if (selectedValues.responses || selectedValues.actions) {
+          communique += " C'est pourquoi, ";
+          if (selectedValues.responses) communique += selectedValues.responses + ", ";
+          if (selectedValues.actions) communique += selectedValues.actions + " ";
+          if (selectedValues.spiritualEndings) communique += selectedValues.spiritualEndings + ".";
+        }
+
+        // Deuxième paragraphe : goodFruits + originDeflection + scapegoats
         if (selectedValues.goodFruits) communique += `\n\nDans la tourmente, ${selectedValues.goodFruits}.`;
         if (selectedValues.originDeflection || selectedValues.scapegoats) {
           communique += " Il importe également, ";
           if (selectedValues.originDeflection) communique += selectedValues.originDeflection + ", ";
           if (selectedValues.scapegoats) communique += `de ne pas céder aux manœuvres de ${selectedValues.scapegoats}.`;
         }
-        if (selectedValues.responses || selectedValues.actions) communique += "\n\nC'est pourquoi, ";
-        if (selectedValues.responses) communique += selectedValues.responses + ", ";
-        if (selectedValues.actions) communique += selectedValues.actions + " ";
-        if (selectedValues.spiritualEndings) communique += selectedValues.spiritualEndings + ".";
+
+        // Troisième paragraphe : closing
         if (selectedValues.closings) communique += `\n\n${selectedValues.closings}.`;
 
         if (communique.trim()) {

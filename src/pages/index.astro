@@ -3,94 +3,114 @@ import Layout from '../layouts/Layout.astro';
 
 // New word lists for episcopal miséricorde
 const wordLists = {
-  // Vague incident starters
+  // Vague incident starters (longer)
   incidents: [
-    "Suite aux récents événements qui ont touché notre communauté",
-    "Face aux difficultés que traverse actuellement notre diocèse",
-    "Concernant les situations délicates portées à notre attention",
-    "À la lumière des témoignages qui nous sont parvenus",
-    "Devant les défis pastoraux auxquels nous sommes confrontés",
-    "En réponse aux préoccupations légitimes de nos fidèles"
+    "Suite aux récents événements particulièrement douloureux qui ont touché notre communauté diocésaine et suscité de légitimes interrogations",
+    "Face aux difficultés pastorales complexes que traverse actuellement notre diocèse dans un contexte sociétal en pleine mutation",
+    "Concernant les situations délicates et sensibles portées à notre attention par différents canaux d'information",
+    "À la lumière des témoignages poignants qui nous sont parvenus et qui méritent toute notre attention bienveillante",
+    "Devant les défis pastoraux considérables auxquels nous sommes confrontés en ces temps troublés",
+    "En réponse aux préoccupations légitimes et compréhensibles exprimées par nos fidèles les plus attentifs"
   ],
   
-  // Vague acknowledgments
+  // Vague acknowledgments (longer)
   acknowledgments: [
-    "nous reconnaissons avec humilité que des dysfonctionnements ont pu survenir",
-    "nous prenons acte des questionnements soulevés par certains membres de notre communauté",
-    "nous entendons les inquiétudes exprimées par nos paroissiens",
-    "nous mesurons l'ampleur des interrogations suscitées",
-    "nous sommes conscients des fragilités qui ont pu se manifester",
-    "nous accueillons avec sérieux les interpellations qui nous sont adressées"
+    "nous reconnaissons avec humilité et contrition que des dysfonctionnements regrettables ont pu survenir dans notre organisation pastorale",
+    "nous prenons acte avec gravité des questionnements profonds soulevés par certains membres éminents de notre communauté",
+    "nous entendons avec compassion les inquiétudes légitimes exprimées par nos paroissiens les plus fidèles et dévoués",
+    "nous mesurons pleinement l'ampleur des interrogations suscitées par ces événements dans l'opinion publique",
+    "nous sommes parfaitement conscients des fragilités humaines qui ont pu se manifester dans notre institution",
+    "nous accueillons avec le plus grand sérieux les interpellations constructives qui nous sont adressées"
+  ],
+
+  // Apologies for shocked and victims
+  apologies: [
+    "nous exprimons notre profonde compassion envers toutes les personnes qui ont pu être choquées par ces révélations et encourageons chacun à aller de l'avant dans un esprit de réconciliation",
+    "nous manifestons notre sincère empathie à l'égard de ceux qui ont été troublés par ces événements et les invitons à cheminer vers la guérison spirituelle",
+    "nous témoignons de notre solidarité fraternelle envers les âmes sensibles qui ont été ébranlées et les accompagnons dans leur démarche d'aller de l'avant",
+    "nous exprimons notre proximité bienveillante avec tous ceux qui ont été affectés et les encourageons à poursuivre leur marche vers la paix intérieure",
+    "nous manifestons notre compréhension pastorale envers les personnes qui ont été interpellées et les soutenons dans leur désir d'aller de l'avant constructivement",
+    "nous témoignons de notre sollicitude particulière envers ceux qui ont été touchés et les accompagnons dans leur cheminement vers la sérénité"
+  ],
+
+  // Miséricorde and presumption of innocence
+  misericorde: [
+    "rappelons que la miséricorde divine s'étend à tous sans exception, y compris à ceux qui se trouvent aujourd'hui sous les projecteurs médiatiques, et que le principe fondamental de présomption d'innocence doit guider notre discernement",
+    "gardons à l'esprit que la compassion évangélique concerne chaque membre de notre communauté, notamment ceux qui font l'objet d'accusations, et que la présomption d'innocence constitue un pilier de notre justice",
+    "souvenons-nous que la miséricorde du Christ embrasse tous les enfants de Dieu, particulièrement ceux qui sont actuellement dans l'épreuve médiatique, et que la présomption d'innocence demeure un principe incontournable",
+    "n'oublions pas que la grâce divine rayonne sur chacun, y compris sur ceux qui traversent actuellement des moments difficiles, et que la présomption d'innocence reste un fondement de notre approche pastorale",
+    "retenons que la bonté divine s'étend à tous nos frères, spécialement à ceux qui sont aujourd'hui exposés publiquement, et que la présomption d'innocence constitue un préalable à tout jugement équitable",
+    "méditons sur le fait que la tendresse du Seigneur concerne chaque personne, notamment celles qui sont actuellement sous le feu des critiques, et que la présomption d'innocence guide notre démarche de vérité"
   ],
   
-  // Good fruits deflection
+  // Good fruits deflection (longer)
   goodFruits: [
-    "il convient néanmoins de ne pas occulter les nombreux fruits de grâce qui jaillissent quotidiennement dans nos paroisses",
-    "nous devons garder à l'esprit les merveilleux témoignages de foi qui illuminent notre diocèse",
-    "il serait injuste d'ignorer les multiples actions caritatives qui rayonnent dans nos communautés",
-    "nous ne saurions oublier les vocations florissantes et les conversions authentiques qui nous réjouissent",
-    "rappelons-nous les signes d'espérance qui bourgeonnent dans le terreau fertile de notre Église locale",
-    "gardons présents à l'esprit les élans missionnaires qui dynamisent notre pastorale"
+    "il convient néanmoins de ne pas occulter les nombreux fruits de grâce extraordinaires qui jaillissent quotidiennement dans nos paroisses et témoignent de la vitalité de notre foi",
+    "nous devons impérativement garder à l'esprit les merveilleux témoignages de foi authentique qui illuminent notre diocèse et réchauffent nos cœurs",
+    "il serait profondément injuste d'ignorer les multiples actions caritatives remarquables qui rayonnent dans nos communautés et honorent l'Évangile",
+    "nous ne saurions oublier les vocations florissantes et les conversions authentiques qui nous réjouissent et confirment l'action de l'Esprit Saint",
+    "rappelons-nous avec gratitude les signes d'espérance manifestes qui bourgeonnent dans le terreau fertile de notre Église locale",
+    "gardons présents à l'esprit les élans missionnaires enthousiastes qui dynamisent notre pastorale et ouvrent des horizons nouveaux"
   ],
   
-  // Origin deflection
+  // Origin deflection (longer)
   originDeflection: [
-    "sans nous leurrer sur l'origine véritable de ces perturbations",
-    "en gardant à l'esprit les véritables sources de ces troubles",
-    "sans perdre de vue les racines profondes de ces difficultés",
-    "en identifiant clairement les ferments de division qui nous assaillent",
-    "sans ignorer les forces centrifuges qui cherchent à déstabiliser notre unité",
-    "en discernant les influences délétères qui s'exercent sur notre communauté"
+    "sans nous leurrer sur l'origine véritable de ces perturbations qui trouvent leurs racines dans des oppositions idéologiques bien connues",
+    "en gardant lucidement à l'esprit les véritables sources de ces troubles qui s'enracinent dans des conflits d'intérêts manifestes",
+    "sans perdre de vue les racines profondes de ces difficultés qui puisent dans des antagonismes anciens et persistants",
+    "en identifiant clairement les ferments de division pernicieux qui nous assaillent et cherchent à ébranler notre unité",
+    "sans ignorer les forces centrifuges organisées qui cherchent méthodiquement à déstabiliser notre communion fraternelle",
+    "en discernant avec sagesse les influences délétères extérieures qui s'exercent insidieusement sur notre communauté"
   ],
   
-  // Scapegoats
+  // Scapegoats (longer)
   scapegoats: [
-    "certains médias en quête de sensationnalisme et prompts à la désinformation",
-    "des mouvements traditionalistes nostalgiques d'un passé révolu et fermés au souffle de l'Esprit",
-    "des lobbies progressistes déconnectés de la Tradition vivante de l'Église",
-    "des réseaux hostiles à l'influence bénéfique de l'Évangile dans la société",
-    "des groupuscules anticléricaux animés par une idéologie hostile à la foi",
-    "des influences séculières cherchant à saper l'autorité et le Bien de l'Église"
+    "certains médias en quête permanente de sensationnalisme et particulièrement prompts à la désinformation systématique",
+    "des mouvements traditionalistes nostalgiques d'un passé idéalisé et hermétiquement fermés au souffle renouvelant de l'Esprit",
+    "des lobbies progressistes radicalement déconnectés de la Tradition vivante et authentique de notre sainte Église",
+    "des réseaux maçonniques historiquement hostiles à l'influence bénéfique et civilisatrice de l'Évangile dans la société",
+    "des groupuscules anticléricaux viscéralement animés par une idéologie fondamentalement hostile à la foi chrétienne",
+    "des influences séculières organisées cherchant systématiquement à saper l'autorité légitime et le rayonnement de l'Église"
   ],
   
-  // Langue de bois responses
+  // Langue de bois responses (longer)
   responses: [
-    "dans un esprit de dialogue constructif et de discernement pastoral",
-    "en nous appuyant sur les valeurs évangéliques qui nous guident",
-    "avec le souci constant du bien commun et de l'unité de notre Église",
-    "dans une démarche de vérité et de réconciliation",
-    "en privilégiant l'écoute bienveillante et l'accompagnement personnalisé",
-    "dans le respect de la dignité de chaque personne concernée"
+    "dans un esprit de dialogue constructif, de discernement pastoral approfondi et de recherche commune de la vérité",
+    "en nous appuyant fermement sur les valeurs évangéliques intemporelles qui nous guident dans toutes nos démarches",
+    "avec le souci constant et prioritaire du bien commun et de l'unité indéfectible de notre sainte Église",
+    "dans une démarche exigeante de vérité, de justice et de réconciliation authentique avec tous nos frères",
+    "en privilégiant systématiquement l'écoute bienveillante et l'accompagnement personnalisé de chaque personne concernée",
+    "dans le respect absolu de la dignité inaliénable de chaque personne humaine créée à l'image de Dieu"
   ],
   
-  // Actions (vague)
+  // Actions (longer and vaguer)
   actions: [
-    "nous nous engageons à approfondir notre réflexion collégiale",
-    "nous mettons en place un processus d'évaluation et d'amélioration continue",
-    "nous renforçons nos dispositifs d'accompagnement et de formation",
-    "nous développons une approche plus collaborative et transparente",
-    "nous intensifions notre travail de prévention et de sensibilisation",
-    "nous consolidons nos structures d'écoute et de médiation"
+    "nous nous engageons solennellement à approfondir notre réflexion collégiale dans un esprit de synodalité renouvelée",
+    "nous mettons résolument en place un processus rigoureux d'évaluation et d'amélioration continue de nos pratiques pastorales",
+    "nous renforçons considérablement nos dispositifs d'accompagnement spirituel et de formation permanente du clergé",
+    "nous développons méthodiquement une approche plus collaborative, transparente et participative de la gouvernance diocésaine",
+    "nous intensifions significativement notre travail de prévention et de sensibilisation auprès de toutes nos communautés",
+    "nous consolidons durablement nos structures d'écoute, de médiation et d'accompagnement des personnes en difficulté"
   ],
   
-  // Spiritual endings
+  // Spiritual endings (longer)
   spiritualEndings: [
-    "afin d'ouvrir des fenêtres d'espérance sur des vallées d'éternité",
-    "pour que jaillissent des sources de grâce dans nos cœurs meurtris",
-    "en vue de faire germer des semences de paix dans le jardin de nos âmes",
-    "dans l'espoir de voir fleurir la miséricorde divine dans nos communautés",
-    "pour que résonne l'harmonie céleste dans le silence de nos prières",
-    "afin que s'épanouisse la lumière du Christ dans les ténèbres de nos épreuves"
+    "afin d'ouvrir toujours plus largement des fenêtres d'espérance lumineuses sur des vallées d'éternité bienheureuse",
+    "pour que jaillissent abondamment des sources de grâce purificatrices dans nos cœurs meurtris mais confiants",
+    "en vue de faire germer patiemment des semences de paix évangélique dans le jardin secret de nos âmes",
+    "dans l'espoir ferme de voir fleurir magnifiquement la miséricorde divine dans toutes nos communautés paroissiales",
+    "pour que résonne harmonieusement la mélodie céleste dans le silence fécond de nos prières communes",
+    "afin que s'épanouisse pleinement la lumière rédemptrice du Christ dans les ténèbres passagères de nos épreuves"
   ],
   
-  // Bullshitty closings
+  // Bullshitty closings (longer)
   closings: [
-    "Concentrons-nous sur ce qui est beau et élevons nos cœurs vers les sphères supérieures de la contemplation",
-    "Focalisons-nous sur les merveilles de la Création et laissons donc les fanges boueuses à ceux qui aiment traîner dedans",
-    "Tournons nos regards vers les horizons lumineux de l'espérance plutôt que vers les marécages de la polémique",
-    "Privilégions la beauté des liturgies solennelles aux cacophonies des controverses stériles",
-    "Préférons les chants grégoriens aux clameurs médiatiques qui troublent la sérénité de nos âmes",
-    "Choisissons les parfums de l'encens aux miasmes de la calomnie qui empoisonnent l'atmosphère"
+    "Concentrons-nous résolument sur ce qui est beau et authentiquement évangélique et élevons nos cœurs vers les sphères supérieures de la contemplation mystique",
+    "Focalisons-nous prioritairement sur les merveilles ineffables de la Création divine et laissons donc les fanges boueuses à ceux qui aiment s'y complaire",
+    "Tournons nos regards confiants vers les horizons lumineux de l'espérance chrétienne plutôt que vers les marécages stériles de la polémique",
+    "Privilégions la beauté transcendante des liturgies solennelles aux cacophonies discordantes des controverses médiatiques stériles",
+    "Préférons les chants grégoriens millénaires aux clameurs médiatiques éphémères qui troublent la sérénité de nos âmes",
+    "Choisissons les parfums sacrés de l'encens aux miasmes empoisonnés de la calomnie qui polluent l'atmosphère spirituelle"
   ]
 };
 ---
@@ -154,117 +174,108 @@ const wordLists = {
     </div>
 
     <!-- Word Lists Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
       <!-- Column 1 -->
-      <div class="space-y-4">
-        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">📰 Incident (vague)</label>
+      <div class="space-y-3">
+        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+          <label class="block text-white font-medium mb-2 text-sm">📰 Incident</label>
           <select 
             id="incidents" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
-            size="5"
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+            size="4"
           >
             <option value="">-- Choisir --</option>
             {wordLists.incidents.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
         
-        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">🍇 Bons fruits</label>
+        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+          <label class="block text-white font-medium mb-2 text-sm">🍇 Bons fruits</label>
           <select 
             id="goodFruits" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
-            size="5"
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+            size="4"
           >
             <option value="">-- Choisir --</option>
             {wordLists.goodFruits.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
-        
-        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">⚡ Actions (vagues)</label>
-          <select 
-            id="actions" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
-            size="5"
-          >
-            <option value="">-- Choisir --</option>
-            {wordLists.actions.map(word => <option value={word}>{word}</option>)}
-          </select>
-        </div>
       </div>
 
       <!-- Column 2 -->
-      <div class="space-y-4">
-        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">😔 Reconnaissance (floue)</label>
+      <div class="space-y-3">
+        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+          <label class="block text-white font-medium mb-2 text-sm">😔 Reconnaissance</label>
           <select 
             id="acknowledgments" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
-            size="5"
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+            size="4"
           >
             <option value="">-- Choisir --</option>
             {wordLists.acknowledgments.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
         
-        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">🔍 Origine (déflection)</label>
+        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+          <label class="block text-white font-medium mb-2 text-sm">🔍 Origine</label>
           <select 
             id="originDeflection" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
-            size="5"
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+            size="4"
           >
             <option value="">-- Choisir --</option>
             {wordLists.originDeflection.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
-        
-        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">✨ Fin spirituelle</label>
-          <select 
-            id="spiritualEndings" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
-            size="5"
-          >
-            <option value="">-- Choisir --</option>
-            {wordLists.spiritualEndings.map(word => <option value={word}>{word}</option>)}
-          </select>
-        </div>
       </div>
 
       <!-- Column 3 -->
-      <div class="space-y-4">
-        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">🎯 Boucs émissaires</label>
+      <div class="space-y-3">
+        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+          <label class="block text-white font-medium mb-2 text-sm">💔 Excuses</label>
+          <select 
+            id="apologies" 
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+            size="4"
+          >
+            <option value="">-- Choisir --</option>
+            {wordLists.apologies.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+        
+        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+          <label class="block text-white font-medium mb-2 text-sm">🎯 Boucs émissaires</label>
           <select 
             id="scapegoats" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
-            size="5"
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+            size="4"
           >
             <option value="">-- Choisir --</option>
             {wordLists.scapegoats.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
-        
-        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">🤝 Réponse (langue de bois)</label>
+      </div>
+
+      <!-- Column 4 -->
+      <div class="space-y-3">
+        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+          <label class="block text-white font-medium mb-2 text-sm">🙏 Miséricorde</label>
           <select 
-            id="responses" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
-            size="5"
+            id="misericorde" 
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+            size="4"
           >
             <option value="">-- Choisir --</option>
-            {wordLists.responses.map(word => <option value={word}>{word}</option>)}
+            {wordLists.misericorde.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
         
-        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">🌸 Conclusion bullshitty</label>
+        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+          <label class="block text-white font-medium mb-2 text-sm">🌸 Conclusion</label>
           <select 
             id="closings" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
-            size="5"
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+            size="4"
           >
             <option value="">-- Choisir --</option>
             {wordLists.closings.map(word => <option value={word}>{word}</option>)}
@@ -287,76 +298,92 @@ const wordLists = {
   <script>
     const wordLists = {
       incidents: [
-        "Suite aux récents événements qui ont touché notre communauté",
-        "Face aux difficultés que traverse actuellement notre diocèse",
-        "Concernant les situations délicates portées à notre attention",
-        "À la lumière des témoignages qui nous sont parvenus",
-        "Devant les défis pastoraux auxquels nous sommes confrontés",
-        "En réponse aux préoccupations légitimes de nos fidèles"
+        "Suite aux récents événements particulièrement douloureux qui ont touché notre communauté diocésaine et suscité de légitimes interrogations",
+        "Face aux difficultés pastorales complexes que traverse actuellement notre diocèse dans un contexte sociétal en pleine mutation",
+        "Concernant les situations délicates et sensibles portées à notre attention par différents canaux d'information",
+        "À la lumière des témoignages poignants qui nous sont parvenus et qui méritent toute notre attention bienveillante",
+        "Devant les défis pastoraux considérables auxquels nous sommes confrontés en ces temps troublés",
+        "En réponse aux préoccupations légitimes et compréhensibles exprimées par nos fidèles les plus attentifs"
       ],
       acknowledgments: [
-        "nous reconnaissons avec humilité que des dysfonctionnements ont pu survenir",
-        "nous prenons acte des questionnements soulevés par certains membres de notre communauté",
-        "nous entendons les inquiétudes exprimées par nos paroissiens",
-        "nous mesurons l'ampleur des interrogations suscitées",
-        "nous sommes conscients des fragilités qui ont pu se manifester",
-        "nous accueillons avec sérieux les interpellations qui nous sont adressées"
+        "nous reconnaissons avec humilité et contrition que des dysfonctionnements regrettables ont pu survenir dans notre organisation pastorale",
+        "nous prenons acte avec gravité des questionnements profonds soulevés par certains membres éminents de notre communauté",
+        "nous entendons avec compassion les inquiétudes légitimes exprimées par nos paroissiens les plus fidèles et dévoués",
+        "nous mesurons pleinement l'ampleur des interrogations suscitées par ces événements dans l'opinion publique",
+        "nous sommes parfaitement conscients des fragilités humaines qui ont pu se manifester dans notre institution",
+        "nous accueillons avec le plus grand sérieux les interpellations constructives qui nous sont adressées"
+      ],
+      apologies: [
+        "nous exprimons notre profonde compassion envers toutes les personnes qui ont pu être choquées par ces révélations et encourageons chacun à aller de l'avant dans un esprit de réconciliation",
+        "nous manifestons notre sincère empathie à l'égard de ceux qui ont été troublés par ces événements et les invitons à cheminer vers la guérison spirituelle",
+        "nous témoignons de notre solidarité fraternelle envers les âmes sensibles qui ont été ébranlées et les accompagnons dans leur démarche d'aller de l'avant",
+        "nous exprimons notre proximité bienveillante avec tous ceux qui ont été affectés et les encourageons à poursuivre leur marche vers la paix intérieure",
+        "nous manifestons notre compréhension pastorale envers les personnes qui ont été interpellées et les soutenons dans leur désir d'aller de l'avant constructivement",
+        "nous témoignons de notre sollicitude particulière envers ceux qui ont été touchés et les accompagnons dans leur cheminement vers la sérénité"
+      ],
+      misericorde: [
+        "rappelons que la miséricorde divine s'étend à tous sans exception, y compris à ceux qui se trouvent aujourd'hui sous les projecteurs médiatiques, et que le principe fondamental de présomption d'innocence doit guider notre discernement",
+        "gardons à l'esprit que la compassion évangélique concerne chaque membre de notre communauté, notamment ceux qui font l'objet d'accusations, et que la présomption d'innocence constitue un pilier de notre justice",
+        "souvenons-nous que la miséricorde du Christ embrasse tous les enfants de Dieu, particulièrement ceux qui sont actuellement dans l'épreuve médiatique, et que la présomption d'innocence demeure un principe incontournable",
+        "n'oublions pas que la grâce divine rayonne sur chacun, y compris sur ceux qui traversent actuellement des moments difficiles, et que la présomption d'innocence reste un fondement de notre approche pastorale",
+        "retenons que la bonté divine s'étend à tous nos frères, spécialement à ceux qui sont aujourd'hui exposés publiquement, et que la présomption d'innocence constitue un préalable à tout jugement équitable",
+        "méditons sur le fait que la tendresse du Seigneur concerne chaque personne, notamment celles qui sont actuellement sous le feu des critiques, et que la présomption d'innocence guide notre démarche de vérité"
       ],
       goodFruits: [
-        "il convient néanmoins de ne pas occulter les nombreux fruits de grâce qui jaillissent quotidiennement dans nos paroisses",
-        "nous devons garder à l'esprit les merveilleux témoignages de foi qui illuminent notre diocèse",
-        "il serait injuste d'ignorer les multiples actions caritatives qui rayonnent dans nos communautés",
-        "nous ne saurions oublier les vocations florissantes et les conversions authentiques qui nous réjouissent",
-        "rappelons-nous les signes d'espérance qui bourgeonnent dans le terreau fertile de notre Église locale",
-        "gardons présents à l'esprit les élans missionnaires qui dynamisent notre pastorale"
+        "il convient néanmoins de ne pas occulter les nombreux fruits de grâce extraordinaires qui jaillissent quotidiennement dans nos paroisses et témoignent de la vitalité de notre foi",
+        "nous devons impérativement garder à l'esprit les merveilleux témoignages de foi authentique qui illuminent notre diocèse et réchauffent nos cœurs",
+        "il serait profondément injuste d'ignorer les multiples actions caritatives remarquables qui rayonnent dans nos communautés et honorent l'Évangile",
+        "nous ne saurions oublier les vocations florissantes et les conversions authentiques qui nous réjouissent et confirment l'action de l'Esprit Saint",
+        "rappelons-nous avec gratitude les signes d'espérance manifestes qui bourgeonnent dans le terreau fertile de notre Église locale",
+        "gardons présents à l'esprit les élans missionnaires enthousiastes qui dynamisent notre pastorale et ouvrent des horizons nouveaux"
       ],
       originDeflection: [
-        "sans nous leurrer sur l'origine véritable de ces perturbations",
-        "en gardant à l'esprit les véritables sources de ces troubles",
-        "sans perdre de vue les racines profondes de ces difficultés",
-        "en identifiant clairement les ferments de division qui nous assaillent",
-        "sans ignorer les forces centrifuges qui cherchent à déstabiliser notre unité",
-        "en discernant les influences délétères qui s'exercent sur notre communauté"
+        "sans nous leurrer sur l'origine véritable de ces perturbations qui trouvent leurs racines dans des oppositions idéologiques bien connues",
+        "en gardant lucidement à l'esprit les véritables sources de ces troubles qui s'enracinent dans des conflits d'intérêts manifestes",
+        "sans perdre de vue les racines profondes de ces difficultés qui puisent dans des antagonismes anciens et persistants",
+        "en identifiant clairement les ferments de division pernicieux qui nous assaillent et cherchent à ébranler notre unité",
+        "sans ignorer les forces centrifuges organisées qui cherchent méthodiquement à déstabiliser notre communion fraternelle",
+        "en discernant avec sagesse les influences délétères extérieures qui s'exercent insidieusement sur notre communauté"
       ],
       scapegoats: [
-        "certains médias en quête de sensationnalisme et prompts à la désinformation",
-        "des mouvements traditionalistes nostalgiques d'un passé révolu et fermés au souffle de l'Esprit",
-        "des lobbies progressistes déconnectés de la Tradition vivante de l'Église",
-        "des réseaux maçonniques hostiles à l'influence bénéfique de l'Évangile dans la société",
-        "des groupuscules anticléricaux animés par une idéologie hostile à la foi",
-        "des influences séculières cherchant à saper l'autorité légitime de l'Église"
+        "certains médias en quête permanente de sensationnalisme et particulièrement prompts à la désinformation systématique",
+        "des mouvements traditionalistes nostalgiques d'un passé idéalisé et hermétiquement fermés au souffle renouvelant de l'Esprit",
+        "des lobbies progressistes radicalement déconnectés de la Tradition vivante et authentique de notre sainte Église",
+        "des réseaux maçonniques historiquement hostiles à l'influence bénéfique et civilisatrice de l'Évangile dans la société",
+        "des groupuscules anticléricaux viscéralement animés par une idéologie fondamentalement hostile à la foi chrétienne",
+        "des influences séculières organisées cherchant systématiquement à saper l'autorité légitime et le rayonnement de l'Église"
       ],
       responses: [
-        "dans un esprit de dialogue constructif et de discernement pastoral",
-        "en nous appuyant sur les valeurs évangéliques qui nous guident",
-        "avec le souci constant du bien commun et de l'unité de notre Église",
-        "dans une démarche de vérité et de réconciliation",
-        "en privilégiant l'écoute bienveillante et l'accompagnement personnalisé",
-        "dans le respect de la dignité de chaque personne concernée"
+        "dans un esprit de dialogue constructif, de discernement pastoral approfondi et de recherche commune de la vérité",
+        "en nous appuyant fermement sur les valeurs évangéliques intemporelles qui nous guident dans toutes nos démarches",
+        "avec le souci constant et prioritaire du bien commun et de l'unité indéfectible de notre sainte Église",
+        "dans une démarche exigeante de vérité, de justice et de réconciliation authentique avec tous nos frères",
+        "en privilégiant systématiquement l'écoute bienveillante et l'accompagnement personnalisé de chaque personne concernée",
+        "dans le respect absolu de la dignité inaliénable de chaque personne humaine créée à l'image de Dieu"
       ],
       actions: [
-        "nous nous engageons à approfondir notre réflexion collégiale",
-        "nous mettons en place un processus d'évaluation et d'amélioration continue",
-        "nous renforçons nos dispositifs d'accompagnement et de formation",
-        "nous développons une approche plus collaborative et transparente",
-        "nous intensifions notre travail de prévention et de sensibilisation",
-        "nous consolidons nos structures d'écoute et de médiation"
+        "nous nous engageons solennellement à approfondir notre réflexion collégiale dans un esprit de synodalité renouvelée",
+        "nous mettons résolument en place un processus rigoureux d'évaluation et d'amélioration continue de nos pratiques pastorales",
+        "nous renforçons considérablement nos dispositifs d'accompagnement spirituel et de formation permanente du clergé",
+        "nous développons méthodiquement une approche plus collaborative, transparente et participative de la gouvernance diocésaine",
+        "nous intensifions significativement notre travail de prévention et de sensibilisation auprès de toutes nos communautés",
+        "nous consolidons durablement nos structures d'écoute, de médiation et d'accompagnement des personnes en difficulté"
       ],
       spiritualEndings: [
-        "afin d'ouvrir des fenêtres d'espérance sur des vallées d'éternité",
-        "pour que jaillissent des sources de grâce dans nos cœurs meurtris",
-        "en vue de faire germer des semences de paix dans le jardin de nos âmes",
-        "dans l'espoir de voir fleurir la miséricorde divine dans nos communautés",
-        "pour que résonne l'harmonie céleste dans le silence de nos prières",
-        "afin que s'épanouisse la lumière du Christ dans les ténèbres de nos épreuves"
+        "afin d'ouvrir toujours plus largement des fenêtres d'espérance lumineuses sur des vallées d'éternité bienheureuse",
+        "pour que jaillissent abondamment des sources de grâce purificatrices dans nos cœurs meurtris mais confiants",
+        "en vue de faire germer patiemment des semences de paix évangélique dans le jardin secret de nos âmes",
+        "dans l'espoir ferme de voir fleurir magnifiquement la miséricorde divine dans toutes nos communautés paroissiales",
+        "pour que résonne harmonieusement la mélodie céleste dans le silence fécond de nos prières communes",
+        "afin que s'épanouisse pleinement la lumière rédemptrice du Christ dans les ténèbres passagères de nos épreuves"
       ],
       closings: [
-        "Concentrons-nous sur ce qui est beau et élevons nos cœurs vers les sphères supérieures de la contemplation",
-        "Focalisons-nous sur les merveilles de la Création et laissons donc les fanges boueuses à ceux qui aiment traîner dedans",
-        "Tournons nos regards vers les horizons lumineux de l'espérance plutôt que vers les marécages de la polémique",
-        "Privilégions la beauté des liturgies solennelles aux cacophonies des controverses stériles",
-        "Préférons les chants grégoriens aux clameurs médiatiques qui troublent la sérénité de nos âmes",
-        "Choisissons les parfums de l'encens aux miasmes de la calomnie qui empoisonnent l'atmosphère"
+        "Concentrons-nous résolument sur ce qui est beau et authentiquement évangélique et élevons nos cœurs vers les sphères supérieures de la contemplation mystique",
+        "Focalisons-nous prioritairement sur les merveilles ineffables de la Création divine et laissons donc les fanges boueuses à ceux qui aiment s'y complaire",
+        "Tournons nos regards confiants vers les horizons lumineux de l'espérance chrétienne plutôt que vers les marécages stériles de la polémique",
+        "Privilégions la beauté transcendante des liturgies solennelles aux cacophonies discordantes des controverses médiatiques stériles",
+        "Préférons les chants grégoriens millénaires aux clameurs médiatiques éphémères qui troublent la sérénité de nos âmes",
+        "Choisissons les parfums sacrés de l'encens aux miasmes empoisonnés de la calomnie qui polluent l'atmosphère spirituelle"
       ]
     };
 
@@ -367,6 +394,8 @@ const wordLists = {
     function generateCommunique() {
       const incident = getRandomItem(wordLists.incidents);
       const acknowledgment = getRandomItem(wordLists.acknowledgments);
+      const apology = getRandomItem(wordLists.apologies);
+      const misericorde = getRandomItem(wordLists.misericorde);
       const goodFruit = getRandomItem(wordLists.goodFruits);
       const originDeflection = getRandomItem(wordLists.originDeflection);
       const scapegoat = getRandomItem(wordLists.scapegoats);
@@ -377,9 +406,9 @@ const wordLists = {
 
       const communique = `${incident}, ${acknowledgment}. 
 
-Cependant, ${goodFruit}. 
+Par ailleurs, ${apology}. ${misericorde}.
 
-Il importe également, ${originDeflection}, de ne pas céder aux manœuvres de ${scapegoat}.
+Cependant, ${goodFruit}. Il importe également, ${originDeflection}, de ne pas céder aux manœuvres de ${scapegoat}.
 
 C'est pourquoi, ${response}, ${action} ${spiritualEnding}.
 
@@ -429,9 +458,11 @@ ${closing}.`;
         
         if (selectedValues.incidents) communique += selectedValues.incidents;
         if (selectedValues.acknowledgments) communique += `, ${selectedValues.acknowledgments}.`;
+        if (selectedValues.apologies) communique += `\n\nPar ailleurs, ${selectedValues.apologies}.`;
+        if (selectedValues.misericorde) communique += ` ${selectedValues.misericorde}.`;
         if (selectedValues.goodFruits) communique += `\n\nCependant, ${selectedValues.goodFruits}.`;
         if (selectedValues.originDeflection || selectedValues.scapegoats) {
-          communique += "\n\nIl importe également, ";
+          communique += " Il importe également, ";
           if (selectedValues.originDeflection) communique += selectedValues.originDeflection + ", ";
           if (selectedValues.scapegoats) communique += `de ne pas céder aux manœuvres de ${selectedValues.scapegoats}.`;
         }

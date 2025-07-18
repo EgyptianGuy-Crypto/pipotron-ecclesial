@@ -160,11 +160,17 @@ const bishopNames = [
       </p>
     </div>
     
+    <!-- Barre de progression satirique avec jalons -->
     <div id="progressBar" class="mb-6 mx-auto max-w-4xl hidden">
-      <div class="bg-gray-200 rounded-full h-2 mb-2">
-        <div id="progressFill" class="bg-yellow-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+      <div class="relative bg-gray-200 rounded-full h-3 mb-3">
+        <div id="progressFill" class="bg-yellow-600 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
+        <!-- Jalons sur la barre -->
+        <div class="absolute top-0 left-1/5 w-0.5 h-3 bg-gray-400 transform -translate-x-0.5"></div>
+        <div class="absolute top-0 left-2/5 w-0.5 h-3 bg-gray-400 transform -translate-x-0.5"></div>
+        <div class="absolute top-0 left-3/5 w-0.5 h-3 bg-gray-400 transform -translate-x-0.5"></div>
+        <div class="absolute top-0 left-4/5 w-0.5 h-3 bg-gray-400 transform -translate-x-0.5"></div>
       </div>
-      <p id="progressText" class="text-center text-base font-medium text-yellow-600"></p>
+      <p id="progressText" class="text-center text-lg font-medium text-white"></p>
     </div>
     
     <div class="mb-6 mx-auto max-w-4xl">
@@ -491,7 +497,7 @@ const bishopNames = [
       "Mgr Anselme du Détournement-d'Attention"
     ];
 
-    // Translations étoffées et plus drôles
+    // Translations étoffées et drôles (sans les traductions plates)
     const translations = {
       // Reconnaissance
       "nous reconnaissons que des dysfonctionnements ont pu survenir": "on s'est fait choper",
@@ -525,12 +531,11 @@ const bishopNames = [
       "les accompagnons pour avancer": "on vous pousse vers la sortie",
       "les encourageons à passer à autre chose": "circulez, y'a rien à voir",
       "les soutenons pour aller de l'avant": "avancez et fermez-la",
-      "les invitons à tourner la page": "n'en parlons plus",
       "les encourageons à regarder vers l'avenir": "regardez devant vous",
       "les accompagnons vers l'avenir": "on vous vire poliment",
       "par le pardon": "en fermant votre gueule",
-      "dans la réconciliation": "en nous pardonnant",
-      "par la miséricorde": "en nous oubliant",
+      "dans la réconciliation": "on pardonne a la place des autres",
+      "par la miséricorde": "on pardonne a la place des victimes",
       
       // Miséricorde
       "la miséricorde divine s'étend à tous": "on protège nos copains",
@@ -549,7 +554,7 @@ const bishopNames = [
       
       // Actions (style "on va rien faire")
       "nous agissons fermement": "on va rien faire",
-      "nous passons à l'action": "on va peut-être y réfléchir",
+      "nous passons à l'action": "on va peut-être y réfléchir dans vingt ans",
       "nous nous mobilisons résolument": "on va faire semblant",
       "nous prenons des mesures concrètes": "une commission totalement inutile",
       "nous nous engageons activement": "on promet (mais on tiendra pas)",
@@ -582,16 +587,12 @@ const bishopNames = [
       "gardons en mémoire": "retenez surtout ça",
       "les fruits de grâce de nos paroisses": "nos trucs sympas",
       "les témoignages de foi de notre diocèse": "nos success stories",
-      "les actions caritatives de nos communautés": "nos bonnes œuvres",
+      "les actions caritatives de nos communautés": "nos bonnes œuvres toutes gentilles",
       "les vocations qui confirment l'Esprit Saint": "nos nouvelles recrues",
       "les signes d'espérance de notre Église": "nos petits miracles",
       "les élans missionnaires qui nous dynamisent": "notre motivation",
-      "les merveilles qui s'accomplissent": "nos exploits",
       "les conversions authentiques": "nos clients satisfaits",
-      "les œuvres caritatives de nos fidèles": "la charité qu'on fait",
       "les grâces qui abondent": "tous nos trucs géniaux",
-      "les initiatives généreuses": "nos bonnes actions",
-      "les projets porteurs d'espérance": "nos plans d'avenir",
       
       // Origine (c'est la faute des autres)
       "sans nous leurrer sur l'origine": "c'est la faute des autres",
@@ -613,7 +614,7 @@ const bishopNames = [
       "des lobbies progressistes déconnectés": "les cathos de gauche nous emmerdent",
       "des réseaux occultes hostiles": "c'est la faute des francs-maçons",
       "des groupuscules anticléricaux": "les athées nous détestent",
-      "des influences séculières": "les laïcs nous font chier",
+      "des influences séculières": "les gens nous font chier",
       "des organes de presse avides": "les médias nous cherchent",
       "des courants intégristes figés": "les tradis nous gonflent",
       "des factions modernistes étrangères": "les progressistes nous emmerdent",
@@ -621,13 +622,7 @@ const bishopNames = [
       "des militants nourris de préjugés": "des rageux",
       "des forces s'acharnant": "des méchants qui nous détestent",
       "cherchant à saper notre rayonnement": "qui veulent nous niquer",
-      "à ternir notre image": "à nous salir",
-      "à l'Évangile": "à la religion",
-      "à la Tradition": "à nos traditions",
-      "au souffle de l'Esprit": "au changement",
-      "à la mission évangélisatrice": "à notre boulot",
-      "anti-religieux": "anti-curés",
-      "dans leurs certitudes": "dans leur délire",
+      "dans leurs certitudes": "dans leur délire antichretien",
       
       // Fins spirituelles (blabla pseudo-spirituel)
       "afin d'ouvrir des fenêtres d'espérance": "blabla pseudo-spirituel",
@@ -640,28 +635,12 @@ const bishopNames = [
       "afin que rayonnent les fruits": "délire fruité",
       "en vue de cultiver les vertus": "baratin vertueux",
       "dans l'attente de voir grandir": "blabla d'attente",
-      "pour que s'accomplisse la volonté divine": "pour que Dieu soit content",
-      "afin que se manifestent les signes": "pour que ça se voie",
-      "sur l'éternité": "pour toujours",
-      "dans nos cœurs": "en nous",
-      "dans nos âmes": "dans nos têtes",
-      "dans nos prières": "quand on prie",
-      "du Christ": "de Jésus",
-      "de l'Esprit Saint": "du Saint-Esprit",
-      "dans nos communautés": "chez nous",
-      "la communion fraternelle": "qu'on s'aime bien",
-      "dans nos vies": "dans notre quotidien",
-      "du Royaume": "du paradis",
-      "de la réconciliation": "de la réconciliation",
-      "de l'Esprit Saint": "du Saint-Esprit",
-      "des vertus théologales": "des trucs religieux",
-      "des signes du Royaume": "des signes du paradis",
       
       // Conclusions (détournement final)
       "concentrons-nous sur ce qui est beau": "parlons d'autre chose",
       "tournons nos regards vers l'espérance": "ignorez le problème",
-      "privilégions nos liturgies": "la messe c'est plus important",
-      "préférons l'écoute fraternelle": "fermez-la et priez",
+      "privilégions nos liturgies": "regardez ailleurs",
+      "préférons l'écoute fraternelle": "écoutez-moi",
       "choisissons le dialogue": "arrêtez de nous emmerder",
       "focalisons-nous sur notre mission": "on a autre chose à faire",
       "orientons nos cœurs vers la beauté": "regardez comme c'est joli",
@@ -669,20 +648,9 @@ const bishopNames = [
       "favorisons la prière contemplative": "priez au lieu de râler",
       "préférons la méditation spirituelle": "méditez plutôt",
       "choisissons la charité chrétienne": "soyez gentils",
-      "concentrons-nous sur l'essentiel": "revenons aux choses importantes",
-      "et évangélique": "et religieux",
+      "concentrons-nous sur l'essentiel": "revenons a autre chose",
       "plutôt que vers les polémiques": "au lieu de nous faire chier",
       "aux controverses médiatiques": "aux conneries des journalistes",
-      "aux clameurs stériles": "aux cris inutiles",
-      "plutôt que les divisions": "au lieu de nous diviser",
-      "d'évangélisation": "de conversion",
-      "de la foi": "de la religion",
-      "de la Création": "de ce que Dieu a fait",
-      "plutôt que vers les divisions": "au lieu de nous séparer",
-      "aux débats stériles": "aux discussions inutiles",
-      "aux polémiques destructrices": "aux disputes qui cassent tout",
-      "plutôt que les affrontements": "au lieu de nous battre",
-      "de notre vocation pastorale": "de notre job de curés"
     };
 
     // Score individuel pour chaque phrase (identique au précédent)
@@ -840,9 +808,9 @@ const bishopNames = [
           clearInterval(interval);
           setTimeout(() => {
             progressBar.classList.add('hidden');
-          }, 1000);
+          }, 1500); // Reste plus longtemps
         }
-      }, 400);
+      }, 600); // Plus lent
     }
 
     let currentCommunique = '';
@@ -850,6 +818,10 @@ const bishopNames = [
     let isTranslated = false;
 
     function generateCommunique() {
+      // Réinitialiser le bouton traduire
+      isTranslated = false;
+      document.getElementById('translateBtn').textContent = '🔍 Traduire en français normal';
+      
       showProgressBar();
       
       setTimeout(() => {
@@ -873,7 +845,6 @@ const bishopNames = [
         const communique = selectedItems.incidents + ', ' + selectedItems.acknowledgments + '. En ces temps troublés, ' + selectedItems.apologies + '. ' + selectedItems.misericorde + '.\n\n' + selectedItems.actions + ' ' + selectedItems.spiritualEndings + '.\n\n' + selectedItems.tourmentes + ', ' + selectedItems.goodFruits + '. Il importe également, ' + selectedItems.originDeflection + ', de ne pas céder aux manœuvres de ' + selectedItems.scapegoats + '.\n\n' + selectedItems.closings + '.';
         
         currentCommunique = communique;
-        isTranslated = false;
         
         const bullshitLevel = calculateBullshitLevel(selectedItems);
         
@@ -881,7 +852,7 @@ const bishopNames = [
         
         showBullshitMeter(bullshitLevel);
         document.getElementById('translateBtn').classList.remove('hidden');
-      }, 2000);
+      }, 3000); // Plus lent pour voir les étapes
     }
 
     document.getElementById('generateBtn').addEventListener('click', generateCommunique);

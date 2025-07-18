@@ -819,7 +819,7 @@ const bishopNames = [
     function generateCommunique() {
       // Réinitialiser le bouton traduire
       isTranslated = false;
-      document.getElementById('translateBtn').textContent = '🔍 Traduire en français normal';
+      document.getElementById('translateBtn').textContent = '🔍 Traduire en français courant';
       
       showProgressBar();
       
@@ -859,7 +859,7 @@ const bishopNames = [
 document.getElementById('translateBtn').addEventListener('click', function() {
   if (isTranslated) {
     document.getElementById('result').innerHTML = '<div class="text-left"><p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">' + currentCommunique + '</p><div class="text-right text-sm text-gray-600 italic mt-4"><p>+ ' + getRandomItem(bishopNames) + '</p><p>Évêque de Saint-Barbant</p></div></div>';
-    this.textContent = '🔍 Traduire en français normal';
+    this.textContent = '🔍 Traduire en français courant';
     isTranslated = false;
   } else {
     let translatedCommunique = currentCommunique;
@@ -958,7 +958,7 @@ document.getElementById('translateBtn').addEventListener('click', function() {
           
           showBullshitMeter(bullshitLevel);
           document.getElementById('translateBtn').classList.remove('hidden');
-          document.getElementById('translateBtn').textContent = '🔍 Traduire en français normal';
+          document.getElementById('translateBtn').textContent = '🔍 Traduire en français courant';
         }
       }
     }

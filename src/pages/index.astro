@@ -43,22 +43,22 @@ const wordLists = {
 ---
 
 <Layout title="Pipotron Épiscopal">
-  <div class="py-8">
+  <div class="py-4">
     <!-- Title -->
-    <h1 class="mb-8 text-4xl font-bold text-center">Pipotron Épiscopal</h1>
+    <h1 class="mb-6 text-4xl font-bold text-center">Pipotron Épiscopal</h1>
     
     <!-- Official Document Result Area -->
-    <div class="mb-8 mx-auto max-w-4xl">
+    <div class="mb-6 mx-auto max-w-4xl">
       <div class="bg-white text-black rounded-lg shadow-2xl border-4 border-yellow-600 relative overflow-hidden">
         <!-- Official Header -->
-        <div class="bg-gradient-to-r from-purple-900 to-blue-900 text-white p-4 text-center border-b-4 border-yellow-600">
+        <div class="bg-gradient-to-r from-purple-900 to-blue-900 text-white p-6 text-center border-b-4 border-yellow-600">
           <div class="flex items-center justify-center space-x-4">
             <div class="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center">
               <span class="text-2xl">✚</span>
             </div>
             <div>
-              <h2 class="text-xl font-bold">CONFÉRENCE DES ÉVÊQUES</h2>
-              <p class="text-sm opacity-90">Communiqué Officiel</p>
+              <h2 class="text-xl font-bold">COMMUNIQUÉ DE PRESSE</h2>
+              <p class="text-sm opacity-90">Diocèse de Saint-Barbant</p>
             </div>
             <div class="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center">
               <span class="text-2xl">✚</span>
@@ -75,20 +75,6 @@ const wordLists = {
           </div>
         </div>
         
-        <!-- Official Footer -->
-        <div class="bg-gray-100 p-4 border-t-2 border-gray-300">
-          <div class="flex justify-between items-center text-sm text-gray-600">
-            <div>
-              <p class="font-semibold">Document confidentiel</p>
-              <p>Usage interne uniquement</p>
-            </div>
-            <div class="text-right">
-              <p id="document-date"></p>
-              <p>Réf: CE-2024-<span id="document-ref"></span></p>
-            </div>
-          </div>
-        </div>
-        
         <!-- Decorative corners -->
         <div class="absolute top-0 left-0 w-8 h-8 border-l-4 border-t-4 border-yellow-600"></div>
         <div class="absolute top-0 right-0 w-8 h-8 border-r-4 border-t-4 border-yellow-600"></div>
@@ -98,7 +84,7 @@ const wordLists = {
     </div>
 
     <!-- Generate Button -->
-    <div class="text-center mb-8">
+    <div class="text-center mb-6">
       <button 
         id="generateBtn" 
         class="btn btn-lg bg-yellow-600 text-black hover:bg-yellow-700 font-semibold"
@@ -108,7 +94,7 @@ const wordLists = {
     </div>
 
     <!-- Instructions -->
-    <div class="mb-8 p-4 bg-white/5 rounded-lg border border-white/10">
+    <div class="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
       <p class="text-center text-white/90">
         Ou composez manuellement votre communiqué en sélectionnant dans les listes ci-dessous
       </p>
@@ -235,7 +221,7 @@ const wordLists = {
     </div>
 
     <!-- Reset Button -->
-    <div class="text-center mt-8">
+    <div class="text-center mt-6">
       <button 
         id="resetBtn" 
         class="btn bg-white/10 text-white hover:bg-white/20"
@@ -246,10 +232,6 @@ const wordLists = {
   </div>
 
   <script>
-    // Set document date and reference number
-    document.getElementById('document-date').textContent = new Date().toLocaleDateString('fr-FR');
-    document.getElementById('document-ref').textContent = Math.floor(Math.random() * 9999).toString().padStart(4, '0');
-
     const wordLists = {
       starters: ["Avec", "Considérant", "Où que nous mène", "Eu égard à", "Vu", "En ce qui concerne", "Dans le cas particulier de"],
       situations: ["la restriction", "l'orientation", "la crise", "l'inertie", "la difficulté", "l'austérité", "la dégradation"],
@@ -294,9 +276,6 @@ const wordLists = {
           </div>
         </div>
       `;
-      
-      // Update document reference
-      document.getElementById('document-ref').textContent = Math.floor(Math.random() * 9999).toString().padStart(4, '0');
     });
 
     document.getElementById('resetBtn').addEventListener('click', function() {

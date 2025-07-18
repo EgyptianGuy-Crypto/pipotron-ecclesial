@@ -92,133 +92,139 @@ const wordLists = {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Pipotron Épiscopal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-gray-50 min-h-screen">
-    <div class="max-w-6xl mx-auto px-6 py-8">
-      <!-- Title -->
-      <h1 class="text-4xl font-bold text-center text-gray-800 mb-12">Pipotron Épiscopal</h1>
+  <body class="bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 min-h-screen font-['Inter']">
+    <div class="max-w-7xl mx-auto px-6 py-8">
+      <!-- Title with gradient -->
+      <div class="text-center mb-12">
+        <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-yellow-400 via-pink-400 to-red-400 bg-clip-text text-transparent mb-4">
+          Pipotron Épiscopal
+        </h1>
+        <p class="text-purple-200 text-lg">Générateur de langue de bois ecclésiastique 🙏</p>
+      </div>
       
-      <!-- Result Area - Big and Centered -->
+      <!-- Result Area - Big and Centered with glassmorphism -->
       <div class="mb-12">
-        <div id="result" class="bg-white rounded-lg shadow-lg p-8 border-l-4 border-blue-500 min-h-32 flex items-center justify-center">
-          <p class="text-gray-500 text-lg text-center">Cliquez sur "Générer un nouveau" pour créer une phrase automatiquement</p>
+        <div id="result" class="backdrop-blur-lg bg-white/10 rounded-2xl shadow-2xl p-8 border border-white/20 min-h-40 flex items-center justify-center">
+          <p class="text-white/70 text-lg text-center">Cliquez sur "Générer un nouveau" pour créer une phrase automatiquement ✨</p>
         </div>
       </div>
 
-      <!-- Generate Button -->
+      <!-- Generate Button with hover effects -->
       <div class="text-center mb-12">
         <button 
           id="generateBtn" 
-          class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg shadow-md transition-colors duration-200"
+          class="bg-gradient-to-r from-pink-500 to-violet-500 hover:from-pink-600 hover:to-violet-600 text-white font-semibold px-10 py-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200 text-lg"
         >
-          Générer un nouveau
+          ✨ Générer un nouveau
         </button>
       </div>
 
-      <!-- Instructions -->
-      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
-        <p class="text-blue-800 text-center">
-          Ou composez manuellement votre phrase en sélectionnant dans les listes ci-dessous
+      <!-- Instructions with modern card -->
+      <div class="backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl p-6 mb-8">
+        <p class="text-white/90 text-center text-lg">
+          💡 Ou composez manuellement votre phrase en sélectionnant dans les listes ci-dessous
         </p>
       </div>
 
-      <!-- Word Lists Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Word Lists Grid with modern cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Column 1 -->
         <div class="space-y-6">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Début</label>
-            <select id="starters" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
-              <option value="">-- Choisir --</option>
-              {wordLists.starters.map(word => <option value={word}>{word}</option>)}
+          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
+            <label class="block text-white font-semibold mb-3 text-lg">🎯 Début</label>
+            <select id="starters" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
+              <option value="" class="bg-gray-800">-- Choisir --</option>
+              {wordLists.starters.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
             </select>
           </div>
           
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Action</label>
-            <select id="actions" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
-              <option value="">-- Choisir --</option>
-              {wordLists.actions.map(word => <option value={word}>{word}</option>)}
+          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
+            <label class="block text-white font-semibold mb-3 text-lg">⚡ Action</label>
+            <select id="actions" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
+              <option value="" class="bg-gray-800">-- Choisir --</option>
+              {wordLists.actions.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
             </select>
           </div>
           
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Solutions</label>
-            <select id="solutions" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
-              <option value="">-- Choisir --</option>
-              {wordLists.solutions.map(word => <option value={word}>{word}</option>)}
+          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
+            <label class="block text-white font-semibold mb-3 text-lg">🎯 Solutions</label>
+            <select id="solutions" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
+              <option value="" class="bg-gray-800">-- Choisir --</option>
+              {wordLists.solutions.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
             </select>
           </div>
         </div>
 
         <!-- Column 2 -->
         <div class="space-y-6">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Situation</label>
-            <select id="situations" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
-              <option value="">-- Choisir --</option>
-              {wordLists.situations.map(word => <option value={word}>{word}</option>)}
+          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
+            <label class="block text-white font-semibold mb-3 text-lg">🔥 Situation</label>
+            <select id="situations" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
+              <option value="" class="bg-gray-800">-- Choisir --</option>
+              {wordLists.situations.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
             </select>
           </div>
           
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Verbe</label>
-            <select id="verbs" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
-              <option value="">-- Choisir --</option>
-              {wordLists.verbs.map(word => <option value={word}>{word}</option>)}
+          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
+            <label class="block text-white font-semibold mb-3 text-lg">🚀 Verbe</label>
+            <select id="verbs" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
+              <option value="" class="bg-gray-800">-- Choisir --</option>
+              {wordLists.verbs.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
             </select>
           </div>
           
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Résultat</label>
-            <select id="outcomes" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
-              <option value="">-- Choisir --</option>
-              {wordLists.outcomes.map(word => <option value={word}>{word}</option>)}
+          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
+            <label class="block text-white font-semibold mb-3 text-lg">✨ Résultat</label>
+            <select id="outcomes" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
+              <option value="" class="bg-gray-800">-- Choisir --</option>
+              {wordLists.outcomes.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
             </select>
           </div>
         </div>
 
         <!-- Column 3 -->
         <div class="space-y-6">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Qualificatif</label>
-            <select id="qualifiers" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
-              <option value="">-- Choisir --</option>
-              {wordLists.qualifiers.map(word => <option value={word}>{word}</option>)}
+          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
+            <label class="block text-white font-semibold mb-3 text-lg">💎 Qualificatif</label>
+            <select id="qualifiers" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
+              <option value="" class="bg-gray-800">-- Choisir --</option>
+              {wordLists.qualifiers.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
             </select>
           </div>
           
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Quantité</label>
-            <select id="quantities" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="7">
-              <option value="">-- Choisir --</option>
-              {wordLists.quantities.map(word => <option value={word}>{word}</option>)}
+          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
+            <label class="block text-white font-semibold mb-3 text-lg">📊 Quantité</label>
+            <select id="quantities" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
+              <option value="" class="bg-gray-800">-- Choisir --</option>
+              {wordLists.quantities.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
             </select>
           </div>
           
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Temporalité</label>
-            <select id="timeframes" class="w-full p-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" size="8">
-              <option value="">-- Choisir --</option>
-              {wordLists.timeframes.map(word => <option value={word}>{word}</option>)}
+          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
+            <label class="block text-white font-semibold mb-3 text-lg">⏰ Temporalité</label>
+            <select id="timeframes" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="8">
+              <option value="" class="bg-gray-800">-- Choisir --</option>
+              {wordLists.timeframes.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
             </select>
           </div>
         </div>
       </div>
 
       <!-- Reset Button -->
-      <div class="text-center mt-8">
+      <div class="text-center mt-12">
         <button 
           id="resetBtn" 
-          class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition-colors duration-200"
+          class="bg-white/20 hover:bg-white/30 text-white font-semibold px-6 py-3 rounded-full backdrop-blur-sm border border-white/30 transition-all duration-200"
         >
-          Réinitialiser
+          🔄 Réinitialiser
         </button>
       </div>
     </div>
 
     <script>
-      // Get all the word lists from the server
+      // Same JavaScript as before but with updated styling for results
       const wordLists = {
         starters: ["Avec", "Considérant", "Où que nous mène", "Eu égard à", "Vu", "En ce qui concerne", "Dans le cas particulier de"],
         situations: ["la restriction", "l'orientation", "la crise", "l'inertie", "la difficulté", "l'austérité", "la dégradation"],
@@ -246,7 +252,6 @@ const wordLists = {
         const outcome = getRandomItem(wordLists.outcomes);
         const timeframe = getRandomItem(wordLists.timeframes);
 
-        // Handle the d# replacement
         let processedAction = action.replace('d#', verb.startsWith('a') || verb.startsWith('e') || verb.startsWith('i') || verb.startsWith('o') || verb.startsWith('u') ? "d'" : "de");
 
         const sentence = `${starter} ${situation} ${qualifier}, ${processedAction} ${verb} ${quantity} ${solution} ${outcome} ${timeframe}.`;
@@ -256,19 +261,17 @@ const wordLists = {
 
       document.getElementById('generateBtn').addEventListener('click', function() {
         const sentence = generateSentence();
-        document.getElementById('result').innerHTML = `<p class="text-2xl text-gray-800 text-center leading-relaxed">${sentence}</p>`;
+        document.getElementById('result').innerHTML = `<p class="text-2xl text-white text-center leading-relaxed font-medium">${sentence}</p>`;
       });
 
-      // Reset button functionality
       document.getElementById('resetBtn').addEventListener('click', function() {
         const selects = document.querySelectorAll('select');
         selects.forEach(select => {
           select.selectedIndex = 0;
         });
-        document.getElementById('result').innerHTML = `<p class="text-gray-500 text-lg text-center">Cliquez sur "Générer un nouveau" pour créer une phrase automatiquement</p>`;
+        document.getElementById('result').innerHTML = `<p class="text-white/70 text-lg text-center">Cliquez sur "Générer un nouveau" pour créer une phrase automatiquement ✨</p>`;
       });
 
-      // Manual selection functionality
       const selects = document.querySelectorAll('select');
       selects.forEach(select => {
         select.addEventListener('change', function() {
@@ -301,7 +304,7 @@ const wordLists = {
           });
 
           if (sentence.trim()) {
-            document.getElementById('result').innerHTML = `<p class="text-2xl text-gray-800 text-center leading-relaxed">${sentence.trim()}.</p>`;
+            document.getElementById('result').innerHTML = `<p class="text-2xl text-white text-center leading-relaxed font-medium">${sentence.trim()}.</p>`;
           }
         }
       }

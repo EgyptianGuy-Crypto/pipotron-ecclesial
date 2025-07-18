@@ -1,313 +1,354 @@
 ---
+import Layout from '../layouts/Layout.astro';
+
 // Word lists from your screenshot
 const wordLists = {
   starters: [
-    "Avec",
-    "Considérant", 
-    "Où que nous mène",
-    "Eu égard à",
-    "Vu",
-    "En ce qui concerne",
-    "Dans le cas particulier de"
+    "Avec", "Considérant", "Où que nous mène", "Eu égard à", "Vu",
+    "En ce qui concerne", "Dans le cas particulier de"
   ],
   situations: [
-    "la restriction",
-    "l'orientation",
-    "la crise",
-    "l'inertie",
-    "la difficulté",
-    "l'austérité",
-    "la dégradation"
+    "la restriction", "l'orientation", "la crise", "l'inertie", 
+    "la difficulté", "l'austérité", "la dégradation"
   ],
   qualifiers: [
-    "présente",
-    "actuelle",
-    "générale",
-    "induite",
-    "conjoncturelle",
-    "observée",
-    "contextuelle"
+    "présente", "actuelle", "générale", "induite", 
+    "conjoncturelle", "observée", "contextuelle"
   ],
   actions: [
-    "il convient d#",
-    "il faut",
-    "on se doit d#",
-    "il est préférable d#",
-    "il serait intéressant d#",
-    "il ne faut pas négliger d#",
-    "on ne peut se passer d#"
+    "il convient d#", "il faut", "on se doit d#", "il est préférable d#",
+    "il serait intéressant d#", "il ne faut pas négliger d#", "on ne peut se passer d#"
   ],
   verbs: [
-    "étudier",
-    "examiner",
-    "favoriser",
-    "prendre en considération",
-    "anticiper",
-    "imaginer",
-    "uniformiser"
+    "étudier", "examiner", "favoriser", "prendre en considération",
+    "anticiper", "imaginer", "uniformiser"
   ],
   quantities: [
-    "toutes les",
-    "chacune des",
-    "la majorité des",
-    "la simultanéité des",
-    "l'ensemble des",
-    "la somme des",
-    "la totalité des"
+    "toutes les", "chacune des", "la majorité des", "la simultanéité des",
+    "l'ensemble des", "la somme des", "la totalité des"
   ],
   solutions: [
-    "solutions",
-    "issues",
-    "problématiques",
-    "voies",
-    "alternatives",
-    "organisations matricielles",
-    "améliorations"
+    "solutions", "issues", "problématiques", "voies", "alternatives",
+    "organisations matricielles", "améliorations"
   ],
   outcomes: [
-    "imaginables",
-    "possibles",
-    "s'offrant à nous",
-    "de bon sens",
-    "envisageables",
-    "éventuelles",
-    "réalisables"
+    "imaginables", "possibles", "s'offrant à nous", "de bon sens",
+    "envisageables", "éventuelles", "réalisables"
   ],
   timeframes: [
-    "à long terme",
-    "pour longtemps",
-    "à l'avenir",
-    "pour le futur",
-    "depuis longtemps",
-    "à court terme",
-    "rapidement"
+    "à long terme", "pour longtemps", "à l'avenir", "pour le futur",
+    "depuis longtemps", "à court terme", "rapidement"
   ]
 };
 ---
 
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Pipotron Épiscopal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 min-h-screen font-['Inter']">
-    <div class="max-w-7xl mx-auto px-6 py-8">
-      <!-- Title with gradient -->
-      <div class="text-center mb-12">
-        <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-yellow-400 via-pink-400 to-red-400 bg-clip-text text-transparent mb-4">
-          Pipotron Épiscopal
-        </h1>
-        <p class="text-purple-200 text-lg">Générateur de langue de bois ecclésiastique 🙏</p>
-      </div>
-      
-      <!-- Result Area - Big and Centered with glassmorphism -->
-      <div class="mb-12">
-        <div id="result" class="backdrop-blur-lg bg-white/10 rounded-2xl shadow-2xl p-8 border border-white/20 min-h-40 flex items-center justify-center">
-          <p class="text-white/70 text-lg text-center">Cliquez sur "Générer un nouveau" pour créer une phrase automatiquement ✨</p>
-        </div>
-      </div>
-
-      <!-- Generate Button with hover effects -->
-      <div class="text-center mb-12">
-        <button 
-          id="generateBtn" 
-          class="bg-gradient-to-r from-pink-500 to-violet-500 hover:from-pink-600 hover:to-violet-600 text-white font-semibold px-10 py-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200 text-lg"
-        >
-          ✨ Générer un nouveau
-        </button>
-      </div>
-
-      <!-- Instructions with modern card -->
-      <div class="backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl p-6 mb-8">
-        <p class="text-white/90 text-center text-lg">
-          💡 Ou composez manuellement votre phrase en sélectionnant dans les listes ci-dessous
-        </p>
-      </div>
-
-      <!-- Word Lists Grid with modern cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Column 1 -->
-        <div class="space-y-6">
-          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
-            <label class="block text-white font-semibold mb-3 text-lg">🎯 Début</label>
-            <select id="starters" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
-              <option value="" class="bg-gray-800">-- Choisir --</option>
-              {wordLists.starters.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
-            </select>
-          </div>
-          
-          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
-            <label class="block text-white font-semibold mb-3 text-lg">⚡ Action</label>
-            <select id="actions" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
-              <option value="" class="bg-gray-800">-- Choisir --</option>
-              {wordLists.actions.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
-            </select>
-          </div>
-          
-          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
-            <label class="block text-white font-semibold mb-3 text-lg">🎯 Solutions</label>
-            <select id="solutions" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
-              <option value="" class="bg-gray-800">-- Choisir --</option>
-              {wordLists.solutions.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
-            </select>
+<Layout title="Pipotron Épiscopal">
+  <div class="py-8">
+    <!-- Title -->
+    <h1 class="mb-8 text-4xl font-bold text-center">Pipotron Épiscopal</h1>
+    
+    <!-- Official Document Result Area -->
+    <div class="mb-8 mx-auto max-w-4xl">
+      <div class="bg-white text-black rounded-lg shadow-2xl border-4 border-yellow-600 relative overflow-hidden">
+        <!-- Official Header -->
+        <div class="bg-gradient-to-r from-purple-900 to-blue-900 text-white p-4 text-center border-b-4 border-yellow-600">
+          <div class="flex items-center justify-center space-x-4">
+            <div class="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center">
+              <span class="text-2xl">✚</span>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold">CONFÉRENCE DES ÉVÊQUES</h2>
+              <p class="text-sm opacity-90">Communiqué Officiel</p>
+            </div>
+            <div class="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center">
+              <span class="text-2xl">✚</span>
+            </div>
           </div>
         </div>
-
-        <!-- Column 2 -->
-        <div class="space-y-6">
-          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
-            <label class="block text-white font-semibold mb-3 text-lg">🔥 Situation</label>
-            <select id="situations" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
-              <option value="" class="bg-gray-800">-- Choisir --</option>
-              {wordLists.situations.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
-            </select>
-          </div>
-          
-          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
-            <label class="block text-white font-semibold mb-3 text-lg">🚀 Verbe</label>
-            <select id="verbs" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
-              <option value="" class="bg-gray-800">-- Choisir --</option>
-              {wordLists.verbs.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
-            </select>
-          </div>
-          
-          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
-            <label class="block text-white font-semibold mb-3 text-lg">✨ Résultat</label>
-            <select id="outcomes" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
-              <option value="" class="bg-gray-800">-- Choisir --</option>
-              {wordLists.outcomes.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
-            </select>
+        
+        <!-- Document Content -->
+        <div class="p-8">
+          <div id="result" class="min-h-32 flex items-center justify-center">
+            <p class="text-gray-500 text-center italic">
+              Cliquez sur "Générer un nouveau" pour créer un communiqué officiel
+            </p>
           </div>
         </div>
-
-        <!-- Column 3 -->
-        <div class="space-y-6">
-          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
-            <label class="block text-white font-semibold mb-3 text-lg">💎 Qualificatif</label>
-            <select id="qualifiers" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
-              <option value="" class="bg-gray-800">-- Choisir --</option>
-              {wordLists.qualifiers.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
-            </select>
-          </div>
-          
-          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
-            <label class="block text-white font-semibold mb-3 text-lg">📊 Quantité</label>
-            <select id="quantities" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="7">
-              <option value="" class="bg-gray-800">-- Choisir --</option>
-              {wordLists.quantities.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
-            </select>
-          </div>
-          
-          <div class="backdrop-blur-lg bg-white/10 rounded-xl p-6 border border-white/20">
-            <label class="block text-white font-semibold mb-3 text-lg">⏰ Temporalité</label>
-            <select id="timeframes" class="w-full p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all" size="8">
-              <option value="" class="bg-gray-800">-- Choisir --</option>
-              {wordLists.timeframes.map(word => <option value={word} class="bg-gray-800">{word}</option>)}
-            </select>
+        
+        <!-- Official Footer -->
+        <div class="bg-gray-100 p-4 border-t-2 border-gray-300">
+          <div class="flex justify-between items-center text-sm text-gray-600">
+            <div>
+              <p class="font-semibold">Document confidentiel</p>
+              <p>Usage interne uniquement</p>
+            </div>
+            <div class="text-right">
+              <p id="document-date"></p>
+              <p>Réf: CE-2024-<span id="document-ref"></span></p>
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Reset Button -->
-      <div class="text-center mt-12">
-        <button 
-          id="resetBtn" 
-          class="bg-white/20 hover:bg-white/30 text-white font-semibold px-6 py-3 rounded-full backdrop-blur-sm border border-white/30 transition-all duration-200"
-        >
-          🔄 Réinitialiser
-        </button>
+        
+        <!-- Decorative corners -->
+        <div class="absolute top-0 left-0 w-8 h-8 border-l-4 border-t-4 border-yellow-600"></div>
+        <div class="absolute top-0 right-0 w-8 h-8 border-r-4 border-t-4 border-yellow-600"></div>
+        <div class="absolute bottom-0 left-0 w-8 h-8 border-l-4 border-b-4 border-yellow-600"></div>
+        <div class="absolute bottom-0 right-0 w-8 h-8 border-r-4 border-b-4 border-yellow-600"></div>
       </div>
     </div>
 
-    <script>
-      // Same JavaScript as before but with updated styling for results
-      const wordLists = {
-        starters: ["Avec", "Considérant", "Où que nous mène", "Eu égard à", "Vu", "En ce qui concerne", "Dans le cas particulier de"],
-        situations: ["la restriction", "l'orientation", "la crise", "l'inertie", "la difficulté", "l'austérité", "la dégradation"],
-        qualifiers: ["présente", "actuelle", "générale", "induite", "conjoncturelle", "observée", "contextuelle"],
-        actions: ["il convient d#", "il faut", "on se doit d#", "il est préférable d#", "il serait intéressant d#", "il ne faut pas négliger d#", "on ne peut se passer d#"],
-        verbs: ["étudier", "examiner", "favoriser", "prendre en considération", "anticiper", "imaginer", "uniformiser"],
-        quantities: ["toutes les", "chacune des", "la majorité des", "la simultanéité des", "l'ensemble des", "la somme des", "la totalité des"],
-        solutions: ["solutions", "issues", "problématiques", "voies", "alternatives", "organisations matricielles", "améliorations"],
-        outcomes: ["imaginables", "possibles", "s'offrant à nous", "de bon sens", "envisageables", "éventuelles", "réalisables"],
-        timeframes: ["à long terme", "pour longtemps", "à l'avenir", "pour le futur", "depuis longtemps", "à court terme", "rapidement"]
-      };
+    <!-- Generate Button -->
+    <div class="text-center mb-8">
+      <button 
+        id="generateBtn" 
+        class="btn btn-lg bg-yellow-600 text-black hover:bg-yellow-700 font-semibold"
+      >
+        📜 Générer un nouveau communiqué
+      </button>
+    </div>
 
-      function getRandomItem(array) {
-        return array[Math.floor(Math.random() * array.length)];
-      }
+    <!-- Instructions -->
+    <div class="mb-8 p-4 bg-white/5 rounded-lg border border-white/10">
+      <p class="text-center text-white/90">
+        Ou composez manuellement votre communiqué en sélectionnant dans les listes ci-dessous
+      </p>
+    </div>
 
-      function generateSentence() {
-        const starter = getRandomItem(wordLists.starters);
-        const situation = getRandomItem(wordLists.situations);
-        const qualifier = getRandomItem(wordLists.qualifiers);
-        const action = getRandomItem(wordLists.actions);
-        const verb = getRandomItem(wordLists.verbs);
-        const quantity = getRandomItem(wordLists.quantities);
-        const solution = getRandomItem(wordLists.solutions);
-        const outcome = getRandomItem(wordLists.outcomes);
-        const timeframe = getRandomItem(wordLists.timeframes);
-
-        let processedAction = action.replace('d#', verb.startsWith('a') || verb.startsWith('e') || verb.startsWith('i') || verb.startsWith('o') || verb.startsWith('u') ? "d'" : "de");
-
-        const sentence = `${starter} ${situation} ${qualifier}, ${processedAction} ${verb} ${quantity} ${solution} ${outcome} ${timeframe}.`;
+    <!-- Word Lists Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Column 1 -->
+      <div class="space-y-6">
+        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block text-white font-medium mb-3">Début</label>
+          <select 
+            id="starters" 
+            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
+            size="6"
+          >
+            <option value="">-- Choisir --</option>
+            {wordLists.starters.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
         
-        return sentence;
-      }
+        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block text-white font-medium mb-3">Action</label>
+          <select 
+            id="actions" 
+            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
+            size="6"
+          >
+            <option value="">-- Choisir --</option>
+            {wordLists.actions.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+        
+        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block text-white font-medium mb-3">Solutions</label>
+          <select 
+            id="solutions" 
+            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
+            size="6"
+          >
+            <option value="">-- Choisir --</option>
+            {wordLists.solutions.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+      </div>
 
-      document.getElementById('generateBtn').addEventListener('click', function() {
-        const sentence = generateSentence();
-        document.getElementById('result').innerHTML = `<p class="text-2xl text-white text-center leading-relaxed font-medium">${sentence}</p>`;
-      });
+      <!-- Column 2 -->
+      <div class="space-y-6">
+        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block text-white font-medium mb-3">Situation</label>
+          <select 
+            id="situations" 
+            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
+            size="6"
+          >
+            <option value="">-- Choisir --</option>
+            {wordLists.situations.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+        
+        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block text-white font-medium mb-3">Verbe</label>
+          <select 
+            id="verbs" 
+            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
+            size="6"
+          >
+            <option value="">-- Choisir --</option>
+            {wordLists.verbs.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+        
+        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block text-white font-medium mb-3">Résultat</label>
+          <select 
+            id="outcomes" 
+            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
+            size="6"
+          >
+            <option value="">-- Choisir --</option>
+            {wordLists.outcomes.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+      </div>
 
-      document.getElementById('resetBtn').addEventListener('click', function() {
-        const selects = document.querySelectorAll('select');
-        selects.forEach(select => {
-          select.selectedIndex = 0;
-        });
-        document.getElementById('result').innerHTML = `<p class="text-white/70 text-lg text-center">Cliquez sur "Générer un nouveau" pour créer une phrase automatiquement ✨</p>`;
-      });
+      <!-- Column 3 -->
+      <div class="space-y-6">
+        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block text-white font-medium mb-3">Qualificatif</label>
+          <select 
+            id="qualifiers" 
+            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
+            size="6"
+          >
+            <option value="">-- Choisir --</option>
+            {wordLists.qualifiers.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+        
+        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block text-white font-medium mb-3">Quantité</label>
+          <select 
+            id="quantities" 
+            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
+            size="6"
+          >
+            <option value="">-- Choisir --</option>
+            {wordLists.quantities.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+        
+        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block text-white font-medium mb-3">Temporalité</label>
+          <select 
+            id="timeframes" 
+            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
+            size="7"
+          >
+            <option value="">-- Choisir --</option>
+            {wordLists.timeframes.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+      </div>
+    </div>
 
+    <!-- Reset Button -->
+    <div class="text-center mt-8">
+      <button 
+        id="resetBtn" 
+        class="btn bg-white/10 text-white hover:bg-white/20"
+      >
+        🔄 Réinitialiser
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Set document date and reference number
+    document.getElementById('document-date').textContent = new Date().toLocaleDateString('fr-FR');
+    document.getElementById('document-ref').textContent = Math.floor(Math.random() * 9999).toString().padStart(4, '0');
+
+    const wordLists = {
+      starters: ["Avec", "Considérant", "Où que nous mène", "Eu égard à", "Vu", "En ce qui concerne", "Dans le cas particulier de"],
+      situations: ["la restriction", "l'orientation", "la crise", "l'inertie", "la difficulté", "l'austérité", "la dégradation"],
+      qualifiers: ["présente", "actuelle", "générale", "induite", "conjoncturelle", "observée", "contextuelle"],
+      actions: ["il convient d#", "il faut", "on se doit d#", "il est préférable d#", "il serait intéressant d#", "il ne faut pas négliger d#", "on ne peut se passer d#"],
+      verbs: ["étudier", "examiner", "favoriser", "prendre en considération", "anticiper", "imaginer", "uniformiser"],
+      quantities: ["toutes les", "chacune des", "la majorité des", "la simultanéité des", "l'ensemble des", "la somme des", "la totalité des"],
+      solutions: ["solutions", "issues", "problématiques", "voies", "alternatives", "organisations matricielles", "améliorations"],
+      outcomes: ["imaginables", "possibles", "s'offrant à nous", "de bon sens", "envisageables", "éventuelles", "réalisables"],
+      timeframes: ["à long terme", "pour longtemps", "à l'avenir", "pour le futur", "depuis longtemps", "à court terme", "rapidement"]
+    };
+
+    function getRandomItem(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
+    function generateSentence() {
+      const starter = getRandomItem(wordLists.starters);
+      const situation = getRandomItem(wordLists.situations);
+      const qualifier = getRandomItem(wordLists.qualifiers);
+      const action = getRandomItem(wordLists.actions);
+      const verb = getRandomItem(wordLists.verbs);
+      const quantity = getRandomItem(wordLists.quantities);
+      const solution = getRandomItem(wordLists.solutions);
+      const outcome = getRandomItem(wordLists.outcomes);
+      const timeframe = getRandomItem(wordLists.timeframes);
+
+      let processedAction = action.replace('d#', verb.startsWith('a') || verb.startsWith('e') || verb.startsWith('i') || verb.startsWith('o') || verb.startsWith('u') ? "d'" : "de");
+
+      const sentence = `${starter} ${situation} ${qualifier}, ${processedAction} ${verb} ${quantity} ${solution} ${outcome} ${timeframe}.`;
+      
+      return sentence;
+    }
+
+    document.getElementById('generateBtn').addEventListener('click', function() {
+      const sentence = generateSentence();
+      document.getElementById('result').innerHTML = `
+        <div class="text-center">
+          <p class="text-lg font-medium text-gray-800 leading-relaxed mb-4">${sentence}</p>
+          <div class="text-sm text-gray-600 italic">
+            <p>« Dans un esprit de miséricorde et de dialogue constructif »</p>
+          </div>
+        </div>
+      `;
+      
+      // Update document reference
+      document.getElementById('document-ref').textContent = Math.floor(Math.random() * 9999).toString().padStart(4, '0');
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', function() {
       const selects = document.querySelectorAll('select');
       selects.forEach(select => {
-        select.addEventListener('change', function() {
-          updateManualSentence();
-        });
+        select.selectedIndex = 0;
+      });
+      document.getElementById('result').innerHTML = `<p class="text-gray-500 text-center italic">Cliquez sur "Générer un nouveau" pour créer un communiqué officiel</p>`;
+    });
+
+    const selects = document.querySelectorAll('select');
+    selects.forEach(select => {
+      select.addEventListener('change', function() {
+        updateManualSentence();
+      });
+    });
+
+    function updateManualSentence() {
+      const selectedValues = {};
+      selects.forEach(select => {
+        if (select.value) {
+          selectedValues[select.id] = select.value;
+        }
       });
 
-      function updateManualSentence() {
-        const selectedValues = {};
-        selects.forEach(select => {
-          if (select.value) {
-            selectedValues[select.id] = select.value;
+      if (Object.keys(selectedValues).length > 0) {
+        let sentence = "";
+        const keys = ['starters', 'situations', 'qualifiers', 'actions', 'verbs', 'quantities', 'solutions', 'outcomes', 'timeframes'];
+        
+        keys.forEach(key => {
+          if (selectedValues[key]) {
+            if (key === 'actions' && selectedValues[key].includes('d#')) {
+              const verb = selectedValues.verbs || 'étudier';
+              const processedAction = selectedValues[key].replace('d#', verb.startsWith('a') || verb.startsWith('e') || verb.startsWith('i') || verb.startsWith('o') || verb.startsWith('u') ? "d'" : "de");
+              sentence += processedAction + " ";
+            } else {
+              sentence += selectedValues[key] + " ";
+            }
           }
         });
 
-        if (Object.keys(selectedValues).length > 0) {
-          let sentence = "";
-          const keys = ['starters', 'situations', 'qualifiers', 'actions', 'verbs', 'quantities', 'solutions', 'outcomes', 'timeframes'];
-          
-          keys.forEach(key => {
-            if (selectedValues[key]) {
-              if (key === 'actions' && selectedValues[key].includes('d#')) {
-                const verb = selectedValues.verbs || 'étudier';
-                const processedAction = selectedValues[key].replace('d#', verb.startsWith('a') || verb.startsWith('e') || verb.startsWith('i') || verb.startsWith('o') || verb.startsWith('u') ? "d'" : "de");
-                sentence += processedAction + " ";
-              } else {
-                sentence += selectedValues[key] + " ";
-              }
-            }
-          });
-
-          if (sentence.trim()) {
-            document.getElementById('result').innerHTML = `<p class="text-2xl text-white text-center leading-relaxed font-medium">${sentence.trim()}.</p>`;
-          }
+        if (sentence.trim()) {
+          document.getElementById('result').innerHTML = `
+            <div class="text-center">
+              <p class="text-lg font-medium text-gray-800 leading-relaxed mb-4">${sentence.trim()}.</p>
+              <div class="text-sm text-gray-600 italic">
+                <p>« Dans un esprit de miséricorde et de dialogue constructif »</p>
+              </div>
+            </div>
+          `;
         }
       }
-    </script>
-  </body>
-</html>
+    }
+  </script>
+</Layout>

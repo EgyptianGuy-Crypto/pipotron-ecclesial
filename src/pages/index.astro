@@ -540,16 +540,15 @@ const bishopNames = [
       // Miséricorde
       "la miséricorde divine s'étend à tous": "on protège nos copains",
       "le pardon évangélique concerne chaque membre": "on s'en fout de la justice",
-      "la miséricorde du Christ embrasse tous": "Jésus pardonne tout",
-      "la compassion divine rayonne sur chacun": "Dieu excuse tout le monde",
+      "la miséricorde du Christ embrasse tous": "j'oublie tout",
+      "la compassion divine rayonne sur chacun": "j'excuse tout le monde",
       "la présomption d'innocence demeure fondamentale": "on veut pas trop fouiller",
-      "le pardon du Seigneur s'offre à tous": "on pardonne même aux coupables",
-      "la miséricorde infinie qui unit tous nos frères": "on est tous copains",
+      "le pardon du Seigneur s'offre à tous": "alors on juge pas, mais vraiment pas",
+      "la miséricorde infinie qui unit tous nos frères": "on est tous copains, on juge pas et on se couvre",
       "victimes et coupables présumés": "tout le monde dans le même sac",
-      "et doit guider notre discernement": "alors on juge pas",
-      "y compris les accusés": "même les coupables",
+      "et doit guider notre discernement": "alors on ne signale pas trop",
       "sans exception": "absolument tout le monde",
-      "même aux plus fautifs": "même aux pires",
+      "même aux plus fautifs": "même à ceux que je couvre",
       "dans la charité": "en mode bisounours",
       
       // Actions (style "on va rien faire")
@@ -857,26 +856,46 @@ const bishopNames = [
 
     document.getElementById('generateBtn').addEventListener('click', generateCommunique);
 
-    document.getElementById('translateBtn').addEventListener('click', function() {
-      if (isTranslated) {
-        document.getElementById('result').innerHTML = '<div class="text-left"><p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">' + currentCommunique + '</p><div class="text-right text-sm text-gray-600 italic mt-4"><p>+ ' + getRandomItem(bishopNames) + '</p><p>Évêque de Saint-Barbant</p></div></div>';
-        this.textContent = '🔍 Traduire en français normal';
-        isTranslated = false;
-      } else {
-        let translatedCommunique = currentCommunique;
-        
-        Object.keys(translations).forEach(key => {
-          const regex = new RegExp(key, 'gi');
-          translatedCommunique = translatedCommunique.replace(regex, 
-            '<span class="line-through text-gray-500">' + key + '</span> <span class="bg-red-200 text-red-800 px-1 rounded font-medium">' + translations[key] + '</span>'
-          );
+document.getElementById('translateBtn').addEventListener('click', function() {
+  if (isTranslated) {
+    document.getElementById('result').innerHTML = '<div class="text-left"><p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">' + currentCommunique + '</p><div class="text-right text-sm text-gray-600 italic mt-4"><p>+ ' + getRandomItem(bishopNames) + '</p><p>Évêque de Saint-Barbant</p></div></div>';
+    this.textContent = '🔍 Traduire en français normal';
+    isTranslated = false;
+  } else {
+    let translatedCommunique = currentCommunique;
+    
+    // Create a map of replacements to avoid cascade effects
+    const replacements = [];
+    
+    Object.keys(translations).forEach(key => {
+      const regex = new RegExp(key, 'gi');
+      let match;
+      while ((match = regex.exec(currentCommunique)) !== null) {
+        replacements.push({
+          start: match.index,
+          end: match.index + match[0].length,
+          original: match[0],
+          replacement: '<span class="line-through text-gray-500">' + match[0] + '</span> <span class="bg-red-200 text-red-800 px-1 rounded font-medium">' + translations[key] + '</span>'
         });
-        
-        document.getElementById('result').innerHTML = '<div class="text-left"><p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">' + translatedCommunique + '</p><div class="text-right text-sm text-gray-600 italic mt-4"><p>+ ' + getRandomItem(bishopNames) + '</p><p>Évêque de Saint-Barbant</p></div></div>';
-        this.textContent = '↩️ Retour à l\'original';
-        isTranslated = true;
       }
     });
+    
+    // Sort replacements by position (descending) to avoid index shifting
+    replacements.sort((a, b) => b.start - a.start);
+    
+    // Apply replacements from end to beginning
+    replacements.forEach(replacement => {
+      translatedCommunique = translatedCommunique.substring(0, replacement.start) + 
+                            replacement.replacement + 
+                            translatedCommunique.substring(replacement.end);
+    });
+    
+    document.getElementById('result').innerHTML = '<div class="text-left"><p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">' + translatedCommunique + '</p><div class="text-right text-sm text-gray-600 italic mt-4"><p>+ ' + getRandomItem(bishopNames) + '</p><p>Évêque de Saint-Barbant</p></div></div>';
+    this.textContent = '↩️ Retour à l\'original';
+    isTranslated = true;
+  }
+});
+
 
     document.getElementById('resetBtn').addEventListener('click', function() {
       const selects = document.querySelectorAll('select');

@@ -66,18 +66,9 @@ const wordLists = {
   ],
 
   tourmentes: [
-    "Dans la tourmente",
-    "Au cœur de la tempête",
-    "En ces temps d'épreuve",
-    "Malgré les turbulences",
-    "Dans cette période difficile",
-    "Au sein de ces bouleversements",
-    "Face à l'adversité",
-    "Dans ces moments troublés",
-    "Malgré les difficultés",
-    "En dépit des épreuves",
-    "Dans ce contexte délicat",
-    "Au milieu des défis"
+    "Dans la tourmente", "Au cœur de la tempête", "En ces temps d'épreuve", "Malgré les turbulences",
+    "Dans cette période difficile", "Au sein de ces bouleversements", "Face à l'adversité", "Dans ces moments troublés",
+    "Malgré les difficultés", "En dépit des épreuves", "Dans ce contexte délicat", "Au milieu des défis"
   ],
 
   goodFruits: [
@@ -151,22 +142,23 @@ const wordLists = {
 };
 
 const bishopNames = [
-  "Mgr Claude-Henri de Miséricorde",
-  "Mgr Adalbert de Contournement", 
-  "Mgr Séraphin du Détournement",
-  "Mgr Boniface de l'Esquive",
-  "Mgr Théophile de la Langue-de-Bois",
-  "Mgr Ambroise du Flou-Artistique",
-  "Mgr Pacôme de l'Évitement",
-  "Mgr Chrysostome de la Diversion",
-  "Mgr Bénédict de l'Évasion",
+  "Mgr Claude-Henri de Miséricorde", "Mgr Adalbert de Contournement", "Mgr Séraphin du Détournement",
+  "Mgr Boniface de l'Esquive", "Mgr Théophile de la Langue-de-Bois", "Mgr Ambroise du Flou-Artistique",
+  "Mgr Pacôme de l'Évitement", "Mgr Chrysostome de la Diversion", "Mgr Bénédict de l'Évasion",
   "Mgr Anselme du Détournement-d'Attention"
 ];
 ---
 
 <Layout title="Pipotron Épiscopal">
   <div class="py-4">
-    <h1 class="mb-6 text-4xl font-bold text-center">Pipotron Épiscopal</h1>
+    <h1 class="mb-2 text-4xl font-bold text-center">Pipotron Épiscopal</h1>
+    
+    <!-- Bandeau d'accroche -->
+    <div class="mb-6 text-center">
+      <p class="text-lg text-white/80 italic">
+        Saurez-vous maximiser la langue de bois de notre évêque (fictif) ?
+      </p>
+    </div>
     
     <div id="progressBar" class="mb-6 mx-auto max-w-4xl hidden">
       <div class="bg-gray-200 rounded-full h-2 mb-2">
@@ -499,9 +491,202 @@ const bishopNames = [
       "Mgr Anselme du Détournement-d'Attention"
     ];
 
-    // Score individuel pour chaque phrase
+    // Translations étoffées et plus drôles
+    const translations = {
+      // Reconnaissance
+      "nous reconnaissons que des dysfonctionnements ont pu survenir": "on s'est fait choper",
+      "nous prenons acte des questionnements de notre communauté": "les gens râlent",
+      "nous entendons les inquiétudes de nos paroissiens": "ça gueule dans les paroisses",
+      "nous mesurons l'ampleur des interrogations suscitées": "c'est la merde totale",
+      "nous sommes conscients des fragilités de notre institution": "on a merdé grave",
+      "nous accueillons les interpellations qui nous sont adressées": "on fait semblant d'écouter",
+      "nous admettons que des manquements ont pu se produire": "bon ok, on a foiré",
+      "nous comprenons les préoccupations de nos fidèles": "on vous a entendus gueuler",
+      "nous entendons les questions légitimes posées": "vos critiques nous gonflent",
+      "nous reconnaissons les difficultés rencontrées": "on avoue qu'on a planté",
+      "nous sommes sensibles aux inquiétudes exprimées": "on fait genre qu'on comprend",
+      "nous prenons la mesure des interrogations soulevées": "on réalise qu'on est dans la merde",
+      
+      // Excuses
+      "manifestons notre proximité aux victimes": "on fait semblant de compatir",
+      "témoignons notre compassion aux personnes troublées": "on dit qu'on est désolés",
+      "exprimons notre soutien aux âmes ébranlées": "on vous tapote l'épaule",
+      "montrons notre solidarité aux personnes affectées": "on fait genre qu'on comprend",
+      "manifestons notre compréhension aux victimes": "on joue la carte de l'empathie",
+      "témoignons notre bienveillance aux personnes touchées": "on vous fait des bisous",
+      "exprimons notre empathie aux victimes": "on compatit (pas vraiment)",
+      "montrons notre attention aux personnes éprouvées": "on fait semblant de s'intéresser",
+      "manifestons notre fraternité aux victimes": "on joue la famille",
+      "témoignons notre sollicitude aux âmes blessées": "on vous plaint (mollement)",
+      "exprimons notre proximité aux personnes affectées": "on fait comme si on était proches",
+      "montrons notre compassion aux victimes": "on sort les violons",
+      "les encourageons à aller de l'avant": "passez à autre chose",
+      "les invitons à tourner la page": "oubliez tout ça",
+      "les accompagnons pour avancer": "on vous pousse vers la sortie",
+      "les encourageons à passer à autre chose": "circulez, y'a rien à voir",
+      "les soutenons pour aller de l'avant": "avancez et fermez-la",
+      "les invitons à tourner la page": "n'en parlons plus",
+      "les encourageons à regarder vers l'avenir": "regardez devant vous",
+      "les accompagnons vers l'avenir": "on vous vire poliment",
+      "par le pardon": "en fermant votre gueule",
+      "dans la réconciliation": "en nous pardonnant",
+      "par la miséricorde": "en nous oubliant",
+      
+      // Miséricorde
+      "la miséricorde divine s'étend à tous": "on protège nos copains",
+      "le pardon évangélique concerne chaque membre": "on s'en fout de la justice",
+      "la miséricorde du Christ embrasse tous": "Jésus pardonne tout",
+      "la compassion divine rayonne sur chacun": "Dieu excuse tout le monde",
+      "la présomption d'innocence demeure fondamentale": "on veut pas trop fouiller",
+      "le pardon du Seigneur s'offre à tous": "on pardonne même aux coupables",
+      "la miséricorde infinie qui unit tous nos frères": "on est tous copains",
+      "victimes et coupables présumés": "tout le monde dans le même sac",
+      "et doit guider notre discernement": "alors on juge pas",
+      "y compris les accusés": "même les coupables",
+      "sans exception": "absolument tout le monde",
+      "même aux plus fautifs": "même aux pires",
+      "dans la charité": "en mode bisounours",
+      
+      // Actions (style "on va rien faire")
+      "nous agissons fermement": "on va rien faire",
+      "nous passons à l'action": "on va peut-être y réfléchir",
+      "nous nous mobilisons résolument": "on va faire semblant",
+      "nous prenons des mesures concrètes": "une commission totalement inutile",
+      "nous nous engageons activement": "on promet (mais on tiendra pas)",
+      "nous mettons tout en œuvre": "on va essayer de faire quelque chose",
+      "en mettant en place un processus": "on va créer des réunions à la con",
+      "en renforçant nos dispositifs": "on va embaucher des consultants",
+      "pour développer une démarche": "pour pondre un rapport bidon",
+      "en instaurant des mécanismes": "en créant de la paperasse inutile",
+      "à consolider nos structures": "à réorganiser le bordel",
+      "pour approfondir notre réflexion": "pour réfléchir encore plus dans le vide",
+      "dans un esprit de synodalité": "en parlant dans le vide",
+      "d'évaluation de nos pratiques": "pour se regarder le nombril",
+      "d'accompagnement spirituel": "de coaching à la con",
+      "de discernement communautaire": "de blabla collectif",
+      "de dialogue renforcés": "de bavardage intensif",
+      "de formation pastorale": "de cours de langue de bois",
+      
+      // Bons fruits (détournement d'attention)
+      "il convient de ne pas occulter": "regardez ailleurs",
+      "nous devons garder à l'esprit": "oubliez le scandale",
+      "il serait injuste d'ignorer": "on fait aussi du bien",
+      "nous ne saurions oublier": "pensez plutôt à ça",
+      "rappelons-nous": "souvenez-vous plutôt",
+      "gardons présents": "concentrez-vous sur",
+      "il importe de souligner": "admirez plutôt",
+      "nous devons reconnaître": "regardez comme c'est beau",
+      "il serait dommage d'omettre": "ne ratez pas ça",
+      "nous ne pouvons ignorer": "vous devez voir ça",
+      "rappelons": "oubliez le reste et regardez",
+      "gardons en mémoire": "retenez surtout ça",
+      "les fruits de grâce de nos paroisses": "nos trucs sympas",
+      "les témoignages de foi de notre diocèse": "nos success stories",
+      "les actions caritatives de nos communautés": "nos bonnes œuvres",
+      "les vocations qui confirment l'Esprit Saint": "nos nouvelles recrues",
+      "les signes d'espérance de notre Église": "nos petits miracles",
+      "les élans missionnaires qui nous dynamisent": "notre motivation",
+      "les merveilles qui s'accomplissent": "nos exploits",
+      "les conversions authentiques": "nos clients satisfaits",
+      "les œuvres caritatives de nos fidèles": "la charité qu'on fait",
+      "les grâces qui abondent": "tous nos trucs géniaux",
+      "les initiatives généreuses": "nos bonnes actions",
+      "les projets porteurs d'espérance": "nos plans d'avenir",
+      
+      // Origine (c'est la faute des autres)
+      "sans nous leurrer sur l'origine": "c'est la faute des autres",
+      "en gardant à l'esprit les sources": "cherchez les vrais coupables",
+      "sans perdre de vue les ferments": "c'est un complot",
+      "sans ignorer les véritables causes": "les responsables sont ailleurs",
+      "en identifiant clairement les racines": "trouvez les vrais méchants",
+      "sans oublier les influences": "c'est organisé contre nous",
+      "de ces perturbations": "de ce bordel",
+      "de ces troubles": "de cette merde",
+      "de division": "qui nous emmerdent",
+      "de ces difficultés": "de ces problèmes",
+      "de ces tensions": "de cette guerre",
+      "qui alimentent ces polémiques": "qui foutent la merde",
+      
+      // Boucs émissaires
+      "certains médias en quête de sensationnalisme": "les journalistes nous embêtent",
+      "des mouvements traditionalistes fermés": "les cathos de droite nous cassent les pieds",
+      "des lobbies progressistes déconnectés": "les cathos de gauche nous emmerdent",
+      "des réseaux occultes hostiles": "c'est la faute des francs-maçons",
+      "des groupuscules anticléricaux": "les athées nous détestent",
+      "des influences séculières": "les laïcs nous font chier",
+      "des organes de presse avides": "les médias nous cherchent",
+      "des courants intégristes figés": "les tradis nous gonflent",
+      "des factions modernistes étrangères": "les progressistes nous emmerdent",
+      "des cercles opposés": "des ennemis",
+      "des militants nourris de préjugés": "des rageux",
+      "des forces s'acharnant": "des méchants qui nous détestent",
+      "cherchant à saper notre rayonnement": "qui veulent nous niquer",
+      "à ternir notre image": "à nous salir",
+      "à l'Évangile": "à la religion",
+      "à la Tradition": "à nos traditions",
+      "au souffle de l'Esprit": "au changement",
+      "à la mission évangélisatrice": "à notre boulot",
+      "anti-religieux": "anti-curés",
+      "dans leurs certitudes": "dans leur délire",
+      
+      // Fins spirituelles (blabla pseudo-spirituel)
+      "afin d'ouvrir des fenêtres d'espérance": "blabla pseudo-spirituel",
+      "pour que jaillissent des sources de grâce": "baratin mystique",
+      "en vue de faire germer la paix": "charabia religieux",
+      "dans l'espoir de voir fleurir": "délire mystique",
+      "pour que résonne la mélodie céleste": "blabla céleste",
+      "afin que s'épanouisse la lumière": "baratin lumineux",
+      "pour que s'ouvrent les chemins": "charabia spirituel",
+      "afin que rayonnent les fruits": "délire fruité",
+      "en vue de cultiver les vertus": "baratin vertueux",
+      "dans l'attente de voir grandir": "blabla d'attente",
+      "pour que s'accomplisse la volonté divine": "pour que Dieu soit content",
+      "afin que se manifestent les signes": "pour que ça se voie",
+      "sur l'éternité": "pour toujours",
+      "dans nos cœurs": "en nous",
+      "dans nos âmes": "dans nos têtes",
+      "dans nos prières": "quand on prie",
+      "du Christ": "de Jésus",
+      "de l'Esprit Saint": "du Saint-Esprit",
+      "dans nos communautés": "chez nous",
+      "la communion fraternelle": "qu'on s'aime bien",
+      "dans nos vies": "dans notre quotidien",
+      "du Royaume": "du paradis",
+      "de la réconciliation": "de la réconciliation",
+      "de l'Esprit Saint": "du Saint-Esprit",
+      "des vertus théologales": "des trucs religieux",
+      "des signes du Royaume": "des signes du paradis",
+      
+      // Conclusions (détournement final)
+      "concentrons-nous sur ce qui est beau": "parlons d'autre chose",
+      "tournons nos regards vers l'espérance": "ignorez le problème",
+      "privilégions nos liturgies": "la messe c'est plus important",
+      "préférons l'écoute fraternelle": "fermez-la et priez",
+      "choisissons le dialogue": "arrêtez de nous emmerder",
+      "focalisons-nous sur notre mission": "on a autre chose à faire",
+      "orientons nos cœurs vers la beauté": "regardez comme c'est joli",
+      "dirigeons notre attention vers les merveilles": "admirez plutôt ça",
+      "favorisons la prière contemplative": "priez au lieu de râler",
+      "préférons la méditation spirituelle": "méditez plutôt",
+      "choisissons la charité chrétienne": "soyez gentils",
+      "concentrons-nous sur l'essentiel": "revenons aux choses importantes",
+      "et évangélique": "et religieux",
+      "plutôt que vers les polémiques": "au lieu de nous faire chier",
+      "aux controverses médiatiques": "aux conneries des journalistes",
+      "aux clameurs stériles": "aux cris inutiles",
+      "plutôt que les divisions": "au lieu de nous diviser",
+      "d'évangélisation": "de conversion",
+      "de la foi": "de la religion",
+      "de la Création": "de ce que Dieu a fait",
+      "plutôt que vers les divisions": "au lieu de nous séparer",
+      "aux débats stériles": "aux discussions inutiles",
+      "aux polémiques destructrices": "aux disputes qui cassent tout",
+      "plutôt que les affrontements": "au lieu de nous battre",
+      "de notre vocation pastorale": "de notre job de curés"
+    };
+
+    // Score individuel pour chaque phrase (identique au précédent)
     const phraseScores = {
-      // Incidents (1-3 points)
       "Suite aux récents événements qui ont touché notre communauté diocésaine": 2,
       "Face aux difficultés pastorales que traverse notre diocèse en ces temps troublés": 3,
       "Concernant les situations portées à notre attention": 1,
@@ -514,8 +699,6 @@ const bishopNames = [
       "À la suite des événements qui ont marqué notre famille diocésaine": 3,
       "Devant les enjeux pastoraux de cette période délicate": 3,
       "En réaction aux inquiétudes exprimées": 1,
-
-      // Acknowledgments (1-2 points)
       "nous reconnaissons que des dysfonctionnements ont pu survenir": 1,
       "nous prenons acte des questionnements de notre communauté": 2,
       "nous entendons les inquiétudes de nos paroissiens": 1,
@@ -528,8 +711,6 @@ const bishopNames = [
       "nous reconnaissons les difficultés rencontrées": 1,
       "nous sommes sensibles aux inquiétudes exprimées": 2,
       "nous prenons la mesure des interrogations soulevées": 2,
-
-      // Apologies (2-4 points)
       "manifestons notre proximité aux victimes et les encourageons à aller de l'avant par le pardon": 4,
       "témoignons notre compassion aux personnes troublées et les invitons à tourner la page dans la réconciliation": 4,
       "exprimons notre soutien aux âmes ébranlées et les accompagnons pour avancer par la miséricorde": 3,
@@ -542,24 +723,18 @@ const bishopNames = [
       "témoignons notre sollicitude aux âmes blessées et les encourageons à tourner la page dans le pardon": 4,
       "exprimons notre proximité aux personnes affectées et les soutenons pour passer à autre chose par la réconciliation": 4,
       "montrons notre compassion aux victimes et les accompagnons vers l'avenir dans la miséricorde": 3,
-
-      // Miséricorde (3-5 points)
       "Rappelons que la miséricorde divine s'étend à tous, et doit guider notre discernement": 4,
       "Le pardon évangélique concerne chaque membre de notre communauté, y compris les accusés": 5,
       "La miséricorde du Christ embrasse tous les enfants de Dieu sans exception": 4,
       "La compassion divine rayonne sur chacun. La présomption d'innocence demeure fondamentale": 5,
       "Le pardon du Seigneur s'offre à tous, même aux plus fautifs d'entre nous": 5,
       "Méditons sur la miséricorde infinie qui unit tous nos frères, victimes et coupables présumés, dans la charité": 5,
-
-      // Actions (3-5 points)
       "Nous agissons fermement en mettant en place un processus d'évaluation de nos pratiques": 5,
       "Nous passons à l'action en renforçant nos dispositifs d'accompagnement spirituel": 4,
       "Nous nous mobilisons résolument pour développer une démarche de discernement communautaire": 5,
       "Nous prenons des mesures concrètes en instaurant des mécanismes de dialogue renforcés": 5,
       "Nous nous engageons activement à consolider nos structures de formation pastorale": 4,
       "Nous mettons tout en œuvre pour approfondir notre réflexion dans un esprit de synodalité": 5,
-
-      // GoodFruits (2-4 points)
       "il convient de ne pas occulter les fruits de grâce de nos paroisses": 4,
       "nous devons garder à l'esprit les témoignages de foi de notre diocèse": 3,
       "il serait injuste d'ignorer les actions caritatives de nos communautés": 3,
@@ -572,16 +747,12 @@ const bishopNames = [
       "nous ne pouvons ignorer les grâces qui abondent dans nos communautés": 4,
       "rappelons les initiatives généreuses qui fleurissent dans notre Église": 3,
       "gardons en mémoire les projets porteurs d'espérance qui nous animent": 3,
-
-      // OriginDeflection (3-4 points)
       "sans nous leurrer sur l'origine de ces perturbations": 4,
       "en gardant à l'esprit les sources de ces troubles": 3,
       "sans perdre de vue les ferments de division": 4,
       "sans ignorer les véritables causes de ces difficultés": 3,
       "en identifiant clairement les racines de ces tensions": 4,
       "sans oublier les influences qui alimentent ces polémiques": 4,
-
-      // Scapegoats (2-4 points)
       "certains médias en quête de sensationnalisme": 3,
       "des mouvements traditionalistes fermés au souffle de l'Esprit": 4,
       "des lobbies progressistes déconnectés de la Tradition": 4,
@@ -594,8 +765,6 @@ const bishopNames = [
       "des cercles opposés à la mission évangélisatrice": 3,
       "des militants nourris de préjugés anti-religieux": 3,
       "des forces s'acharnant à ternir notre image": 3,
-
-      // SpiritualEndings (1-3 points)
       "afin d'ouvrir des fenêtres d'espérance sur l'éternité": 3,
       "pour que jaillissent des sources de grâce dans nos cœurs": 3,
       "en vue de faire germer la paix évangélique dans nos âmes": 3,
@@ -608,8 +777,6 @@ const bishopNames = [
       "dans l'attente de voir grandir la communion fraternelle": 2,
       "pour que s'accomplisse la volonté divine dans nos vies": 2,
       "afin que se manifestent les signes du Royaume": 3,
-
-      // Closings (2-4 points)
       "Concentrons-nous sur ce qui est beau et évangélique": 3,
       "Tournons nos regards vers l'espérance chrétienne plutôt que vers les polémiques": 4,
       "Privilégions nos liturgies aux controverses médiatiques": 4,
@@ -624,51 +791,6 @@ const bishopNames = [
       "Concentrons-nous sur l'essentiel de notre vocation pastorale": 3
     };
 
-    // Translations (raccourcies pour éviter les erreurs de build)
-    const translations = {
-      "nous reconnaissons que des dysfonctionnements ont pu survenir": "on s'est fait choper",
-      "nous prenons acte des questionnements de notre communauté": "les gens râlent",
-      "nous entendons les inquiétudes de nos paroissiens": "ça gueule dans les paroisses",
-      "nous mesurons l'ampleur des interrogations suscitées": "c'est la merde",
-      "nous sommes conscients des fragilités de notre institution": "on a merdé",
-      "nous accueillons les interpellations qui nous sont adressées": "on fait semblant d'écouter",
-      "nous admettons que des manquements ont pu se produire": "bon ok, on a foiré",
-      "nous comprenons les préoccupations de nos fidèles": "on vous a entendus crier",
-      "manifestons notre proximité aux victimes": "on fait semblant de compatir",
-      "témoignons notre compassion aux personnes troublées": "on dit qu'on est désolés",
-      "exprimons notre soutien aux âmes ébranlées": "on vous tapote l'épaule",
-      "montrons notre solidarité aux personnes affectées": "on fait genre qu'on comprend",
-      "les encourageons à aller de l'avant": "passez à autre chose",
-      "les invitons à tourner la page": "oubliez tout ça",
-      "par le pardon": "en fermant votre gueule",
-      "dans la réconciliation": "en nous pardonnant",
-      "par la miséricorde": "en nous oubliant",
-      "la miséricorde divine s'étend à tous": "on protège nos copains",
-      "le pardon évangélique concerne chaque membre": "on s'en fout de la justice",
-      "la présomption d'innocence demeure fondamentale": "ils sont innocents jusqu'à preuve du contraire",
-      "nous agissons fermement": "on ne fait rien de concret",
-      "nous passons à l'action": "on va réfléchir à agir",
-      "nous nous mobilisons résolument": "on va faire semblant",
-      "nous prenons des mesures concrètes": "on va créer une commission",
-      "il convient de ne pas occulter": "regardez ailleurs",
-      "nous devons garder à l'esprit": "oubliez le scandale",
-      "il serait injuste d'ignorer": "on fait aussi du bien",
-      "sans nous leurrer sur l'origine": "c'est la faute des autres",
-      "en gardant à l'esprit les sources": "cherchez les vrais coupables",
-      "sans perdre de vue les ferments": "c'est un complot",
-      "certains médias en quête de sensationnalisme": "les journalistes nous embêtent",
-      "des mouvements traditionalistes fermés": "les cathos de droite nous cassent les pieds",
-      "des lobbies progressistes déconnectés": "les cathos de gauche nous emmerdent",
-      "des réseaux occultes hostiles": "c'est la faute des francs-maçons",
-      "des groupuscules anticléricaux": "les athées nous détestent",
-      "concentrons-nous sur ce qui est beau": "parlons d'autre chose",
-      "tournons nos regards vers l'espérance": "ignorez le problème",
-      "privilégions nos liturgies": "la messe c'est plus important",
-      "préférons l'écoute fraternelle": "fermez-la et priez",
-      "choisissons le dialogue": "arrêtez de nous emmerder",
-      "focalisons-nous sur notre mission": "on a autre chose à faire"
-    };
-
     function getRandomItem(array) {
       return array[Math.floor(Math.random() * array.length)];
     }
@@ -676,14 +798,12 @@ const bishopNames = [
     function calculateBullshitLevel(selectedTexts) {
       let totalScore = 0;
       
-      // Calculer le score basé sur chaque phrase sélectionnée
       Object.values(selectedTexts).forEach(text => {
         if (text && phraseScores[text]) {
           totalScore += phraseScores[text];
         }
       });
       
-      // Convertir en niveau sur 10 (score max théorique environ 45)
       const level = Math.min(Math.max(Math.ceil(totalScore / 5), 6), 10);
       return level;
     }

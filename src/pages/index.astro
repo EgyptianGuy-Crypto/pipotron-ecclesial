@@ -1,43 +1,96 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Word lists from your screenshot
+// New word lists for episcopal miséricorde
 const wordLists = {
-  starters: [
-    "Avec", "Considérant", "Où que nous mène", "Eu égard à", "Vu",
-    "En ce qui concerne", "Dans le cas particulier de"
+  // Vague incident starters
+  incidents: [
+    "Suite aux récents événements qui ont touché notre communauté",
+    "Face aux difficultés que traverse actuellement notre diocèse",
+    "Concernant les situations délicates portées à notre attention",
+    "À la lumière des témoignages qui nous sont parvenus",
+    "Devant les défis pastoraux auxquels nous sommes confrontés",
+    "En réponse aux préoccupations légitimes de nos fidèles"
   ],
-  situations: [
-    "la restriction", "l'orientation", "la crise", "l'inertie", 
-    "la difficulté", "l'austérité", "la dégradation"
+  
+  // Vague acknowledgments
+  acknowledgments: [
+    "nous reconnaissons avec humilité que des dysfonctionnements ont pu survenir",
+    "nous prenons acte des questionnements soulevés par certains membres de notre communauté",
+    "nous entendons les inquiétudes exprimées par nos paroissiens",
+    "nous mesurons l'ampleur des interrogations suscitées",
+    "nous sommes conscients des fragilités qui ont pu se manifester",
+    "nous accueillons avec sérieux les interpellations qui nous sont adressées"
   ],
-  qualifiers: [
-    "présente", "actuelle", "générale", "induite", 
-    "conjoncturelle", "observée", "contextuelle"
+  
+  // Good fruits deflection
+  goodFruits: [
+    "il convient néanmoins de ne pas occulter les nombreux fruits de grâce qui jaillissent quotidiennement dans nos paroisses",
+    "nous devons garder à l'esprit les merveilleux témoignages de foi qui illuminent notre diocèse",
+    "il serait injuste d'ignorer les multiples actions caritatives qui rayonnent dans nos communautés",
+    "nous ne saurions oublier les vocations florissantes et les conversions authentiques qui nous réjouissent",
+    "rappelons-nous les signes d'espérance qui bourgeonnent dans le terreau fertile de notre Église locale",
+    "gardons présents à l'esprit les élans missionnaires qui dynamisent notre pastorale"
   ],
+  
+  // Origin deflection
+  originDeflection: [
+    "sans nous leurrer sur l'origine véritable de ces perturbations",
+    "en gardant à l'esprit les véritables sources de ces troubles",
+    "sans perdre de vue les racines profondes de ces difficultés",
+    "en identifiant clairement les ferments de division qui nous assaillent",
+    "sans ignorer les forces centrifuges qui cherchent à déstabiliser notre unité",
+    "en discernant les influences délétères qui s'exercent sur notre communauté"
+  ],
+  
+  // Scapegoats
+  scapegoats: [
+    "certains médias en quête de sensationnalisme et prompts à la désinformation",
+    "des mouvements traditionalistes nostalgiques d'un passé révolu et fermés au souffle de l'Esprit",
+    "des lobbies progressistes déconnectés de la Tradition vivante de l'Église",
+    "des réseaux maçonniques hostiles à l'influence bénéfique de l'Évangile dans la société",
+    "des groupuscules anticléricaux animés par une idéologie hostile à la foi",
+    "des influences séculières cherchant à saper l'autorité légitime de l'Église"
+  ],
+  
+  // Langue de bois responses
+  responses: [
+    "dans un esprit de dialogue constructif et de discernement pastoral",
+    "en nous appuyant sur les valeurs évangéliques qui nous guident",
+    "avec le souci constant du bien commun et de l'unité de notre Église",
+    "dans une démarche de vérité et de réconciliation",
+    "en privilégiant l'écoute bienveillante et l'accompagnement personnalisé",
+    "dans le respect de la dignité de chaque personne concernée"
+  ],
+  
+  // Actions (vague)
   actions: [
-    "il convient d#", "il faut", "on se doit d#", "il est préférable d#",
-    "il serait intéressant d#", "il ne faut pas négliger d#", "on ne peut se passer d#"
+    "nous nous engageons à approfondir notre réflexion collégiale",
+    "nous mettons en place un processus d'évaluation et d'amélioration continue",
+    "nous renforçons nos dispositifs d'accompagnement et de formation",
+    "nous développons une approche plus collaborative et transparente",
+    "nous intensifions notre travail de prévention et de sensibilisation",
+    "nous consolidons nos structures d'écoute et de médiation"
   ],
-  verbs: [
-    "étudier", "examiner", "favoriser", "prendre en considération",
-    "anticiper", "imaginer", "uniformiser"
+  
+  // Spiritual endings
+  spiritualEndings: [
+    "afin d'ouvrir des fenêtres d'espérance sur des vallées d'éternité",
+    "pour que jaillissent des sources de grâce dans nos cœurs meurtris",
+    "en vue de faire germer des semences de paix dans le jardin de nos âmes",
+    "dans l'espoir de voir fleurir la miséricorde divine dans nos communautés",
+    "pour que résonne l'harmonie céleste dans le silence de nos prières",
+    "afin que s'épanouisse la lumière du Christ dans les ténèbres de nos épreuves"
   ],
-  quantities: [
-    "toutes les", "chacune des", "la majorité des", "la simultanéité des",
-    "l'ensemble des", "la somme des", "la totalité des"
-  ],
-  solutions: [
-    "solutions", "issues", "problématiques", "voies", "alternatives",
-    "organisations matricielles", "améliorations"
-  ],
-  outcomes: [
-    "imaginables", "possibles", "s'offrant à nous", "de bon sens",
-    "envisageables", "éventuelles", "réalisables"
-  ],
-  timeframes: [
-    "à long terme", "pour longtemps", "à l'avenir", "pour le futur",
-    "depuis longtemps", "à court terme", "rapidement"
+  
+  // Bullshitty closings
+  closings: [
+    "Concentrons-nous sur ce qui est beau et élevons nos cœurs vers les sphères supérieures de la contemplation",
+    "Focalisons-nous sur les merveilles de la Création et laissons donc les fanges boueuses à ceux qui aiment traîner dedans",
+    "Tournons nos regards vers les horizons lumineux de l'espérance plutôt que vers les marécages de la polémique",
+    "Privilégions la beauté des liturgies solennelles aux cacophonies des controverses stériles",
+    "Préférons les chants grégoriens aux clameurs médiatiques qui troublent la sérénité de nos âmes",
+    "Choisissons les parfums de l'encens aux miasmes de la calomnie qui empoisonnent l'atmosphère"
   ]
 };
 ---
@@ -70,7 +123,7 @@ const wordLists = {
         <div class="p-8">
           <div id="result" class="min-h-32 flex items-center justify-center">
             <p class="text-gray-500 text-center italic">
-              Cliquez sur "Générer un nouveau" pour créer un communiqué officiel
+              Cliquez sur "Générer un nouveau" pour créer un communiqué de miséricorde
             </p>
           </div>
         </div>
@@ -89,7 +142,7 @@ const wordLists = {
         id="generateBtn" 
         class="btn btn-lg bg-yellow-600 text-black hover:bg-yellow-700 font-semibold"
       >
-        📜 Générer un nouveau communiqué
+        🙏 Générer un nouveau communiqué de miséricorde
       </button>
     </div>
 
@@ -101,120 +154,120 @@ const wordLists = {
     </div>
 
     <!-- Word Lists Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <!-- Column 1 -->
-      <div class="space-y-6">
+      <div class="space-y-4">
         <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">Début</label>
+          <label class="block text-white font-medium mb-3">📰 Incident (vague)</label>
           <select 
-            id="starters" 
-            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
-            size="6"
+            id="incidents" 
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
+            size="5"
           >
             <option value="">-- Choisir --</option>
-            {wordLists.starters.map(word => <option value={word}>{word}</option>)}
+            {wordLists.incidents.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
         
         <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">Action</label>
+          <label class="block text-white font-medium mb-3">🍇 Bons fruits</label>
+          <select 
+            id="goodFruits" 
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
+            size="5"
+          >
+            <option value="">-- Choisir --</option>
+            {wordLists.goodFruits.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+        
+        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+          <label class="block text-white font-medium mb-3">⚡ Actions (vagues)</label>
           <select 
             id="actions" 
-            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
-            size="6"
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
+            size="5"
           >
             <option value="">-- Choisir --</option>
             {wordLists.actions.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
-        
-        <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">Solutions</label>
-          <select 
-            id="solutions" 
-            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
-            size="6"
-          >
-            <option value="">-- Choisir --</option>
-            {wordLists.solutions.map(word => <option value={word}>{word}</option>)}
-          </select>
-        </div>
       </div>
 
       <!-- Column 2 -->
-      <div class="space-y-6">
+      <div class="space-y-4">
         <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">Situation</label>
+          <label class="block text-white font-medium mb-3">😔 Reconnaissance (floue)</label>
           <select 
-            id="situations" 
-            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
-            size="6"
+            id="acknowledgments" 
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
+            size="5"
           >
             <option value="">-- Choisir --</option>
-            {wordLists.situations.map(word => <option value={word}>{word}</option>)}
+            {wordLists.acknowledgments.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
         
         <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">Verbe</label>
+          <label class="block text-white font-medium mb-3">🔍 Origine (déflection)</label>
           <select 
-            id="verbs" 
-            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
-            size="6"
+            id="originDeflection" 
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
+            size="5"
           >
             <option value="">-- Choisir --</option>
-            {wordLists.verbs.map(word => <option value={word}>{word}</option>)}
+            {wordLists.originDeflection.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
         
         <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">Résultat</label>
+          <label class="block text-white font-medium mb-3">✨ Fin spirituelle</label>
           <select 
-            id="outcomes" 
-            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
-            size="6"
+            id="spiritualEndings" 
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
+            size="5"
           >
             <option value="">-- Choisir --</option>
-            {wordLists.outcomes.map(word => <option value={word}>{word}</option>)}
+            {wordLists.spiritualEndings.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
       </div>
 
       <!-- Column 3 -->
-      <div class="space-y-6">
+      <div class="space-y-4">
         <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">Qualificatif</label>
+          <label class="block text-white font-medium mb-3">🎯 Boucs émissaires</label>
           <select 
-            id="qualifiers" 
-            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
-            size="6"
+            id="scapegoats" 
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
+            size="5"
           >
             <option value="">-- Choisir --</option>
-            {wordLists.qualifiers.map(word => <option value={word}>{word}</option>)}
+            {wordLists.scapegoats.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
         
         <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">Quantité</label>
+          <label class="block text-white font-medium mb-3">🤝 Réponse (langue de bois)</label>
           <select 
-            id="quantities" 
-            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
-            size="6"
+            id="responses" 
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
+            size="5"
           >
             <option value="">-- Choisir --</option>
-            {wordLists.quantities.map(word => <option value={word}>{word}</option>)}
+            {wordLists.responses.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
         
         <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-          <label class="block text-white font-medium mb-3">Temporalité</label>
+          <label class="block text-white font-medium mb-3">🌸 Conclusion bullshitty</label>
           <select 
-            id="timeframes" 
-            class="w-full p-3 bg-white/10 border border-white/20 rounded text-white" 
-            size="7"
+            id="closings" 
+            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-sm" 
+            size="5"
           >
             <option value="">-- Choisir --</option>
-            {wordLists.timeframes.map(word => <option value={word}>{word}</option>)}
+            {wordLists.closings.map(word => <option value={word}>{word}</option>)}
           </select>
         </div>
       </div>
@@ -233,46 +286,116 @@ const wordLists = {
 
   <script>
     const wordLists = {
-      starters: ["Avec", "Considérant", "Où que nous mène", "Eu égard à", "Vu", "En ce qui concerne", "Dans le cas particulier de"],
-      situations: ["la restriction", "l'orientation", "la crise", "l'inertie", "la difficulté", "l'austérité", "la dégradation"],
-      qualifiers: ["présente", "actuelle", "générale", "induite", "conjoncturelle", "observée", "contextuelle"],
-      actions: ["il convient d#", "il faut", "on se doit d#", "il est préférable d#", "il serait intéressant d#", "il ne faut pas négliger d#", "on ne peut se passer d#"],
-      verbs: ["étudier", "examiner", "favoriser", "prendre en considération", "anticiper", "imaginer", "uniformiser"],
-      quantities: ["toutes les", "chacune des", "la majorité des", "la simultanéité des", "l'ensemble des", "la somme des", "la totalité des"],
-      solutions: ["solutions", "issues", "problématiques", "voies", "alternatives", "organisations matricielles", "améliorations"],
-      outcomes: ["imaginables", "possibles", "s'offrant à nous", "de bon sens", "envisageables", "éventuelles", "réalisables"],
-      timeframes: ["à long terme", "pour longtemps", "à l'avenir", "pour le futur", "depuis longtemps", "à court terme", "rapidement"]
+      incidents: [
+        "Suite aux récents événements qui ont touché notre communauté",
+        "Face aux difficultés que traverse actuellement notre diocèse",
+        "Concernant les situations délicates portées à notre attention",
+        "À la lumière des témoignages qui nous sont parvenus",
+        "Devant les défis pastoraux auxquels nous sommes confrontés",
+        "En réponse aux préoccupations légitimes de nos fidèles"
+      ],
+      acknowledgments: [
+        "nous reconnaissons avec humilité que des dysfonctionnements ont pu survenir",
+        "nous prenons acte des questionnements soulevés par certains membres de notre communauté",
+        "nous entendons les inquiétudes exprimées par nos paroissiens",
+        "nous mesurons l'ampleur des interrogations suscitées",
+        "nous sommes conscients des fragilités qui ont pu se manifester",
+        "nous accueillons avec sérieux les interpellations qui nous sont adressées"
+      ],
+      goodFruits: [
+        "il convient néanmoins de ne pas occulter les nombreux fruits de grâce qui jaillissent quotidiennement dans nos paroisses",
+        "nous devons garder à l'esprit les merveilleux témoignages de foi qui illuminent notre diocèse",
+        "il serait injuste d'ignorer les multiples actions caritatives qui rayonnent dans nos communautés",
+        "nous ne saurions oublier les vocations florissantes et les conversions authentiques qui nous réjouissent",
+        "rappelons-nous les signes d'espérance qui bourgeonnent dans le terreau fertile de notre Église locale",
+        "gardons présents à l'esprit les élans missionnaires qui dynamisent notre pastorale"
+      ],
+      originDeflection: [
+        "sans nous leurrer sur l'origine véritable de ces perturbations",
+        "en gardant à l'esprit les véritables sources de ces troubles",
+        "sans perdre de vue les racines profondes de ces difficultés",
+        "en identifiant clairement les ferments de division qui nous assaillent",
+        "sans ignorer les forces centrifuges qui cherchent à déstabiliser notre unité",
+        "en discernant les influences délétères qui s'exercent sur notre communauté"
+      ],
+      scapegoats: [
+        "certains médias en quête de sensationnalisme et prompts à la désinformation",
+        "des mouvements traditionalistes nostalgiques d'un passé révolu et fermés au souffle de l'Esprit",
+        "des lobbies progressistes déconnectés de la Tradition vivante de l'Église",
+        "des réseaux maçonniques hostiles à l'influence bénéfique de l'Évangile dans la société",
+        "des groupuscules anticléricaux animés par une idéologie hostile à la foi",
+        "des influences séculières cherchant à saper l'autorité légitime de l'Église"
+      ],
+      responses: [
+        "dans un esprit de dialogue constructif et de discernement pastoral",
+        "en nous appuyant sur les valeurs évangéliques qui nous guident",
+        "avec le souci constant du bien commun et de l'unité de notre Église",
+        "dans une démarche de vérité et de réconciliation",
+        "en privilégiant l'écoute bienveillante et l'accompagnement personnalisé",
+        "dans le respect de la dignité de chaque personne concernée"
+      ],
+      actions: [
+        "nous nous engageons à approfondir notre réflexion collégiale",
+        "nous mettons en place un processus d'évaluation et d'amélioration continue",
+        "nous renforçons nos dispositifs d'accompagnement et de formation",
+        "nous développons une approche plus collaborative et transparente",
+        "nous intensifions notre travail de prévention et de sensibilisation",
+        "nous consolidons nos structures d'écoute et de médiation"
+      ],
+      spiritualEndings: [
+        "afin d'ouvrir des fenêtres d'espérance sur des vallées d'éternité",
+        "pour que jaillissent des sources de grâce dans nos cœurs meurtris",
+        "en vue de faire germer des semences de paix dans le jardin de nos âmes",
+        "dans l'espoir de voir fleurir la miséricorde divine dans nos communautés",
+        "pour que résonne l'harmonie céleste dans le silence de nos prières",
+        "afin que s'épanouisse la lumière du Christ dans les ténèbres de nos épreuves"
+      ],
+      closings: [
+        "Concentrons-nous sur ce qui est beau et élevons nos cœurs vers les sphères supérieures de la contemplation",
+        "Focalisons-nous sur les merveilles de la Création et laissons donc les fanges boueuses à ceux qui aiment traîner dedans",
+        "Tournons nos regards vers les horizons lumineux de l'espérance plutôt que vers les marécages de la polémique",
+        "Privilégions la beauté des liturgies solennelles aux cacophonies des controverses stériles",
+        "Préférons les chants grégoriens aux clameurs médiatiques qui troublent la sérénité de nos âmes",
+        "Choisissons les parfums de l'encens aux miasmes de la calomnie qui empoisonnent l'atmosphère"
+      ]
     };
 
     function getRandomItem(array) {
       return array[Math.floor(Math.random() * array.length)];
     }
 
-    function generateSentence() {
-      const starter = getRandomItem(wordLists.starters);
-      const situation = getRandomItem(wordLists.situations);
-      const qualifier = getRandomItem(wordLists.qualifiers);
+    function generateCommunique() {
+      const incident = getRandomItem(wordLists.incidents);
+      const acknowledgment = getRandomItem(wordLists.acknowledgments);
+      const goodFruit = getRandomItem(wordLists.goodFruits);
+      const originDeflection = getRandomItem(wordLists.originDeflection);
+      const scapegoat = getRandomItem(wordLists.scapegoats);
+      const response = getRandomItem(wordLists.responses);
       const action = getRandomItem(wordLists.actions);
-      const verb = getRandomItem(wordLists.verbs);
-      const quantity = getRandomItem(wordLists.quantities);
-      const solution = getRandomItem(wordLists.solutions);
-      const outcome = getRandomItem(wordLists.outcomes);
-      const timeframe = getRandomItem(wordLists.timeframes);
+      const spiritualEnding = getRandomItem(wordLists.spiritualEndings);
+      const closing = getRandomItem(wordLists.closings);
 
-      let processedAction = action.replace('d#', verb.startsWith('a') || verb.startsWith('e') || verb.startsWith('i') || verb.startsWith('o') || verb.startsWith('u') ? "d'" : "de");
+      const communique = `${incident}, ${acknowledgment}. 
 
-      const sentence = `${starter} ${situation} ${qualifier}, ${processedAction} ${verb} ${quantity} ${solution} ${outcome} ${timeframe}.`;
+Cependant, ${goodFruit}. 
+
+Il importe également, ${originDeflection}, de ne pas céder aux manœuvres de ${scapegoat}.
+
+C'est pourquoi, ${response}, ${action} ${spiritualEnding}.
+
+${closing}.`;
       
-      return sentence;
+      return communique;
     }
 
     document.getElementById('generateBtn').addEventListener('click', function() {
-      const sentence = generateSentence();
+      const communique = generateCommunique();
       document.getElementById('result').innerHTML = `
-        <div class="text-center">
-          <p class="text-lg font-medium text-gray-800 leading-relaxed mb-4">${sentence}</p>
-          <div class="text-sm text-gray-600 italic">
-            <p>« Dans un esprit de miséricorde et de dialogue constructif »</p>
+        <div class="text-left">
+          <p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">${communique}</p>
+          <div class="text-right text-sm text-gray-600 italic mt-4">
+            <p>+ Monseigneur Claude-Henri de Miséricorde</p>
+            <p>Évêque de Saint-Barbant</p>
           </div>
         </div>
       `;
@@ -283,17 +406,17 @@ const wordLists = {
       selects.forEach(select => {
         select.selectedIndex = 0;
       });
-      document.getElementById('result').innerHTML = `<p class="text-gray-500 text-center italic">Cliquez sur "Générer un nouveau" pour créer un communiqué officiel</p>`;
+      document.getElementById('result').innerHTML = `<p class="text-gray-500 text-center italic">Cliquez sur "Générer un nouveau" pour créer un communiqué de miséricorde</p>`;
     });
 
     const selects = document.querySelectorAll('select');
     selects.forEach(select => {
       select.addEventListener('change', function() {
-        updateManualSentence();
+        updateManualCommunique();
       });
     });
 
-    function updateManualSentence() {
+    function updateManualCommunique() {
       const selectedValues = {};
       selects.forEach(select => {
         if (select.value) {
@@ -302,27 +425,29 @@ const wordLists = {
       });
 
       if (Object.keys(selectedValues).length > 0) {
-        let sentence = "";
-        const keys = ['starters', 'situations', 'qualifiers', 'actions', 'verbs', 'quantities', 'solutions', 'outcomes', 'timeframes'];
+        let communique = "";
         
-        keys.forEach(key => {
-          if (selectedValues[key]) {
-            if (key === 'actions' && selectedValues[key].includes('d#')) {
-              const verb = selectedValues.verbs || 'étudier';
-              const processedAction = selectedValues[key].replace('d#', verb.startsWith('a') || verb.startsWith('e') || verb.startsWith('i') || verb.startsWith('o') || verb.startsWith('u') ? "d'" : "de");
-              sentence += processedAction + " ";
-            } else {
-              sentence += selectedValues[key] + " ";
-            }
-          }
-        });
+        if (selectedValues.incidents) communique += selectedValues.incidents;
+        if (selectedValues.acknowledgments) communique += `, ${selectedValues.acknowledgments}.`;
+        if (selectedValues.goodFruits) communique += `\n\nCependant, ${selectedValues.goodFruits}.`;
+        if (selectedValues.originDeflection || selectedValues.scapegoats) {
+          communique += "\n\nIl importe également, ";
+          if (selectedValues.originDeflection) communique += selectedValues.originDeflection + ", ";
+          if (selectedValues.scapegoats) communique += `de ne pas céder aux manœuvres de ${selectedValues.scapegoats}.`;
+        }
+        if (selectedValues.responses || selectedValues.actions) communique += "\n\nC'est pourquoi, ";
+        if (selectedValues.responses) communique += selectedValues.responses + ", ";
+        if (selectedValues.actions) communique += selectedValues.actions + " ";
+        if (selectedValues.spiritualEndings) communique += selectedValues.spiritualEndings + ".";
+        if (selectedValues.closings) communique += `\n\n${selectedValues.closings}.`;
 
-        if (sentence.trim()) {
+        if (communique.trim()) {
           document.getElementById('result').innerHTML = `
-            <div class="text-center">
-              <p class="text-lg font-medium text-gray-800 leading-relaxed mb-4">${sentence.trim()}.</p>
-              <div class="text-sm text-gray-600 italic">
-                <p>« Dans un esprit de miséricorde et de dialogue constructif »</p>
+            <div class="text-left">
+              <p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">${communique}</p>
+              <div class="text-right text-sm text-gray-600 italic mt-4">
+                <p>+ Monseigneur Claude-Henri de Miséricorde</p>
+                <p>Évêque de Saint-Barbant</p>
               </div>
             </div>
           `;

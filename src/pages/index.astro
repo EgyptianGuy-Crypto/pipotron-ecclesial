@@ -1,125 +1,177 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// New word lists for episcopal miséricorde
 const wordLists = {
-  // Vague incident starters (raccourcis)
+  // Vague incident starters (doublé)
   incidents: [
-    "Suite aux récents événements douloureux qui ont touché notre communauté diocésaine",
+    "Suite aux récents événements qui ont touché notre communauté diocésaine",
     "Face aux difficultés pastorales que traverse notre diocèse en ces temps troublés",
-    "Concernant les situations délicates portées à notre attention",
-    "À la lumière des témoignages poignants qui nous sont parvenus",
+    "Concernant les situations portées à notre attention",
+    "À la lumière des témoignages qui nous sont parvenus",
     "Devant les défis pastoraux auxquels nous sommes confrontés",
-    "En réponse aux préoccupations exprimées par nos fidèles"
+    "En réponse aux préoccupations exprimées par nos fidèles",
+    "Suite aux interrogations soulevées dans notre diocèse",
+    "Face aux circonstances qui interpellent notre communauté",
+    "Concernant les questions qui nous ont été rapportées",
+    "À la suite des événements qui ont marqué notre famille diocésaine",
+    "Devant les enjeux pastoraux de cette période délicate",
+    "En réaction aux inquiétudes exprimées"
   ],
 
-  // Vague acknowledgments (raccourcis)
+  // Vague acknowledgments (doublé et plus court)
   acknowledgments: [
-    "nous reconnaissons avec humilité que des dysfonctionnements ont pu survenir",
-    "nous prenons acte des questionnements soulevés par notre communauté",
-    "nous entendons avec compassion les inquiétudes de nos paroissiens",
-    "nous mesurons l'ampleur des interrogations suscitées par ces événements",
-    "nous sommes conscients des fragilités humaines de notre institution",
-    "nous accueillons avec sérieux les interpellations qui nous sont adressées"
+    "nous reconnaissons que des dysfonctionnements ont pu survenir",
+    "nous prenons acte des questionnements de notre communauté",
+    "nous entendons les inquiétudes de nos paroissiens",
+    "nous mesurons l'ampleur des interrogations suscitées",
+    "nous sommes conscients des fragilités de notre institution",
+    "nous accueillons les interpellations qui nous sont adressées",
+    "nous admettons que des manquements ont pu se produire",
+    "nous comprenons les préoccupations de nos fidèles",
+    "nous entendons les questions légitimes posées",
+    "nous reconnaissons les difficultés rencontrées",
+    "nous sommes sensibles aux inquiétudes exprimées",
+    "nous prenons la mesure des interrogations soulevées"
   ],
 
-  // Apologies for shocked and victims (raccourcis)
-  apologies: [
-    "nous exprimons notre compassion envers ceux qui ont été choqués et encourageons chacun à aller de l'avant",
-    "nous manifestons notre empathie à l'égard de ceux qui ont été troublés",
-    "nous témoignons de notre solidarité envers les âmes qui ont été ébranlées",
-    "nous exprimons notre proximité avec tous ceux qui ont été affectés",
-    "nous manifestons notre compréhension envers les personnes interpellées",
-    "nous témoignons de notre sollicitude envers ceux qui ont été touchés"
-  ],
-
-  // Miséricorde and presumption of innocence (raccourcis)
+apologies: [
+  "manifestons notre proximité aux victimes et les encourageons à aller de l'avant par le pardon",
+  "témoignons notre compassion aux personnes troublées et les invitons à tourner la page dans la réconciliation",
+  "exprimons notre soutien aux âmes ébranlées et les accompagnons pour avancer par la miséricorde",
+  "montrons notre solidarité aux personnes affectées et les encourageons à passer à autre chose dans le pardon",
+  "manifestons notre compréhension aux victimes et les soutenons pour aller de l'avant par la réconciliation",
+  "témoignons notre bienveillance aux personnes touchées et les invitons à tourner la page dans la miséricorde",
+  "exprimons notre empathie aux victimes et les encourageons à regarder vers l'avenir par le pardon",
+  "montrons notre attention aux personnes éprouvées et les accompagnons pour avancer dans la réconciliation",
+  "manifestons notre fraternité aux victimes et les invitons à aller de l'avant par la miséricorde",
+  "témoignons notre sollicitude aux âmes blessées et les encourageons à tourner la page dans le pardon",
+  "exprimons notre proximité aux personnes affectées et les soutenons pour passer à autre chose par la réconciliation",
+  "montrons notre compassion aux victimes et les accompagnons vers l'avenir dans la miséricorde"
+]
+  // Miséricorde (phrases plus courtes, pardon/miséricorde pour les coupables)
   misericorde: [
-    "Rappelons que la miséricorde divine s'étend à tous, y compris à ceux sous les projecteurs médiatiques, et que la présomption d'innocence doit guider notre discernement",
-    "Gardons à l'esprit que la compassion évangélique concerne chaque membre de notre communauté, et que la présomption d'innocence constitue un pilier de notre justice",
-    "Souvenons-nous que la miséricorde du Christ embrasse tous les enfants de Dieu, et que la présomption d'innocence demeure un principe incontournable",
-    "N'oublions pas que la grâce divine rayonne sur chacun, et que la présomption d'innocence reste un fondement de notre approche pastorale",
-    "Retenons que la bonté divine s'étend à tous nos frères, et que la présomption d'innocence constitue un préalable à tout jugement équitable"
+    "Rappelons que la miséricorde divine s'étend à tous, et doit guider notre discernement",
+    "Le pardon évangélique concerne chaque membre de notre communauté, y compris les accusés",
+    "La miséricorde du Christ embrasse tous les enfants de Dieu sans exception",
+    "La compassion divine rayonne sur chacun. La présomption d'innocence demeure fondamentale",
+    "Le pardon du Seigneur s'offre à tous, même aux plus fautifs d'entre nous",
+    "Méditons sur la miséricorde infinie qui unit tous nos frères, victimes et coupables présumés, dans la charité"
   ],
 
-  // "Dans la tourmente" transitions (inchangé)
+  // "Dans la tourmente" transitions (doublé)
   tourmentes: [
     "Dans la tourmente",
     "Au cœur de la tempête",
     "En ces temps d'épreuve",
     "Malgré les turbulences",
     "Dans cette période difficile",
-    "Au sein de ces bouleversements"
+    "Au sein de ces bouleversements",
+    "Face à l'adversité",
+    "Dans ces moments troublés",
+    "Malgré les difficultés",
+    "En dépit des épreuves",
+    "Dans ce contexte délicat",
+    "Au milieu des défis"
   ],
 
-  // Good fruits deflection (raccourcis)
+  // Good fruits deflection (doublé)
   goodFruits: [
-    "il convient de ne pas occulter les nombreux fruits de grâce qui jaillissent dans nos paroisses",
-    "nous devons garder à l'esprit les merveilleux témoignages de foi qui illuminent notre diocèse",
-    "il serait injuste d'ignorer les multiples actions caritatives qui rayonnent dans nos communautés",
-    "nous ne saurions oublier les vocations florissantes qui confirment l'action de l'Esprit Saint",
-    "rappelons-nous les signes d'espérance qui bourgeonnent dans notre Église locale",
-    "gardons présents à l'esprit les élans missionnaires qui dynamisent notre pastorale"
+    "il convient de ne pas occulter les fruits de grâce de nos paroisses",
+    "nous devons garder à l'esprit les témoignages de foi de notre diocèse",
+    "il serait injuste d'ignorer les actions caritatives de nos communautés",
+    "nous ne saurions oublier les vocations qui confirment l'Esprit Saint",
+    "rappelons-nous les signes d'espérance de notre Église",
+    "gardons présents les élans missionnaires qui nous dynamisent",
+    "il importe de souligner les merveilles qui s'accomplissent dans nos paroisses",
+    "nous devons reconnaître les conversions authentiques de notre diocèse",
+    "il serait dommage d'omettre les œuvres caritatives de nos fidèles",
+    "nous ne pouvons ignorer les grâces qui abondent dans nos communautés",
+    "rappelons les initiatives généreuses qui fleurissent dans notre Église",
+    "gardons en mémoire les projets porteurs d'espérance qui nous animent"
   ],
 
-  // Origin deflection (raccourcis)
+  // Origin deflection (doublé)
   originDeflection: [
-    "sans nous leurrer sur l'origine de ces perturbations qui trouvent leurs racines dans des oppositions idéologiques",
-    "en gardant à l'esprit les véritables sources de ces troubles",
-    "sans perdre de vue les racines profondes de ces difficultés",
-    "en identifiant les ferments de division qui cherchent à ébranler notre unité",
-    "sans ignorer les forces organisées qui cherchent à déstabiliser notre communion",
-    "en discernant les influences délétères qui s'exercent sur notre communauté"
+    "sans nous leurrer sur l'origine de ces perturbations",
+    "en gardant à l'esprit les sources de ces troubles",
+    "sans perdre de vue les ferments de division",
+    "sans ignorer les véritables causes de ces difficultés",
+    "en identifiant clairement les racines de ces tensions",
+    "sans oublier les influences qui alimentent ces polémiques"
   ],
 
-  // Scapegoats (raccourcis)
+  // Scapegoats (doublé)
   scapegoats: [
-    "certains médias en quête de sensationnalisme et prompts à la désinformation",
-    "des mouvements traditionalistes nostalgiques et fermés au souffle de l'Esprit",
-    "des lobbies progressistes déconnectés de la Tradition authentique de l'Église",
-    "des réseaux occultes historiquement hostiles à l'influence de l'Évangile",
-    "des groupuscules anticléricaux animés par une idéologie hostile à la foi",
-    "des influences séculières cherchant à saper le rayonnement de l'Église"
+    "certains médias en quête de sensationnalisme",
+    "des mouvements traditionalistes fermés au souffle de l'Esprit",
+    "des lobbies progressistes déconnectés de la Tradition",
+    "des réseaux occultes hostiles à l'Évangile",
+    "des groupuscules anticléricaux",
+    "des influences séculières cherchant à saper notre rayonnement",
+    "des organes de presse avides de polémiques",
+    "des courants intégristes figés dans leurs certitudes",
+    "des factions modernistes étrangères àl'Église",
+    "des cercles opposés à la mission évangélisatrice",
+    "des militants nourris de préjugés anti-religieux",
+    "des forces s'acharnant à ternir notre image"
   ],
 
-  // Langue de bois responses (raccourcis)
+  // Langue de bois responses (doublé)
   responses: [
-    "dans un esprit de dialogue constructif et de recherche de la vérité",
-    "en nous appuyant sur les valeurs évangéliques qui nous guident",
-    "avec le souci du bien commun et de l'unité de notre Église",
-    "dans une démarche de vérité, de justice et de réconciliation",
-    "en privilégiant l'écoute bienveillante de chaque personne concernée",
-    "dans le respect de la dignité de chaque personne créée à l'image de Dieu"
+    "dans un esprit de dialogue constructif",
+    "en nous appuyant sur les valeurs qui nous guident",
+    "avec le souci de l'unité de notre Église",
+    "dans une démarche de vérité et de réconciliation",
+    "en privilégiant l'écoute bienveillante",
+    "dans le respect de la dignité de chaque personne",
+    "dans une approche pastorale empreinte de charité",
+    "en nous fondant sur les enseignements de l'Église",
+    "avec la volonté de servir l'unité",
+    "dans un souci de fraternité et de pardon",
+    "en favorisant l'accompagnement personnalisé et la miséricorde",
+    "dans l'esprit de communion qui caractérise notre foi chrétienne"
   ],
 
-  // Actions (raccourcis mais toujours vagues)
+  // Actions (doublé)
   actions: [
     "nous nous engageons à approfondir notre réflexion dans un esprit de synodalité",
     "nous mettons en place un processus d'évaluation de nos pratiques pastorales",
     "nous renforçons nos dispositifs d'accompagnement spirituel du clergé",
-    "nous développons une approche plus collaborative de la gouvernance diocésaine",
-    "nous intensifions notre travail de prévention auprès de nos communautés",
-    "nous consolidons nos structures d'écoute et d'accompagnement"
+    "nous nous attachons à développer une démarche de discernement communautaire",
+    "nous instaurons des mécanismes de dialogue et de concertation renforcés",
+    "nous consolidons nos structures de formation et d'accompagnement pastoral"
   ],
 
-  // Spiritual endings (raccourcis)
+  // Spiritual endings (doublé)
   spiritualEndings: [
-    "afin d'ouvrir des fenêtres d'espérance sur des vallées d'éternité",
-    "pour que jaillissent des sources de grâce dans nos cœurs confiants",
-    "en vue de faire germer des semences de paix évangélique dans nos âmes",
-    "dans l'espoir de voir fleurir la miséricorde divine dans nos communautés",
-    "pour que résonne la mélodie céleste dans nos prières communes",
-    "afin que s'épanouisse la lumière du Christ dans nos épreuves"
+    "afin d'ouvrir des fenêtres d'espérance sur l'éternité",
+    "pour que jaillissent des sources de grâce dans nos cœurs",
+    "en vue de faire germer la paix évangélique dans nos âmes",
+    "dans l'espoir de voir fleurir la miséricorde divine",
+    "pour que résonne la mélodie céleste dans nos prières",
+    "afin que s'épanouisse la lumière du Christ",
+    "pour que s'ouvrent les chemins de la réconciliation",
+    "afin que rayonnent les fruits de l'Esprit Saint",
+    "en vue de cultiver les vertus théologales dans nos communautés",
+    "dans l'attente de voir grandir la communion fraternelle",
+    "pour que s'accomplisse la volonté divine dans nos vies",
+    "afin que se manifestent les signes du Royaume"
   ],
 
-  // Bullshitty closings (raccourcis)
+  // Bullshitty closings (doublé)
   closings: [
-    "Concentrons-nous sur ce qui est beau et évangélique et élevons nos cœurs vers la contemplation mystique",
-    "Focalisons-nous sur les merveilles de la Création divine et laissons les fanges à ceux qui s'y complaisent",
-    "Tournons nos regards vers les horizons de l'espérance chrétienne plutôt que vers les marécages de la polémique",
-    "Privilégions la beauté des liturgies solennelles aux cacophonies des controverses médiatiques",
-    "Préférons les chants grégoriens aux clameurs médiatiques qui troublent nos âmes",
-    "Choisissons les parfums de l'encens aux miasmes de la calomnie qui polluent l'atmosphère spirituelle"
+    "Concentrons-nous sur ce qui est beau et évangélique",
+    "Tournons nos regards vers l'espérance chrétienne plutôt que vers les polémiques",
+    "Privilégions nos liturgies aux controverses médiatiques",
+    "Préférons l'écoute fraternelle aux clameurs stériles",
+    "Choisissons le dialogue plutôt que les divisions",
+    "Focalisons-nous sur notre mission d'évangélisation",
+    "Orientons nos cœurs vers la beauté de la foi",
+    "Dirigeons notre attention vers les merveilles de la Création plutôt que vers les divisions",
+    "Favorisons la prière contemplative aux débats stériles",
+    "Préférons la méditation spirituelle aux polémiques destructrices",
+    "Choisissons la charité chrétienne plutôt que les affrontements",
+    "Concentrons-nous sur l'essentiel de notre vocation pastorale"
   ]
 };
 ---

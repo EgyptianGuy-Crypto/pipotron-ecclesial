@@ -49,16 +49,6 @@ const wordLists = {
     "montrons notre compassion aux victimes et les accompagnons vers l'avenir dans la miséricorde"
   ],
 
-  // Actions (doublé) - maintenant dans le premier paragraphe
-  actions: [
-    "nous nous engageons à approfondir notre réflexion dans un esprit de synodalité",
-    "nous mettons en place un processus d'évaluation de nos pratiques pastorales",
-    "nous renforçons nos dispositifs d'accompagnement spirituel du clergé",
-    "nous nous attachons à développer une démarche de discernement communautaire",
-    "nous instaurons des mécanismes de dialogue et de concertation renforcés",
-    "nous consolidons nos structures de formation et d'accompagnement pastoral"
-  ],
-
   // Miséricorde (phrases plus courtes, pardon/miséricorde pour les coupables)
   misericorde: [
     "Rappelons que la miséricorde divine s'étend à tous, et doit guider notre discernement",
@@ -67,6 +57,16 @@ const wordLists = {
     "La compassion divine rayonne sur chacun. La présomption d'innocence demeure fondamentale",
     "Le pardon du Seigneur s'offre à tous, même aux plus fautifs d'entre nous",
     "Méditons sur la miséricorde infinie qui unit tous nos frères, victimes et coupables présumés, dans la charité"
+  ],
+
+  // Actions (maintenant un paragraphe séparé)
+  actions: [
+    "Nous agissons fermement en mettant en place un processus d'évaluation de nos pratiques",
+    "Nous passons à l'action en renforçant nos dispositifs d'accompagnement spirituel",
+    "Nous nous mobilisons résolument pour développer une démarche de discernement communautaire",
+    "Nous prenons des mesures concrètes en instaurant des mécanismes de dialogue renforcés",
+    "Nous nous engageons activement à consolider nos structures de formation pastorale",
+    "Nous mettons tout en œuvre pour approfondir notre réflexion dans un esprit de synodalité"
   ],
 
   // "Dans la tourmente" transitions (doublé)
@@ -127,22 +127,6 @@ const wordLists = {
     "des forces s'acharnant à ternir notre image"
   ],
 
-  // Langue de bois responses (doublé)
-  responses: [
-    "dans un esprit de dialogue constructif",
-    "en nous appuyant sur les valeurs qui nous guident",
-    "avec le souci de l'unité de notre Église",
-    "dans une démarche de vérité et de réconciliation",
-    "en privilégiant l'écoute bienveillante",
-    "dans le respect de la dignité de chaque personne",
-    "dans une approche pastorale empreinte de charité",
-    "en nous fondant sur les enseignements de l'Église",
-    "avec la volonté de servir l'unité",
-    "dans un souci de fraternité et de pardon",
-    "en favorisant l'accompagnement personnalisé et la miséricorde",
-    "dans l'esprit de communion qui caractérise notre foi chrétienne"
-  ],
-
   // Spiritual endings (doublé)
   spiritualEndings: [
     "afin d'ouvrir des fenêtres d'espérance sur l'éternité",
@@ -175,12 +159,34 @@ const wordLists = {
     "Concentrons-nous sur l'essentiel de notre vocation pastorale"
   ]
 };
+
+// Générateur de noms d'évêques satiriques
+const bishopNames = [
+  "Mgr Claude-Henri de Miséricorde",
+  "Mgr Adalbert de Contournement", 
+  "Mgr Séraphin du Détournement",
+  "Mgr Boniface de l'Esquive",
+  "Mgr Théophile de la Langue-de-Bois",
+  "Mgr Ambroise du Flou-Artistique",
+  "Mgr Pacôme de l'Évitement",
+  "Mgr Chrysostome de la Diversion",
+  "Mgr Bénédict de l'Évasion",
+  "Mgr Anselme du Détournement-d'Attention"
+];
 ---
 
 <Layout title="Pipotron Épiscopal">
   <div class="py-4">
     <!-- Title -->
     <h1 class="mb-6 text-4xl font-bold text-center">Pipotron Épiscopal</h1>
+    
+    <!-- Barre de progression satirique -->
+    <div id="progressBar" class="mb-6 mx-auto max-w-4xl hidden">
+      <div class="bg-gray-200 rounded-full h-2 mb-2">
+        <div id="progressFill" class="bg-yellow-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+      <p id="progressText" class="text-center text-sm text-gray-600 italic"></p>
+    </div>
     
     <!-- Official Document Result Area -->
     <div class="mb-6 mx-auto max-w-4xl">
@@ -204,6 +210,14 @@ const wordLists = {
           </div>
         </div>
         
+        <!-- Compteur de bullshit -->
+        <div id="bullshitMeter" class="hidden bg-yellow-100 border-t-2 border-yellow-300 p-4">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-medium">Niveau de langue de bois :</span>
+            <div id="bullshitStars" class="text-yellow-500"></div>
+          </div>
+        </div>
+        
         <!-- Decorative corners -->
         <div class="absolute top-0 left-0 w-8 h-8 border-l-4 border-t-4 border-gray-400"></div>
         <div class="absolute top-0 right-0 w-8 h-8 border-r-4 border-t-4 border-gray-400"></div>
@@ -216,144 +230,132 @@ const wordLists = {
     <div class="text-center mb-6">
       <button 
         id="generateBtn" 
-        class="btn btn-lg bg-yellow-600 text-black hover:bg-yellow-700 font-semibold"
+        class="btn btn-lg bg-yellow-600 text-black hover:bg-yellow-700 font-semibold mr-4"
       >
         🙏 Générer un nouveau communiqué de miséricorde
+      </button>
+      <button 
+        id="translateBtn" 
+        class="btn btn-lg bg-red-600 text-white hover:bg-red-700 font-semibold hidden"
+      >
+        🔍 Traduire en français normal
       </button>
     </div>
 
     <!-- Instructions -->
     <div class="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
       <p class="text-center text-white/90">
-        Ou composez manuellement votre communiqué en sélectionnant dans les listes ci-dessous
+        Ou composez manuellement votre communiqué en sélectionnant dans les listes ci-dessous (dans l'ordre d'apparition)
       </p>
     </div>
 
-    <!-- Word Lists Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-      <!-- Column 1 -->
-      <div class="space-y-3">
-        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">📰 Incident (flou)</label>
-          <select 
-            id="incidents" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
-            size="4"
-          >
-            <option value="">-- Choisir --</option>
-            {wordLists.incidents.map(word => <option value={word}>{word}</option>)}
-          </select>
-        </div>
-        
-        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">🍇 Bons fruits (obligatoires)</label>
-          <select 
-            id="goodFruits" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
-            size="4"
-          >
-            <option value="">-- Choisir --</option>
-            {wordLists.goodFruits.map(word => <option value={word}>{word}</option>)}
-          </select>
-        </div>
-      </div>
-
-      <!-- Column 2 -->
-      <div class="space-y-3">
-        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">😔 Reconnaissance (partielle)</label>
-          <select 
-            id="acknowledgments" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
-            size="4"
-          >
-            <option value="">-- Choisir --</option>
-            {wordLists.acknowledgments.map(word => <option value={word}>{word}</option>)}
-          </select>
-        </div>
-        
-        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">🔍 Origine (détournée)</label>
-          <select 
-            id="originDeflection" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
-            size="4"
-          >
-            <option value="">-- Choisir --</option>
-            {wordLists.originDeflection.map(word => <option value={word}>{word}</option>)}
-          </select>
-        </div>
-      </div>
-
-      <!-- Column 3 -->
-      <div class="space-y-3">
-        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">💔 Excuses (rapides)</label>
-          <select 
-            id="apologies" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
-            size="4"
-          >
-            <option value="">-- Choisir --</option>
-            {wordLists.apologies.map(word => <option value={word}>{word}</option>)}
-          </select>
-        </div>
-        
-        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">🎯 Boucs émissaires (pratiques)</label>
-          <select 
-            id="scapegoats" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
-            size="4"
-          >
-            <option value="">-- Choisir --</option>
-            {wordLists.scapegoats.map(word => <option value={word}>{word}</option>)}
-          </select>
-        </div>
-      </div>
-
-      <!-- Column 4 -->
-      <div class="space-y-3">
-        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">🙏 Miséricorde (sélective)</label>
-          <select 
-            id="misericorde" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
-            size="4"
-          >
-            <option value="">-- Choisir --</option>
-            {wordLists.misericorde.map(word => <option value={word}>{word}</option>)}
-          </select>
-        </div>
-        
-        <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-          <label class="block text-white font-medium mb-2 text-sm">⚡ Actions (vagues)</label>
-          <select 
-            id="actions" 
-            class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
-            size="4"
-          >
-            <option value="">-- Choisir --</option>
-            {wordLists.actions.map(word => <option value={word}>{word}</option>)}
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <!-- New row for remaining items -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-3">
+    <!-- Word Lists Grid - Dans l'ordre d'apparition -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <!-- Incident -->
       <div class="bg-white/5 rounded-lg p-3 border border-white/10">
-        <label class="block text-white font-medium mb-2 text-sm">💬 Réponses (langue de bois)</label>
+        <label class="block text-white font-medium mb-2 text-sm">📰 Incident (flou)</label>
         <select 
-          id="responses" 
+          id="incidents" 
           class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
           size="4"
         >
           <option value="">-- Choisir --</option>
-          {wordLists.responses.map(word => <option value={word}>{word}</option>)}
+          {wordLists.incidents.map(word => <option value={word}>{word}</option>)}
         </select>
       </div>
-      
+
+      <!-- Reconnaissance -->
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">😔 Reconnaissance (partielle)</label>
+        <select 
+          id="acknowledgments" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.acknowledgments.map(word => <option value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <!-- Excuses -->
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">💔 Excuses (rapides)</label>
+        <select 
+          id="apologies" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.apologies.map(word => <option value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <!-- Miséricorde -->
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">🙏 Miséricorde (sélective)</label>
+        <select 
+          id="misericorde" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.misericorde.map(word => <option value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <!-- Actions -->
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">⚡ Actions (vagues)</label>
+        <select 
+          id="actions" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.actions.map(word => <option value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <!-- Bons fruits -->
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">🍇 Bons fruits (obligatoires)</label>
+        <select 
+          id="goodFruits" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.goodFruits.map(word => <option value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <!-- Origine -->
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">🔍 Origine (détournée)</label>
+        <select 
+          id="originDeflection" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.originDeflection.map(word => <option value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <!-- Boucs émissaires -->
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">🎯 Boucs émissaires (pratiques)</label>
+        <select 
+          id="scapegoats" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.scapegoats.map(word => <option value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <!-- Fins spirituelles -->
       <div class="bg-white/5 rounded-lg p-3 border border-white/10">
         <label class="block text-white font-medium mb-2 text-sm">✨ Fins spirituelles (creuses)</label>
         <select 
@@ -365,7 +367,8 @@ const wordLists = {
           {wordLists.spiritualEndings.map(word => <option value={word}>{word}</option>)}
         </select>
       </div>
-      
+
+      <!-- Conclusion -->
       <div class="bg-white/5 rounded-lg p-3 border border-white/10">
         <label class="block text-white font-medium mb-2 text-sm">🌸 Conclusion (détournement)</label>
         <select 
@@ -434,14 +437,6 @@ const wordLists = {
         "exprimons notre proximité aux personnes affectées et les soutenons pour passer à autre chose par la réconciliation",
         "montrons notre compassion aux victimes et les accompagnons vers l'avenir dans la miséricorde"
       ],
-      actions: [
-        "nous nous engageons à approfondir notre réflexion dans un esprit de synodalité",
-        "nous mettons en place un processus d'évaluation de nos pratiques pastorales",
-        "nous renforçons nos dispositifs d'accompagnement spirituel du clergé",
-        "nous nous attachons à développer une démarche de discernement communautaire",
-        "nous instaurons des mécanismes de dialogue et de concertation renforcés",
-        "nous consolidons nos structures de formation et d'accompagnement pastoral"
-      ],
       misericorde: [
         "Rappelons que la miséricorde divine s'étend à tous, et doit guider notre discernement",
         "Le pardon évangélique concerne chaque membre de notre communauté, y compris les accusés",
@@ -449,6 +444,14 @@ const wordLists = {
         "La compassion divine rayonne sur chacun. La présomption d'innocence demeure fondamentale",
         "Le pardon du Seigneur s'offre à tous, même aux plus fautifs d'entre nous",
         "Méditons sur la miséricorde infinie qui unit tous nos frères, victimes et coupables présumés, dans la charité"
+      ],
+      actions: [
+        "Nous agissons fermement en mettant en place un processus d'évaluation de nos pratiques",
+        "Nous passons à l'action en renforçant nos dispositifs d'accompagnement spirituel",
+        "Nous nous mobilisons résolument pour développer une démarche de discernement communautaire",
+        "Nous prenons des mesures concrètes en instaurant des mécanismes de dialogue renforcés",
+        "Nous nous engageons activement à consolider nos structures de formation pastorale",
+        "Nous mettons tout en œuvre pour approfondir notre réflexion dans un esprit de synodalité"
       ],
       tourmentes: [
         "Dans la tourmente",
@@ -500,20 +503,6 @@ const wordLists = {
         "des militants nourris de préjugés anti-religieux",
         "des forces s'acharnant à ternir notre image"
       ],
-      responses: [
-        "dans un esprit de dialogue constructif",
-        "en nous appuyant sur les valeurs qui nous guident",
-        "avec le souci de l'unité de notre Église",
-        "dans une démarche de vérité et de réconciliation",
-        "en privilégiant l'écoute bienveillante",
-        "dans le respect de la dignité de chaque personne",
-        "dans une approche pastorale empreinte de charité",
-        "en nous fondant sur les enseignements de l'Église",
-        "avec la volonté de servir l'unité",
-        "dans un souci de fraternité et de pardon",
-        "en favorisant l'accompagnement personnalisé et la miséricorde",
-        "dans l'esprit de communion qui caractérise notre foi chrétienne"
-      ],
       spiritualEndings: [
         "afin d'ouvrir des fenêtres d'espérance sur l'éternité",
         "pour que jaillissent des sources de grâce dans nos cœurs",
@@ -544,44 +533,136 @@ const wordLists = {
       ]
     };
 
+    const bishopNames = [
+      "Mgr Claude-Henri de Miséricorde",
+      "Mgr Adalbert de Contournement", 
+      "Mgr Séraphin du Détournement",
+      "Mgr Boniface de l'Esquive",
+      "Mgr Théophile de la Langue-de-Bois",
+      "Mgr Ambroise du Flou-Artistique",
+      "Mgr Pacôme de l'Évitement",
+      "Mgr Chrysostome de la Diversion",
+      "Mgr Bénédict de l'Évasion",
+      "Mgr Anselme du Détournement-d'Attention"
+    ];
+
+    const translations = {
+      "nous reconnaissons que des dysfonctionnements ont pu survenir": "on s'est fait choper",
+      "nous prenons acte des questionnements de notre communauté": "les gens râlent",
+      "nous entendons les inquiétudes de nos paroissiens": "ça gueule dans les paroisses",
+      "manifestons notre proximité aux victimes": "on fait semblant de compatir",
+      "la miséricorde divine s'étend à tous": "on protège nos copains",
+      "nous agissons fermement": "on ne fait rien de concret",
+      "il convient de ne pas occulter les fruits de grâce": "regardez ailleurs",
+      "sans nous leurrer sur l'origine de ces perturbations": "c'est la faute des autres"
+    };
+
     function getRandomItem(array) {
       return array[Math.floor(Math.random() * array.length)];
     }
 
-    function generateCommunique() {
-      const incident = getRandomItem(wordLists.incidents);
-      const acknowledgment = getRandomItem(wordLists.acknowledgments);
-      const apology = getRandomItem(wordLists.apologies);
-      const action = getRandomItem(wordLists.actions);
-      const misericorde = getRandomItem(wordLists.misericorde);
-      const tourmente = getRandomItem(wordLists.tourmentes);
-      const goodFruit = getRandomItem(wordLists.goodFruits);
-      const originDeflection = getRandomItem(wordLists.originDeflection);
-      const scapegoat = getRandomItem(wordLists.scapegoats);
-      const response = getRandomItem(wordLists.responses);
-      const spiritualEnding = getRandomItem(wordLists.spiritualEndings);
-      const closing = getRandomItem(wordLists.closings);
+    function calculateBullshitLevel(communique) {
+      const bullshitWords = ['néanmoins', 'toutefois', 'cependant', 'miséricorde', 'synodalité', 'discernement', 'bienveillant', 'accompagnement', 'spirituel', 'évangélique'];
+      let score = 0;
+      bullshitWords.forEach(word => {
+        const regex = new RegExp(word, 'gi');
+        const matches = communique.match(regex);
+        if (matches) score += matches.length;
+      });
+      return Math.min(Math.max(Math.ceil(score / 2), 1), 10);
+    }
 
-      const communique = `${incident}, ${acknowledgment}. En ces temps troublés, ${apology}. ${misericorde}. C'est pourquoi, ${response}, ${action} ${spiritualEnding}.
+    function showBullshitMeter(level) {
+      const meter = document.getElementById('bullshitMeter');
+      const stars = document.getElementById('bullshitStars');
+      stars.innerHTML = '★'.repeat(level) + '☆'.repeat(10-level);
+      meter.classList.remove('hidden');
+    }
+
+    function showProgressBar() {
+      const progressBar = document.getElementById('progressBar');
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+      
+      progressBar.classList.remove('hidden');
+      
+      const steps = [
+        { width: 20, text: "Recherche d'excuses..." },
+        { width: 40, text: "Identification des boucs émissaires..." },
+        { width: 60, text: "Application de la miséricorde sélective..." },
+        { width: 80, text: "Détournement d'attention en cours..." },
+        { width: 100, text: "Langue de bois optimisée !" }
+      ];
+      
+      let currentStep = 0;
+      const interval = setInterval(() => {
+        if (currentStep < steps.length) {
+          progressFill.style.width = steps[currentStep].width + '%';
+          progressText.textContent = steps[currentStep].text;
+          currentStep++;
+        } else {
+          clearInterval(interval);
+          setTimeout(() => {
+            progressBar.classList.add('hidden');
+          }, 1000);
+        }
+      }, 400);
+    }
+
+    function generateCommunique() {
+      showProgressBar();
+      
+      setTimeout(() => {
+        const incident = getRandomItem(wordLists.incidents);
+        const acknowledgment = getRandomItem(wordLists.acknowledgments);
+        const apology = getRandomItem(wordLists.apologies);
+        const misericorde = getRandomItem(wordLists.misericorde);
+        const action = getRandomItem(wordLists.actions);
+        const tourmente = getRandomItem(wordLists.tourmentes);
+        const goodFruit = getRandomItem(wordLists.goodFruits);
+        const originDeflection = getRandomItem(wordLists.originDeflection);
+        const scapegoat = getRandomItem(wordLists.scapegoats);
+        const spiritualEnding = getRandomItem(wordLists.spiritualEndings);
+        const closing = getRandomItem(wordLists.closings);
+        const bishop = getRandomItem(bishopNames);
+
+        const communique = `${incident}, ${acknowledgment}. En ces temps troublés, ${apology}. ${misericorde}.
+
+${action} ${spiritualEnding}.
 
 ${tourmente}, ${goodFruit}. Il importe également, ${originDeflection}, de ne pas céder aux manœuvres de ${scapegoat}.
 
 ${closing}.`;
-      
-      return communique;
+        
+        const bullshitLevel = calculateBullshitLevel(communique);
+        
+        document.getElementById('result').innerHTML = `
+          <div class="text-left">
+            <p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">${communique}</p>
+            <div class="text-right text-sm text-gray-600 italic mt-4">
+              <p>+ ${bishop}</p>
+              <p>Évêque de Saint-Barbant</p>
+            </div>
+          </div>
+        `;
+        
+        showBullshitMeter(bullshitLevel);
+        document.getElementById('translateBtn').classList.remove('hidden');
+      }, 2000);
     }
 
-    document.getElementById('generateBtn').addEventListener('click', function() {
-      const communique = generateCommunique();
-      document.getElementById('result').innerHTML = `
-        <div class="text-left">
-          <p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">${communique}</p>
-          <div class="text-right text-sm text-gray-600 italic mt-4">
-            <p>+ Monseigneur Claude-Henri de Miséricorde</p>
-            <p>Évêque de Saint-Barbant</p>
-          </div>
-        </div>
-      `;
+    document.getElementById('generateBtn').addEventListener('click', generateCommunique);
+
+    document.getElementById('translateBtn').addEventListener('click', function() {
+      const resultDiv = document.getElementById('result');
+      let content = resultDiv.innerHTML;
+      
+      Object.keys(translations).forEach(key => {
+        const regex = new RegExp(key, 'gi');
+        content = content.replace(regex, `<span class="bg-red-200 text-red-800 px-1 rounded">${translations[key]}</span>`);
+      });
+      
+      resultDiv.innerHTML = content;
     });
 
     document.getElementById('resetBtn').addEventListener('click', function() {
@@ -590,6 +671,8 @@ ${closing}.`;
         select.selectedIndex = 0;
       });
       document.getElementById('result').innerHTML = `<p class="text-gray-500 text-center italic">Cliquez sur "Générer un nouveau" pour créer un communiqué de miséricorde</p>`;
+      document.getElementById('bullshitMeter').classList.add('hidden');
+      document.getElementById('translateBtn').classList.add('hidden');
     });
 
     const selects = document.querySelectorAll('select');
@@ -610,19 +693,19 @@ ${closing}.`;
       if (Object.keys(selectedValues).length > 0) {
         let communique = "";
         
-        // Premier paragraphe : incident + acknowledgment + apology + action + misericorde
+        // Premier paragraphe : incident + acknowledgment + apology + misericorde
         if (selectedValues.incidents) communique += selectedValues.incidents;
         if (selectedValues.acknowledgments) communique += `, ${selectedValues.acknowledgments}.`;
         if (selectedValues.apologies) communique += ` En ces temps troublés, ${selectedValues.apologies}.`;
         if (selectedValues.misericorde) communique += ` ${selectedValues.misericorde}.`;
-        if (selectedValues.responses || selectedValues.actions) {
-          communique += " C'est pourquoi, ";
-          if (selectedValues.responses) communique += selectedValues.responses + ", ";
-          if (selectedValues.actions) communique += selectedValues.actions + " ";
-          if (selectedValues.spiritualEndings) communique += selectedValues.spiritualEndings + ".";
+
+        // Deuxième paragraphe : actions
+        if (selectedValues.actions) {
+          communique += `\n\n${selectedValues.actions}`;
+          if (selectedValues.spiritualEndings) communique += ` ${selectedValues.spiritualEndings}.`;
         }
 
-        // Deuxième paragraphe : goodFruits + originDeflection + scapegoats
+        // Troisième paragraphe : goodFruits + originDeflection + scapegoats
         if (selectedValues.goodFruits) communique += `\n\nDans la tourmente, ${selectedValues.goodFruits}.`;
         if (selectedValues.originDeflection || selectedValues.scapegoats) {
           communique += " Il importe également, ";
@@ -630,19 +713,25 @@ ${closing}.`;
           if (selectedValues.scapegoats) communique += `de ne pas céder aux manœuvres de ${selectedValues.scapegoats}.`;
         }
 
-        // Troisième paragraphe : closing
+        // Quatrième paragraphe : closing
         if (selectedValues.closings) communique += `\n\n${selectedValues.closings}.`;
 
         if (communique.trim()) {
+          const bishop = getRandomItem(bishopNames);
+          const bullshitLevel = calculateBullshitLevel(communique);
+          
           document.getElementById('result').innerHTML = `
             <div class="text-left">
               <p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">${communique}</p>
               <div class="text-right text-sm text-gray-600 italic mt-4">
-                <p>+ Monseigneur Claude-Henri de Miséricorde</p>
+                <p>+ ${bishop}</p>
                 <p>Évêque de Saint-Barbant</p>
               </div>
             </div>
           `;
+          
+          showBullshitMeter(bullshitLevel);
+          document.getElementById('translateBtn').classList.remove('hidden');
         }
       }
     }

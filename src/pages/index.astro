@@ -1,21 +1,256 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
-
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+// Word lists from your screenshot
+const wordLists = {
+  starters: [
+    "Avec",
+    "Considérant", 
+    "Où que nous mène",
+    "Eu égard à",
+    "Vu",
+    "En ce qui concerne",
+    "Dans le cas particulier de"
+  ],
+  situations: [
+    "la restriction",
+    "l'orientation",
+    "la crise",
+    "l'inertie",
+    "la difficulté",
+    "l'austérité",
+    "la dégradation"
+  ],
+  qualifiers: [
+    "présente",
+    "actuelle",
+    "générale",
+    "induite",
+    "conjoncturelle",
+    "observée",
+    "contextuelle"
+  ],
+  actions: [
+    "il convient d#",
+    "il faut",
+    "on se doit d#",
+    "il est préférable d#",
+    "il serait intéressant d#",
+    "il ne faut pas négliger d#",
+    "on ne peut se passer d#"
+  ],
+  verbs: [
+    "étudier",
+    "examiner",
+    "favoriser",
+    "prendre en considération",
+    "anticiper",
+    "imaginer",
+    "uniformiser"
+  ],
+  quantities: [
+    "toutes les",
+    "chacune des",
+    "la majorité des",
+    "la simultanéité des",
+    "l'ensemble des",
+    "la somme des",
+    "la totalité des"
+  ],
+  solutions: [
+    "solutions",
+    "issues",
+    "problématiques",
+    "voies",
+    "alternatives",
+    "organisations matricielles",
+    "améliorations"
+  ],
+  outcomes: [
+    "imaginables",
+    "possibles",
+    "s'offrant à nous",
+    "de bon sens",
+    "envisageables",
+    "éventuelles",
+    "réalisables"
+  ],
+  timeframes: [
+    "à long terme",
+    "pour longtemps",
+    "à l'avenir",
+    "pour le futur",
+    "depuis longtemps",
+    "à court terme",
+    "rapidement"
+  ]
+};
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
-</Layout>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Adaptation du célèbre Pipotron</title>
+  </head>
+  <body class="bg-orange-200 min-h-screen p-8">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-3xl font-bold text-center mb-8">Adaptation du célèbre Pipotron</h1>
+      
+      <!-- Instructions -->
+      <div class="bg-blue-100 p-4 rounded mb-6">
+        <p class="text-sm">
+          Cliquez sur le bouton pour une composition automatique,<br>
+          ou composez manuellement votre pipo<br>
+          en choisissant dans les listes ci-dessous.
+        </p>
+      </div>
+
+      <!-- Generate Button -->
+      <button 
+        id="generateBtn" 
+        class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded mb-6 border border-gray-600"
+      >
+        Génération automatique, au hasard
+      </button>
+
+      <!-- Word Lists Grid -->
+      <div class="grid grid-cols-3 gap-4 mb-6">
+        <!-- Column 1 -->
+        <div class="space-y-4">
+          <select id="starters" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
+            {wordLists.starters.map(word => <option value={word}>{word}</option>)}
+          </select>
+          
+          <select id="actions" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
+            {wordLists.actions.map(word => <option value={word}>{word}</option>)}
+          </select>
+          
+          <select id="solutions" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
+            {wordLists.solutions.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="space-y-4">
+          <select id="situations" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
+            {wordLists.situations.map(word => <option value={word}>{word}</option>)}
+          </select>
+          
+          <select id="verbs" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
+            {wordLists.verbs.map(word => <option value={word}>{word}</option>)}
+          </select>
+          
+          <select id="outcomes" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
+            {wordLists.outcomes.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="space-y-4">
+          <select id="qualifiers" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
+            {wordLists.qualifiers.map(word => <option value={word}>{word}</option>)}
+          </select>
+          
+          <select id="quantities" class="w-full p-2 border border-gray-400 bg-gray-200" size="7">
+            {wordLists.quantities.map(word => <option value={word}>{word}</option>)}
+          </select>
+          
+          <select id="timeframes" class="w-full p-2 border border-gray-400 bg-gray-200" size="10">
+            {wordLists.timeframes.map(word => <option value={word}>{word}</option>)}
+          </select>
+        </div>
+      </div>
+
+      <!-- Result Area -->
+      <div id="result" class="bg-white p-4 rounded border border-gray-400 min-h-24 mb-6"></div>
+
+      <!-- Quote -->
+      <div class="text-center italic text-sm space-y-2">
+        <p>"Lorsque l'on découvre le pipotron pour la première fois, on réalise que d'autres l'ont découvert avant nous."</p>
+        <p>Il y en a même certains (vous les avez peut-être déjà rencontrés) qui ont un pipotron intérieur et qui peuvent se passer de toute assistance de l'informatique pour synthétiser brillamment une situation d'apparence complexe.</p>
+      </div>
+    </div>
+
+    <script>
+      // Get all the word lists from the server
+      const wordLists = {
+        starters: ["Avec", "Considérant", "Où que nous mène", "Eu égard à", "Vu", "En ce qui concerne", "Dans le cas particulier de"],
+        situations: ["la restriction", "l'orientation", "la crise", "l'inertie", "la difficulté", "l'austérité", "la dégradation"],
+        qualifiers: ["présente", "actuelle", "générale", "induite", "conjoncturelle", "observée", "contextuelle"],
+        actions: ["il convient d#", "il faut", "on se doit d#", "il est préférable d#", "il serait intéressant d#", "il ne faut pas négliger d#", "on ne peut se passer d#"],
+        verbs: ["étudier", "examiner", "favoriser", "prendre en considération", "anticiper", "imaginer", "uniformiser"],
+        quantities: ["toutes les", "chacune des", "la majorité des", "la simultanéité des", "l'ensemble des", "la somme des", "la totalité des"],
+        solutions: ["solutions", "issues", "problématiques", "voies", "alternatives", "organisations matricielles", "améliorations"],
+        outcomes: ["imaginables", "possibles", "s'offrant à nous", "de bon sens", "envisageables", "éventuelles", "réalisables"],
+        timeframes: ["à long terme", "pour longtemps", "à l'avenir", "pour le futur", "depuis longtemps", "à court terme", "rapidement"]
+      };
+
+      function getRandomItem(array) {
+        return array[Math.floor(Math.random() * array.length)];
+      }
+
+      function generateSentence() {
+        const starter = getRandomItem(wordLists.starters);
+        const situation = getRandomItem(wordLists.situations);
+        const qualifier = getRandomItem(wordLists.qualifiers);
+        const action = getRandomItem(wordLists.actions);
+        const verb = getRandomItem(wordLists.verbs);
+        const quantity = getRandomItem(wordLists.quantities);
+        const solution = getRandomItem(wordLists.solutions);
+        const outcome = getRandomItem(wordLists.outcomes);
+        const timeframe = getRandomItem(wordLists.timeframes);
+
+        // Handle the d# replacement
+        let processedAction = action.replace('d#', verb.startsWith('a') || verb.startsWith('e') || verb.startsWith('i') || verb.startsWith('o') || verb.startsWith('u') ? "d'" : "de");
+
+        const sentence = `${starter} ${situation} ${qualifier}, ${processedAction} ${verb} ${quantity} ${solution} ${outcome} ${timeframe}.`;
+        
+        return sentence;
+      }
+
+      document.getElementById('generateBtn').addEventListener('click', function() {
+        const sentence = generateSentence();
+        document.getElementById('result').innerHTML = `<p class="text-lg">${sentence}</p>`;
+      });
+
+      // Manual selection functionality
+      const selects = document.querySelectorAll('select');
+      selects.forEach(select => {
+        select.addEventListener('change', function() {
+          updateManualSentence();
+        });
+      });
+
+      function updateManualSentence() {
+        const selectedValues = {};
+        selects.forEach(select => {
+          if (select.value) {
+            selectedValues[select.id] = select.value;
+          }
+        });
+
+        if (Object.keys(selectedValues).length > 0) {
+          let sentence = "";
+          const keys = ['starters', 'situations', 'qualifiers', 'actions', 'verbs', 'quantities', 'solutions', 'outcomes', 'timeframes'];
+          
+          keys.forEach(key => {
+            if (selectedValues[key]) {
+              if (key === 'actions' && selectedValues[key].includes('d#')) {
+                const verb = selectedValues.verbs || 'étudier';
+                const processedAction = selectedValues[key].replace('d#', verb.startsWith('a') || verb.startsWith('e') || verb.startsWith('i') || verb.startsWith('o') || verb.startsWith('u') ? "d'" : "de");
+                sentence += processedAction + " ";
+              } else {
+                sentence += selectedValues[key] + " ";
+              }
+            }
+          });
+
+          if (sentence.trim()) {
+            document.getElementById('result').innerHTML = `<p class="text-lg">${sentence.trim()}.</p>`;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

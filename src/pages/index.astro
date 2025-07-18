@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 
 const wordLists = {
-  // ... (garder toutes les wordLists identiques)
   incidents: [
     "Suite aux récents événements qui ont touché notre communauté diocésaine",
     "Face aux difficultés pastorales que traverse notre diocèse en ces temps troublés",
@@ -43,40 +42,649 @@ const wordLists = {
     "exprimons notre empathie aux victimes et les encourageons à regarder vers l'avenir par le pardon",
     "montrons notre attention aux personnes éprouvées et les accompagnons pour avancer dans la réconciliation",
     "manifestons notre fraternité aux victimes et les invitons à aller de l'avant par la miséricorde",
-    "},
-      acknowledgments: { base: 2, multiplier: 1 },
-      apologies: { base: 4, multiplier: 1 },
-      misericorde: { base: 5, multiplier: 1 },
-      actions: { base: 6, multiplier: 1 },
-      goodFruits: { base: 4, multiplier: 1 },
-      originDeflection: { base: 5, multiplier: 1 },
-      scapegoats: { base: 4, multiplier: 1 },
-      spiritualEndings: { base: 3, multiplier: 1 },
-      closings: { base: 4, multiplier: 1 }
+    "témoignons notre sollicitude aux âmes blessées et les encourageons à tourner la page dans le pardon",
+    "exprimons notre proximité aux personnes affectées et les soutenons pour passer à autre chose par la réconciliation",
+    "montrons notre compassion aux victimes et les accompagnons vers l'avenir dans la miséricorde"
+  ],
+
+  misericorde: [
+    "Rappelons que la miséricorde divine s'étend à tous, et doit guider notre discernement",
+    "Le pardon évangélique concerne chaque membre de notre communauté, y compris les accusés",
+    "La miséricorde du Christ embrasse tous les enfants de Dieu sans exception",
+    "La compassion divine rayonne sur chacun. La présomption d'innocence demeure fondamentale",
+    "Le pardon du Seigneur s'offre à tous, même aux plus fautifs d'entre nous",
+    "Méditons sur la miséricorde infinie qui unit tous nos frères, victimes et coupables présumés, dans la charité"
+  ],
+
+  actions: [
+    "Nous agissons fermement en mettant en place un processus d'évaluation de nos pratiques",
+    "Nous passons à l'action en renforçant nos dispositifs d'accompagnement spirituel",
+    "Nous nous mobilisons résolument pour développer une démarche de discernement communautaire",
+    "Nous prenons des mesures concrètes en instaurant des mécanismes de dialogue renforcés",
+    "Nous nous engageons activement à consolider nos structures de formation pastorale",
+    "Nous mettons tout en œuvre pour approfondir notre réflexion dans un esprit de synodalité"
+  ],
+
+  tourmentes: [
+    "Dans la tourmente",
+    "Au cœur de la tempête",
+    "En ces temps d'épreuve",
+    "Malgré les turbulences",
+    "Dans cette période difficile",
+    "Au sein de ces bouleversements",
+    "Face à l'adversité",
+    "Dans ces moments troublés",
+    "Malgré les difficultés",
+    "En dépit des épreuves",
+    "Dans ce contexte délicat",
+    "Au milieu des défis"
+  ],
+
+  goodFruits: [
+    "il convient de ne pas occulter les fruits de grâce de nos paroisses",
+    "nous devons garder à l'esprit les témoignages de foi de notre diocèse",
+    "il serait injuste d'ignorer les actions caritatives de nos communautés",
+    "nous ne saurions oublier les vocations qui confirment l'Esprit Saint",
+    "rappelons-nous les signes d'espérance de notre Église",
+    "gardons présents les élans missionnaires qui nous dynamisent",
+    "il importe de souligner les merveilles qui s'accomplissent dans nos paroisses",
+    "nous devons reconnaître les conversions authentiques de notre diocèse",
+    "il serait dommage d'omettre les œuvres caritatives de nos fidèles",
+    "nous ne pouvons ignorer les grâces qui abondent dans nos communautés",
+    "rappelons les initiatives généreuses qui fleurissent dans notre Église",
+    "gardons en mémoire les projets porteurs d'espérance qui nous animent"
+  ],
+
+  originDeflection: [
+    "sans nous leurrer sur l'origine de ces perturbations",
+    "en gardant à l'esprit les sources de ces troubles",
+    "sans perdre de vue les ferments de division",
+    "sans ignorer les véritables causes de ces difficultés",
+    "en identifiant clairement les racines de ces tensions",
+    "sans oublier les influences qui alimentent ces polémiques"
+  ],
+
+  scapegoats: [
+    "certains médias en quête de sensationnalisme",
+    "des mouvements traditionalistes fermés au souffle de l'Esprit",
+    "des lobbies progressistes déconnectés de la Tradition",
+    "des réseaux occultes hostiles à l'Évangile",
+    "des groupuscules anticléricaux",
+    "des influences séculières cherchant à saper notre rayonnement",
+    "des organes de presse avides de polémiques",
+    "des courants intégristes figés dans leurs certitudes",
+    "des factions modernistes étrangères à l'Église",
+    "des cercles opposés à la mission évangélisatrice",
+    "des militants nourris de préjugés anti-religieux",
+    "des forces s'acharnant à ternir notre image"
+  ],
+
+  spiritualEndings: [
+    "afin d'ouvrir des fenêtres d'espérance sur l'éternité",
+    "pour que jaillissent des sources de grâce dans nos cœurs",
+    "en vue de faire germer la paix évangélique dans nos âmes",
+    "dans l'espoir de voir fleurir la miséricorde divine",
+    "pour que résonne la mélodie céleste dans nos prières",
+    "afin que s'épanouisse la lumière du Christ",
+    "pour que s'ouvrent les chemins de la réconciliation",
+    "afin que rayonnent les fruits de l'Esprit Saint",
+    "en vue de cultiver les vertus théologales dans nos communautés",
+    "dans l'attente de voir grandir la communion fraternelle",
+    "pour que s'accomplisse la volonté divine dans nos vies",
+    "afin que se manifestent les signes du Royaume"
+  ],
+
+  closings: [
+    "Concentrons-nous sur ce qui est beau et évangélique",
+    "Tournons nos regards vers l'espérance chrétienne plutôt que vers les polémiques",
+    "Privilégions nos liturgies aux controverses médiatiques",
+    "Préférons l'écoute fraternelle aux clameurs stériles",
+    "Choisissons le dialogue plutôt que les divisions",
+    "Focalisons-nous sur notre mission d'évangélisation",
+    "Orientons nos cœurs vers la beauté de la foi",
+    "Dirigeons notre attention vers les merveilles de la Création plutôt que vers les divisions",
+    "Favorisons la prière contemplative aux débats stériles",
+    "Préférons la méditation spirituelle aux polémiques destructrices",
+    "Choisissons la charité chrétienne plutôt que les affrontements",
+    "Concentrons-nous sur l'essentiel de notre vocation pastorale"
+  ]
+};
+
+const bishopNames = [
+  "Mgr Claude-Henri de Miséricorde",
+  "Mgr Adalbert de Contournement", 
+  "Mgr Séraphin du Détournement",
+  "Mgr Boniface de l'Esquive",
+  "Mgr Théophile de la Langue-de-Bois",
+  "Mgr Ambroise du Flou-Artistique",
+  "Mgr Pacôme de l'Évitement",
+  "Mgr Chrysostome de la Diversion",
+  "Mgr Bénédict de l'Évasion",
+  "Mgr Anselme du Détournement-d'Attention"
+];
+---
+
+<Layout title="Pipotron Épiscopal">
+  <div class="py-4">
+    <h1 class="mb-6 text-4xl font-bold text-center">Pipotron Épiscopal</h1>
+    
+    <div id="progressBar" class="mb-6 mx-auto max-w-4xl hidden">
+      <div class="bg-gray-200 rounded-full h-2 mb-2">
+        <div id="progressFill" class="bg-yellow-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+      <p id="progressText" class="text-center text-base font-medium text-yellow-600"></p>
+    </div>
+    
+    <div class="mb-6 mx-auto max-w-4xl">
+      <div class="bg-gray-100 text-black rounded-lg shadow-2xl border-4 border-gray-400 relative overflow-hidden">
+        <div class="bg-gray-600 text-white p-6 text-center border-b-4 border-gray-400">
+          <div class="flex items-center justify-center space-x-4">
+            <div>
+              <h2 class="text-xl font-bold">COMMUNIQUÉ DE PRESSE</h2>
+              <p class="text-sm opacity-90">Diocèse de Saint-Barbant</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="p-8">
+          <div id="result" class="min-h-32 flex items-center justify-center">
+            <p class="text-gray-500 text-center italic">
+              Cliquez sur "Générer un nouveau" pour créer un communiqué de miséricorde
+            </p>
+          </div>
+        </div>
+        
+        <div id="bullshitMeter" class="hidden bg-yellow-100 border-t-2 border-yellow-300 p-4">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-medium">Niveau de langue de bois :</span>
+            <div id="bullshitStars" class="text-yellow-500"></div>
+          </div>
+        </div>
+        
+        <div class="absolute top-0 left-0 w-8 h-8 border-l-4 border-t-4 border-gray-400"></div>
+        <div class="absolute top-0 right-0 w-8 h-8 border-r-4 border-t-4 border-gray-400"></div>
+        <div class="absolute bottom-0 left-0 w-8 h-8 border-l-4 border-b-4 border-gray-400"></div>
+        <div class="absolute bottom-0 right-0 w-8 h-8 border-r-4 border-b-4 border-gray-400"></div>
+      </div>
+    </div>
+
+    <div class="text-center mb-6">
+      <button 
+        id="generateBtn" 
+        class="btn btn-lg bg-yellow-600 text-black hover:bg-yellow-700 font-semibold mr-4"
+      >
+        🙏 Générer un nouveau communiqué de miséricorde
+      </button>
+      <button 
+        id="translateBtn" 
+        class="btn btn-lg bg-orange-500 text-white hover:bg-orange-600 font-semibold hidden"
+      >
+        🔍 Traduire en français normal
+      </button>
+    </div>
+
+    <div class="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
+      <p class="text-center text-white/90">
+        Ou composez manuellement votre communiqué en sélectionnant dans les listes ci-dessous (dans l'ordre d'apparition)
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">📰 Incident (flou)</label>
+        <select 
+          id="incidents" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.incidents.map((word, index) => <option key={index} value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">😔 Reconnaissance (partielle)</label>
+        <select 
+          id="acknowledgments" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.acknowledgments.map((word, index) => <option key={index} value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">💔 Excuses (rapides)</label>
+        <select 
+          id="apologies" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.apologies.map((word, index) => <option key={index} value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">🙏 Miséricorde (sélective)</label>
+        <select 
+          id="misericorde" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.misericorde.map((word, index) => <option key={index} value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">⚡ Actions (vagues)</label>
+        <select 
+          id="actions" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.actions.map((word, index) => <option key={index} value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">🍇 Bons fruits (obligatoires)</label>
+        <select 
+          id="goodFruits" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.goodFruits.map((word, index) => <option key={index} value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">🔍 Origine (détournée)</label>
+        <select 
+          id="originDeflection" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.originDeflection.map((word, index) => <option key={index} value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">🎯 Boucs émissaires (pratiques)</label>
+        <select 
+          id="scapegoats" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.scapegoats.map((word, index) => <option key={index} value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">✨ Fins spirituelles (creuses)</label>
+        <select 
+          id="spiritualEndings" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.spiritualEndings.map((word, index) => <option key={index} value={word}>{word}</option>)}
+        </select>
+      </div>
+
+      <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+        <label class="block text-white font-medium mb-2 text-sm">🌸 Conclusion (détournement)</label>
+        <select 
+          id="closings" 
+          class="w-full p-2 bg-white/10 border border-white/20 rounded text-white text-xs" 
+          size="4"
+        >
+          <option value="">-- Choisir --</option>
+          {wordLists.closings.map((word, index) => <option key={index} value={word}>{word}</option>)}
+        </select>
+      </div>
+    </div>
+
+    <div class="text-center mt-6">
+      <button 
+        id="resetBtn" 
+        class="btn bg-white/10 text-white hover:bg-white/20"
+      >
+        🔄 Réinitialiser
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const wordLists = {
+      incidents: [
+        "Suite aux récents événements qui ont touché notre communauté diocésaine",
+        "Face aux difficultés pastorales que traverse notre diocèse en ces temps troublés",
+        "Concernant les situations portées à notre attention",
+        "À la lumière des témoignages qui nous sont parvenus",
+        "Devant les défis pastoraux auxquels nous sommes confrontés",
+        "En réponse aux préoccupations exprimées par nos fidèles",
+        "Suite aux interrogations soulevées dans notre diocèse",
+        "Face aux circonstances qui interpellent notre communauté",
+        "Concernant les questions qui nous ont été rapportées",
+        "À la suite des événements qui ont marqué notre famille diocésaine",
+        "Devant les enjeux pastoraux de cette période délicate",
+        "En réaction aux inquiétudes exprimées"
+      ],
+      acknowledgments: [
+        "nous reconnaissons que des dysfonctionnements ont pu survenir",
+        "nous prenons acte des questionnements de notre communauté",
+        "nous entendons les inquiétudes de nos paroissiens",
+        "nous mesurons l'ampleur des interrogations suscitées",
+        "nous sommes conscients des fragilités de notre institution",
+        "nous accueillons les interpellations qui nous sont adressées",
+        "nous admettons que des manquements ont pu se produire",
+        "nous comprenons les préoccupations de nos fidèles",
+        "nous entendons les questions légitimes posées",
+        "nous reconnaissons les difficultés rencontrées",
+        "nous sommes sensibles aux inquiétudes exprimées",
+        "nous prenons la mesure des interrogations soulevées"
+      ],
+      apologies: [
+        "manifestons notre proximité aux victimes et les encourageons à aller de l'avant par le pardon",
+        "témoignons notre compassion aux personnes troublées et les invitons à tourner la page dans la réconciliation",
+        "exprimons notre soutien aux âmes ébranlées et les accompagnons pour avancer par la miséricorde",
+        "montrons notre solidarité aux personnes affectées et les encourageons à passer à autre chose dans le pardon",
+        "manifestons notre compréhension aux victimes et les soutenons pour aller de l'avant par la réconciliation",
+        "témoignons notre bienveillance aux personnes touchées et les invitons à tourner la page dans la miséricorde",
+        "exprimons notre empathie aux victimes et les encourageons à regarder vers l'avenir par le pardon",
+        "montrons notre attention aux personnes éprouvées et les accompagnons pour avancer dans la réconciliation",
+        "manifestons notre fraternité aux victimes et les invitons à aller de l'avant par la miséricorde",
+        "témoignons notre sollicitude aux âmes blessées et les encourageons à tourner la page dans le pardon",
+        "exprimons notre proximité aux personnes affectées et les soutenons pour passer à autre chose par la réconciliation",
+        "montrons notre compassion aux victimes et les accompagnons vers l'avenir dans la miséricorde"
+      ],
+      misericorde: [
+        "Rappelons que la miséricorde divine s'étend à tous, et doit guider notre discernement",
+        "Le pardon évangélique concerne chaque membre de notre communauté, y compris les accusés",
+        "La miséricorde du Christ embrasse tous les enfants de Dieu sans exception",
+        "La compassion divine rayonne sur chacun. La présomption d'innocence demeure fondamentale",
+        "Le pardon du Seigneur s'offre à tous, même aux plus fautifs d'entre nous",
+        "Méditons sur la miséricorde infinie qui unit tous nos frères, victimes et coupables présumés, dans la charité"
+      ],
+      actions: [
+        "Nous agissons fermement en mettant en place un processus d'évaluation de nos pratiques",
+        "Nous passons à l'action en renforçant nos dispositifs d'accompagnement spirituel",
+        "Nous nous mobilisons résolument pour développer une démarche de discernement communautaire",
+        "Nous prenons des mesures concrètes en instaurant des mécanismes de dialogue renforcés",
+        "Nous nous engageons activement à consolider nos structures de formation pastorale",
+        "Nous mettons tout en œuvre pour approfondir notre réflexion dans un esprit de synodalité"
+      ],
+      tourmentes: [
+        "Dans la tourmente", "Au cœur de la tempête", "En ces temps d'épreuve", "Malgré les turbulences",
+        "Dans cette période difficile", "Au sein de ces bouleversements", "Face à l'adversité", "Dans ces moments troublés",
+        "Malgré les difficultés", "En dépit des épreuves", "Dans ce contexte délicat", "Au milieu des défis"
+      ],
+      goodFruits: [
+        "il convient de ne pas occulter les fruits de grâce de nos paroisses",
+        "nous devons garder à l'esprit les témoignages de foi de notre diocèse",
+        "il serait injuste d'ignorer les actions caritatives de nos communautés",
+        "nous ne saurions oublier les vocations qui confirment l'Esprit Saint",
+        "rappelons-nous les signes d'espérance de notre Église",
+        "gardons présents les élans missionnaires qui nous dynamisent",
+        "il importe de souligner les merveilles qui s'accomplissent dans nos paroisses",
+        "nous devons reconnaître les conversions authentiques de notre diocèse",
+        "il serait dommage d'omettre les œuvres caritatives de nos fidèles",
+        "nous ne pouvons ignorer les grâces qui abondent dans nos communautés",
+        "rappelons les initiatives généreuses qui fleurissent dans notre Église",
+        "gardons en mémoire les projets porteurs d'espérance qui nous animent"
+      ],
+      originDeflection: [
+        "sans nous leurrer sur l'origine de ces perturbations",
+        "en gardant à l'esprit les sources de ces troubles",
+        "sans perdre de vue les ferments de division",
+        "sans ignorer les véritables causes de ces difficultés",
+        "en identifiant clairement les racines de ces tensions",
+        "sans oublier les influences qui alimentent ces polémiques"
+      ],
+      scapegoats: [
+        "certains médias en quête de sensationnalisme",
+        "des mouvements traditionalistes fermés au souffle de l'Esprit",
+        "des lobbies progressistes déconnectés de la Tradition",
+        "des réseaux occultes hostiles à l'Évangile",
+        "des groupuscules anticléricaux",
+        "des influences séculières cherchant à saper notre rayonnement",
+        "des organes de presse avides de polémiques",
+        "des courants intégristes figés dans leurs certitudes",
+        "des factions modernistes étrangères à l'Église",
+        "des cercles opposés à la mission évangélisatrice",
+        "des militants nourris de préjugés anti-religieux",
+        "des forces s'acharnant à ternir notre image"
+      ],
+      spiritualEndings: [
+        "afin d'ouvrir des fenêtres d'espérance sur l'éternité",
+        "pour que jaillissent des sources de grâce dans nos cœurs",
+        "en vue de faire germer la paix évangélique dans nos âmes",
+        "dans l'espoir de voir fleurir la miséricorde divine",
+        "pour que résonne la mélodie céleste dans nos prières",
+        "afin que s'épanouisse la lumière du Christ",
+        "pour que s'ouvrent les chemins de la réconciliation",
+        "afin que rayonnent les fruits de l'Esprit Saint",
+        "en vue de cultiver les vertus théologales dans nos communautés",
+        "dans l'attente de voir grandir la communion fraternelle",
+        "pour que s'accomplisse la volonté divine dans nos vies",
+        "afin que se manifestent les signes du Royaume"
+      ],
+      closings: [
+        "Concentrons-nous sur ce qui est beau et évangélique",
+        "Tournons nos regards vers l'espérance chrétienne plutôt que vers les polémiques",
+        "Privilégions nos liturgies aux controverses médiatiques",
+        "Préférons l'écoute fraternelle aux clameurs stériles",
+        "Choisissons le dialogue plutôt que les divisions",
+        "Focalisons-nous sur notre mission d'évangélisation",
+        "Orientons nos cœurs vers la beauté de la foi",
+        "Dirigeons notre attention vers les merveilles de la Création plutôt que vers les divisions",
+        "Favorisons la prière contemplative aux débats stériles",
+        "Préférons la méditation spirituelle aux polémiques destructrices",
+        "Choisissons la charité chrétienne plutôt que les affrontements",
+        "Concentrons-nous sur l'essentiel de notre vocation pastorale"
+      ]
+    };
+
+    const bishopNames = [
+      "Mgr Claude-Henri de Miséricorde", "Mgr Adalbert de Contournement", "Mgr Séraphin du Détournement",
+      "Mgr Boniface de l'Esquive", "Mgr Théophile de la Langue-de-Bois", "Mgr Ambroise du Flou-Artistique",
+      "Mgr Pacôme de l'Évitement", "Mgr Chrysostome de la Diversion", "Mgr Bénédict de l'Évasion",
+      "Mgr Anselme du Détournement-d'Attention"
+    ];
+
+    // Score individuel pour chaque phrase
+    const phraseScores = {
+      // Incidents (1-3 points)
+      "Suite aux récents événements qui ont touché notre communauté diocésaine": 2,
+      "Face aux difficultés pastorales que traverse notre diocèse en ces temps troublés": 3,
+      "Concernant les situations portées à notre attention": 1,
+      "À la lumière des témoignages qui nous sont parvenus": 2,
+      "Devant les défis pastoraux auxquels nous sommes confrontés": 2,
+      "En réponse aux préoccupations exprimées par nos fidèles": 1,
+      "Suite aux interrogations soulevées dans notre diocèse": 2,
+      "Face aux circonstances qui interpellent notre communauté": 2,
+      "Concernant les questions qui nous ont été rapportées": 1,
+      "À la suite des événements qui ont marqué notre famille diocésaine": 3,
+      "Devant les enjeux pastoraux de cette période délicate": 3,
+      "En réaction aux inquiétudes exprimées": 1,
+
+      // Acknowledgments (1-2 points)
+      "nous reconnaissons que des dysfonctionnements ont pu survenir": 1,
+      "nous prenons acte des questionnements de notre communauté": 2,
+      "nous entendons les inquiétudes de nos paroissiens": 1,
+      "nous mesurons l'ampleur des interrogations suscitées": 2,
+      "nous sommes conscients des fragilités de notre institution": 2,
+      "nous accueillons les interpellations qui nous sont adressées": 2,
+      "nous admettons que des manquements ont pu se produire": 1,
+      "nous comprenons les préoccupations de nos fidèles": 1,
+      "nous entendons les questions légitimes posées": 1,
+      "nous reconnaissons les difficultés rencontrées": 1,
+      "nous sommes sensibles aux inquiétudes exprimées": 2,
+      "nous prenons la mesure des interrogations soulevées": 2,
+
+      // Apologies (2-4 points)
+      "manifestons notre proximité aux victimes et les encourageons à aller de l'avant par le pardon": 4,
+      "témoignons notre compassion aux personnes troublées et les invitons à tourner la page dans la réconciliation": 4,
+      "exprimons notre soutien aux âmes ébranlées et les accompagnons pour avancer par la miséricorde": 3,
+      "montrons notre solidarité aux personnes affectées et les encourageons à passer à autre chose dans le pardon": 4,
+      "manifestons notre compréhension aux victimes et les soutenons pour aller de l'avant par la réconciliation": 3,
+      "témoignons notre bienveillance aux personnes touchées et les invitons à tourner la page dans la miséricorde": 4,
+      "exprimons notre empathie aux victimes et les encourageons à regarder vers l'avenir par le pardon": 3,
+      "montrons notre attention aux personnes éprouvées et les accompagnons pour avancer dans la réconciliation": 3,
+      "manifestons notre fraternité aux victimes et les invitons à aller de l'avant par la miséricorde": 4,
+      "témoignons notre sollicitude aux âmes blessées et les encourageons à tourner la page dans le pardon": 4,
+      "exprimons notre proximité aux personnes affectées et les soutenons pour passer à autre chose par la réconciliation": 4,
+      "montrons notre compassion aux victimes et les accompagnons vers l'avenir dans la miséricorde": 3,
+
+      // Miséricorde (3-5 points)
+      "Rappelons que la miséricorde divine s'étend à tous, et doit guider notre discernement": 4,
+      "Le pardon évangélique concerne chaque membre de notre communauté, y compris les accusés": 5,
+      "La miséricorde du Christ embrasse tous les enfants de Dieu sans exception": 4,
+      "La compassion divine rayonne sur chacun. La présomption d'innocence demeure fondamentale": 5,
+      "Le pardon du Seigneur s'offre à tous, même aux plus fautifs d'entre nous": 5,
+      "Méditons sur la miséricorde infinie qui unit tous nos frères, victimes et coupables présumés, dans la charité": 5,
+
+      // Actions (3-5 points)
+      "Nous agissons fermement en mettant en place un processus d'évaluation de nos pratiques": 5,
+      "Nous passons à l'action en renforçant nos dispositifs d'accompagnement spirituel": 4,
+      "Nous nous mobilisons résolument pour développer une démarche de discernement communautaire": 5,
+      "Nous prenons des mesures concrètes en instaurant des mécanismes de dialogue renforcés": 5,
+      "Nous nous engageons activement à consolider nos structures de formation pastorale": 4,
+      "Nous mettons tout en œuvre pour approfondir notre réflexion dans un esprit de synodalité": 5,
+
+      // GoodFruits (2-4 points)
+      "il convient de ne pas occulter les fruits de grâce de nos paroisses": 4,
+      "nous devons garder à l'esprit les témoignages de foi de notre diocèse": 3,
+      "il serait injuste d'ignorer les actions caritatives de nos communautés": 3,
+      "nous ne saurions oublier les vocations qui confirment l'Esprit Saint": 3,
+      "rappelons-nous les signes d'espérance de notre Église": 2,
+      "gardons présents les élans missionnaires qui nous dynamisent": 3,
+      "il importe de souligner les merveilles qui s'accomplissent dans nos paroisses": 4,
+      "nous devons reconnaître les conversions authentiques de notre diocèse": 3,
+      "il serait dommage d'omettre les œuvres caritatives de nos fidèles": 3,
+      "nous ne pouvons ignorer les grâces qui abondent dans nos communautés": 4,
+      "rappelons les initiatives généreuses qui fleurissent dans notre Église": 3,
+      "gardons en mémoire les projets porteurs d'espérance qui nous animent": 3,
+
+      // OriginDeflection (3-4 points)
+      "sans nous leurrer sur l'origine de ces perturbations": 4,
+      "en gardant à l'esprit les sources de ces troubles": 3,
+      "sans perdre de vue les ferments de division": 4,
+      "sans ignorer les véritables causes de ces difficultés": 3,
+      "en identifiant clairement les racines de ces tensions": 4,
+      "sans oublier les influences qui alimentent ces polémiques": 4,
+
+      // Scapegoats (2-4 points)
+      "certains médias en quête de sensationnalisme": 3,
+      "des mouvements traditionalistes fermés au souffle de l'Esprit": 4,
+      "des lobbies progressistes déconnectés de la Tradition": 4,
+      "des réseaux occultes hostiles à l'Évangile": 4,
+      "des groupuscules anticléricaux": 2,
+      "des influences séculières cherchant à saper notre rayonnement": 4,
+      "des organes de presse avides de polémiques": 3,
+      "des courants intégristes figés dans leurs certitudes": 4,
+      "des factions modernistes étrangères à l'Église": 4,
+      "des cercles opposés à la mission évangélisatrice": 3,
+      "des militants nourris de préjugés anti-religieux": 3,
+      "des forces s'acharnant à ternir notre image": 3,
+
+      // SpiritualEndings (1-3 points)
+      "afin d'ouvrir des fenêtres d'espérance sur l'éternité": 3,
+      "pour que jaillissent des sources de grâce dans nos cœurs": 3,
+      "en vue de faire germer la paix évangélique dans nos âmes": 3,
+      "dans l'espoir de voir fleurir la miséricorde divine": 2,
+      "pour que résonne la mélodie céleste dans nos prières": 3,
+      "afin que s'épanouisse la lumière du Christ": 2,
+      "pour que s'ouvrent les chemins de la réconciliation": 2,
+      "afin que rayonnent les fruits de l'Esprit Saint": 3,
+      "en vue de cultiver les vertus théologales dans nos communautés": 3,
+      "dans l'attente de voir grandir la communion fraternelle": 2,
+      "pour que s'accomplisse la volonté divine dans nos vies": 2,
+      "afin que se manifestent les signes du Royaume": 3,
+
+      // Closings (2-4 points)
+      "Concentrons-nous sur ce qui est beau et évangélique": 3,
+      "Tournons nos regards vers l'espérance chrétienne plutôt que vers les polémiques": 4,
+      "Privilégions nos liturgies aux controverses médiatiques": 4,
+      "Préférons l'écoute fraternelle aux clameurs stériles": 3,
+      "Choisissons le dialogue plutôt que les divisions": 3,
+      "Focalisons-nous sur notre mission d'évangélisation": 2,
+      "Orientons nos cœurs vers la beauté de la foi": 3,
+      "Dirigeons notre attention vers les merveilles de la Création plutôt que vers les divisions": 4,
+      "Favorisons la prière contemplative aux débats stériles": 4,
+      "Préférons la méditation spirituelle aux polémiques destructrices": 4,
+      "Choisissons la charité chrétienne plutôt que les affrontements": 3,
+      "Concentrons-nous sur l'essentiel de notre vocation pastorale": 3
+    };
+
+    // Translations (raccourcies pour éviter les erreurs de build)
+    const translations = {
+      "nous reconnaissons que des dysfonctionnements ont pu survenir": "on s'est fait choper",
+      "nous prenons acte des questionnements de notre communauté": "les gens râlent",
+      "nous entendons les inquiétudes de nos paroissiens": "ça gueule dans les paroisses",
+      "nous mesurons l'ampleur des interrogations suscitées": "c'est la merde",
+      "nous sommes conscients des fragilités de notre institution": "on a merdé",
+      "nous accueillons les interpellations qui nous sont adressées": "on fait semblant d'écouter",
+      "nous admettons que des manquements ont pu se produire": "bon ok, on a foiré",
+      "nous comprenons les préoccupations de nos fidèles": "on vous a entendus crier",
+      "manifestons notre proximité aux victimes": "on fait semblant de compatir",
+      "témoignons notre compassion aux personnes troublées": "on dit qu'on est désolés",
+      "exprimons notre soutien aux âmes ébranlées": "on vous tapote l'épaule",
+      "montrons notre solidarité aux personnes affectées": "on fait genre qu'on comprend",
+      "les encourageons à aller de l'avant": "passez à autre chose",
+      "les invitons à tourner la page": "oubliez tout ça",
+      "par le pardon": "en fermant votre gueule",
+      "dans la réconciliation": "en nous pardonnant",
+      "par la miséricorde": "en nous oubliant",
+      "la miséricorde divine s'étend à tous": "on protège nos copains",
+      "le pardon évangélique concerne chaque membre": "on s'en fout de la justice",
+      "la présomption d'innocence demeure fondamentale": "ils sont innocents jusqu'à preuve du contraire",
+      "nous agissons fermement": "on ne fait rien de concret",
+      "nous passons à l'action": "on va réfléchir à agir",
+      "nous nous mobilisons résolument": "on va faire semblant",
+      "nous prenons des mesures concrètes": "on va créer une commission",
+      "il convient de ne pas occulter": "regardez ailleurs",
+      "nous devons garder à l'esprit": "oubliez le scandale",
+      "il serait injuste d'ignorer": "on fait aussi du bien",
+      "sans nous leurrer sur l'origine": "c'est la faute des autres",
+      "en gardant à l'esprit les sources": "cherchez les vrais coupables",
+      "sans perdre de vue les ferments": "c'est un complot",
+      "certains médias en quête de sensationnalisme": "les journalistes nous embêtent",
+      "des mouvements traditionalistes fermés": "les cathos de droite nous cassent les pieds",
+      "des lobbies progressistes déconnectés": "les cathos de gauche nous emmerdent",
+      "des réseaux occultes hostiles": "c'est la faute des francs-maçons",
+      "des groupuscules anticléricaux": "les athées nous détestent",
+      "concentrons-nous sur ce qui est beau": "parlons d'autre chose",
+      "tournons nos regards vers l'espérance": "ignorez le problème",
+      "privilégions nos liturgies": "la messe c'est plus important",
+      "préférons l'écoute fraternelle": "fermez-la et priez",
+      "choisissons le dialogue": "arrêtez de nous emmerder",
+      "focalisons-nous sur notre mission": "on a autre chose à faire"
     };
 
     function getRandomItem(array) {
       return array[Math.floor(Math.random() * array.length)];
     }
 
-    function calculateBullshitLevel(selectedItems) {
+    function calculateBullshitLevel(selectedTexts) {
       let totalScore = 0;
       
-      // Calcul basé sur les éléments sélectionnés
-      Object.keys(selectedItems).forEach(key => {
-        if (bullshitScores[key] && selectedItems[key]) {
-          totalScore += bullshitScores[key].base;
+      // Calculer le score basé sur chaque phrase sélectionnée
+      Object.values(selectedTexts).forEach(text => {
+        if (text && phraseScores[text]) {
+          totalScore += phraseScores[text];
         }
       });
       
-      // Bonus pour certaines combinaisons
-      if (selectedItems.misericorde && selectedItems.scapegoats) totalScore += 3;
-      if (selectedItems.goodFruits && selectedItems.originDeflection) totalScore += 3;
-      if (selectedItems.actions && selectedItems.spiritualEndings) totalScore += 2;
-      if (selectedItems.apologies && selectedItems.misericorde) totalScore += 2;
-      
-      // Assurer que le niveau soit entre 7 et 10 (plus dur)
-      const level = Math.min(Math.max(totalScore - 15, 7), 10);
+      // Convertir en niveau sur 10 (score max théorique environ 45)
+      const level = Math.min(Math.max(Math.ceil(totalScore / 5), 6), 10);
       return level;
     }
 
@@ -142,28 +750,14 @@ const wordLists = {
         currentSelectedItems = selectedItems;
         const bishop = getRandomItem(bishopNames);
 
-        const communique = `${selectedItems.incidents}, ${selectedItems.acknowledgments}. En ces temps troublés, ${selectedItems.apologies}. ${selectedItems.misericorde}.
-
-${selectedItems.actions} ${selectedItems.spiritualEndings}.
-
-${selectedItems.tourmentes}, ${selectedItems.goodFruits}. Il importe également, ${selectedItems.originDeflection}, de ne pas céder aux manœuvres de ${selectedItems.scapegoats}.
-
-${selectedItems.closings}.`;
+        const communique = selectedItems.incidents + ', ' + selectedItems.acknowledgments + '. En ces temps troublés, ' + selectedItems.apologies + '. ' + selectedItems.misericorde + '.\n\n' + selectedItems.actions + ' ' + selectedItems.spiritualEndings + '.\n\n' + selectedItems.tourmentes + ', ' + selectedItems.goodFruits + '. Il importe également, ' + selectedItems.originDeflection + ', de ne pas céder aux manœuvres de ' + selectedItems.scapegoats + '.\n\n' + selectedItems.closings + '.';
         
         currentCommunique = communique;
         isTranslated = false;
         
         const bullshitLevel = calculateBullshitLevel(selectedItems);
         
-        document.getElementById('result').innerHTML = `
-          <div class="text-left">
-            <p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">${communique}</p>
-            <div class="text-right text-sm text-gray-600 italic mt-4">
-              <p>+ ${bishop}</p>
-              <p>Évêque de Saint-Barbant</p>
-            </div>
-          </div>
-        `;
+        document.getElementById('result').innerHTML = '<div class="text-left"><p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">' + communique + '</p><div class="text-right text-sm text-gray-600 italic mt-4"><p>+ ' + bishop + '</p><p>Évêque de Saint-Barbant</p></div></div>';
         
         showBullshitMeter(bullshitLevel);
         document.getElementById('translateBtn').classList.remove('hidden');
@@ -174,39 +768,20 @@ ${selectedItems.closings}.`;
 
     document.getElementById('translateBtn').addEventListener('click', function() {
       if (isTranslated) {
-        // Retour à l'original
-        document.getElementById('result').innerHTML = `
-          <div class="text-left">
-            <p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">${currentCommunique}</p>
-            <div class="text-right text-sm text-gray-600 italic mt-4">
-              <p>+ ${getRandomItem(bishopNames)}</p>
-              <p>Évêque de Saint-Barbant</p>
-            </div>
-          </div>
-        `;
+        document.getElementById('result').innerHTML = '<div class="text-left"><p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">' + currentCommunique + '</p><div class="text-right text-sm text-gray-600 italic mt-4"><p>+ ' + getRandomItem(bishopNames) + '</p><p>Évêque de Saint-Barbant</p></div></div>';
         this.textContent = '🔍 Traduire en français normal';
         isTranslated = false;
       } else {
-        // Traduction
         let translatedCommunique = currentCommunique;
         
-        // Remplacer les expressions par version barrée + traduction
         Object.keys(translations).forEach(key => {
           const regex = new RegExp(key, 'gi');
           translatedCommunique = translatedCommunique.replace(regex, 
-            `<span class="line-through text-gray-500">${key}</span> <span class="bg-red-200 text-red-800 px-1 rounded font-medium">${translations[key]}</span>`
+            '<span class="line-through text-gray-500">' + key + '</span> <span class="bg-red-200 text-red-800 px-1 rounded font-medium">' + translations[key] + '</span>'
           );
         });
         
-        document.getElementById('result').innerHTML = `
-          <div class="text-left">
-            <p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">${translatedCommunique}</p>
-            <div class="text-right text-sm text-gray-600 italic mt-4">
-              <p>+ ${getRandomItem(bishopNames)}</p>
-              <p>Évêque de Saint-Barbant</p>
-            </div>
-          </div>
-        `;
+        document.getElementById('result').innerHTML = '<div class="text-left"><p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">' + translatedCommunique + '</p><div class="text-right text-sm text-gray-600 italic mt-4"><p>+ ' + getRandomItem(bishopNames) + '</p><p>Évêque de Saint-Barbant</p></div></div>';
         this.textContent = '↩️ Retour à l\'original';
         isTranslated = true;
       }
@@ -217,7 +792,7 @@ ${selectedItems.closings}.`;
       selects.forEach(select => {
         select.selectedIndex = 0;
       });
-      document.getElementById('result').innerHTML = `<p class="text-gray-500 text-center italic">Cliquez sur "Générer un nouveau" pour créer un communiqué de miséricorde</p>`;
+      document.getElementById('result').innerHTML = '<p class="text-gray-500 text-center italic">Cliquez sur "Générer un nouveau" pour créer un communiqué de miséricorde</p>';
       document.getElementById('bullshitMeter').classList.add('hidden');
       document.getElementById('translateBtn').classList.add('hidden');
       currentCommunique = '';
@@ -243,28 +818,24 @@ ${selectedItems.closings}.`;
       if (Object.keys(selectedValues).length > 0) {
         let communique = "";
         
-        // Premier paragraphe : incident + acknowledgment + apology + misericorde
         if (selectedValues.incidents) communique += selectedValues.incidents;
-        if (selectedValues.acknowledgments) communique += `, ${selectedValues.acknowledgments}.`;
-        if (selectedValues.apologies) communique += ` En ces temps troublés, ${selectedValues.apologies}.`;
-        if (selectedValues.misericorde) communique += ` ${selectedValues.misericorde}.`;
+        if (selectedValues.acknowledgments) communique += ', ' + selectedValues.acknowledgments + '.';
+        if (selectedValues.apologies) communique += ' En ces temps troublés, ' + selectedValues.apologies + '.';
+        if (selectedValues.misericorde) communique += ' ' + selectedValues.misericorde + '.';
 
-        // Deuxième paragraphe : actions
         if (selectedValues.actions) {
-          communique += `\n\n${selectedValues.actions}`;
-          if (selectedValues.spiritualEndings) communique += ` ${selectedValues.spiritualEndings}.`;
+          communique += '\n\n' + selectedValues.actions;
+          if (selectedValues.spiritualEndings) communique += ' ' + selectedValues.spiritualEndings + '.';
         }
 
-        // Troisième paragraphe : goodFruits + originDeflection + scapegoats
-        if (selectedValues.goodFruits) communique += `\n\nDans la tourmente, ${selectedValues.goodFruits}.`;
+        if (selectedValues.goodFruits) communique += '\n\nDans la tourmente, ' + selectedValues.goodFruits + '.';
         if (selectedValues.originDeflection || selectedValues.scapegoats) {
           communique += " Il importe également, ";
           if (selectedValues.originDeflection) communique += selectedValues.originDeflection + ", ";
-          if (selectedValues.scapegoats) communique += `de ne pas céder aux manœuvres de ${selectedValues.scapegoats}.`;
+          if (selectedValues.scapegoats) communique += 'de ne pas céder aux manœuvres de ' + selectedValues.scapegoats + '.';
         }
 
-        // Quatrième paragraphe : closing
-        if (selectedValues.closings) communique += `\n\n${selectedValues.closings}.`;
+        if (selectedValues.closings) communique += '\n\n' + selectedValues.closings + '.';
 
         if (communique.trim()) {
           currentCommunique = communique;
@@ -273,15 +844,7 @@ ${selectedItems.closings}.`;
           const bishop = getRandomItem(bishopNames);
           const bullshitLevel = calculateBullshitLevel(selectedValues);
           
-          document.getElementById('result').innerHTML = `
-            <div class="text-left">
-              <p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">${communique}</p>
-              <div class="text-right text-sm text-gray-600 italic mt-4">
-                <p>+ ${bishop}</p>
-                <p>Évêque de Saint-Barbant</p>
-              </div>
-            </div>
-          `;
+          document.getElementById('result').innerHTML = '<div class="text-left"><p class="text-base font-medium text-gray-800 leading-relaxed mb-6 whitespace-pre-line">' + communique + '</p><div class="text-right text-sm text-gray-600 italic mt-4"><p>+ ' + bishop + '</p><p>Évêque de Saint-Barbant</p></div></div>';
           
           showBullshitMeter(bullshitLevel);
           document.getElementById('translateBtn').classList.remove('hidden');
